@@ -11,9 +11,9 @@
 // about supported directives.
 //
 //= require_self
-//= require jquery
-//= require jquery_ujs
+//= require jquery-2.1.4.min
 //= require jquery.migrate
+//= require bootstrap.min
 //= require turbolinks
 //= require modernizrr
 //= require jquery.fitvids
