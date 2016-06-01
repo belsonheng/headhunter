@@ -10,7 +10,22 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require_self
 //= require jquery
 //= require jquery_ujs
+//= require jquery.migrate
 //= require turbolinks
+//= require modernizrr
+//= require jquery.fitvids
+//= require owl.carousel.min
+//= require nivo-lightbox.min
+//= require jquery.isotope.min
+//= require jquery.appear
+//= require count-to
+//= require jquery.textillate
+//= require jquery.lettering
+//= require jquery.easypiechart.min
+//= require jquery.nicescroll.min
+//= require jquery.parallax
+//= require jquery.slicknav
 //= require_tree .
