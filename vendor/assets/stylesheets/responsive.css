@@ -32,10 +32,14 @@
 	.projects-carousel {
 		width: 950px!important;
 	}
+
+	.navbar-brand span {
+		left: 5px;
+	}
 }
 
 @media (max-width: 991px) {
-	
+
 	.boxed-page, .boxed-page header {
 		width: 100%;
 	}
@@ -176,7 +180,7 @@
 }
 
 @media (max-width: 768px) {
-  
+
 	.tp-leftarrow,
 	.tp-rightarrow {
 		display: none!important;
@@ -219,7 +223,11 @@
 
 }
 @media only screen and (max-width: 479px) { 
-  
+
+	.navbar-brand span {
+		left: 5px;
+	}
+
     .top-bar  {
 		text-align: center;
 	}
