@@ -1,0 +1,107 @@
+ <!-- Start Header Section -->
+    <div class="hidden-header"></div>
+    <header class="clearfix">
+
+      <!-- Start Top Bar -->
+      <div class="top-bar">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <!-- Start Contact Info -->
+              <ul class="contact-details">
+                <li><a href="#"><i class="fa fa-map-marker"></i> 180 Ang Mo Kio Ave 8, Singapore 569830</a>
+                </li>
+                <li><a href="#"><i class="fa fa-envelope-o"></i> headhunter@gmail.com</a>
+                </li>
+                <li><a href="#"><i class="fa fa-phone"></i> +65 6550 1637</a>
+                </li>
+              </ul>
+              <!-- End Contact Info -->
+            </div>
+            <!-- .col-md-6 -->
+            <div class="col-md-6">
+              <!-- Start Social Links -->
+              <ul class="social-list">
+                <li>
+                  <a class="facebook itl-tooltip" data-placement="bottom" title="Facebook" href="https://www.facebook.com/Headhunter-278420185833869/"><i class="fa fa-facebook"></i></a>
+                </li>
+                <li>
+                  <a class="twitter itl-tooltip" data-placement="bottom" title="Twitter" href="https://twitter.com/headhunter_nyp"><i class="fa fa-twitter"></i></a>
+                </li>
+                <li>
+                  <a class="google itl-tooltip" data-placement="bottom" title="Google Plus" href="https://plus.google.com/u/0/?hl=en"><i class="fa fa-google-plus"></i></a>
+                </li>
+                <li>
+                  <a class="linkdin itl-tooltip" data-placement="bottom" title="Linkedin" href="#"><i class="fa fa-linkedin"></i></a>
+                </li>
+              </ul>
+              <!-- End Social Links -->
+            </div>
+            <!-- .col-md-6 -->
+          </div>
+          <!-- .row -->
+        </div>
+        <!-- .container -->
+      </div>
+      <!-- .top-bar -->
+      <!-- End Top Bar -->
+
+
+      <!-- Start  Logo & Naviagtion  -->
+      <div class="navbar navbar-default navbar-top">
+        <div class="container">
+          <div class="navbar-header">
+            <!-- Stat Toggle Nav Link For Mobiles -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <i class="fa fa-bars"></i>
+            </button>
+            <!-- End Toggle Nav Link For Mobiles -->
+            <a class="navbar-brand" href="index.html">
+              <span style="display: inline; position: absolute; width: 250px; top: 16px;">
+                <img alt="" src="<%= image_path('stripes.png') %>" class="logo">
+                <img alt="" src="<%= image_path('logo.png') %>">
+              </span>
+            </a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <!-- Start Navigation List -->
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <a class="<%= 'active' if params[:controller] == 'pages' && params[:action] == 'how_it_works' %>" href="<%= pages_howitworks_path %>">How it works</a>
+              </li>
+              <li>
+                <a class="<%= 'active' if params[:controller] == 'pages' && params[:action] == 'employer' %>" href="<%= pages_employer_path %>">Employers</a> 
+              </li>
+              <li>
+                <a href="#">Sign In</a>
+              </li>
+              <li>
+                <a href="#">Sign Up</a>
+              </li>
+            </ul>
+            <!-- End Navigation List -->
+          </div>
+        </div>
+
+        <!-- Mobile Menu Start -->
+        <ul class="wpb-mobile-menu">
+          <li>
+            <a class="active" href="index.html">How it works</a>
+          </li>
+          <li>
+            <a href="#">Employers</a>
+          </li>
+          <li>
+            <a href="#">Sign In</a>
+          </li>
+          <li>
+            <a href="#">Sign Up</a>
+          </li>
+        </ul>
+        <!-- Mobile Menu End -->
+
+      </div>
+      <!-- End Header Logo & Naviagtion -->
+
+    </header>
+    <!-- End Header Section -->
