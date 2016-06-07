@@ -10,11 +10,9 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require_self
 //= require jquery-2.1.4.min
 //= require jquery.migrate
 //= require bootstrap.min
-//= require turbolinks
 //= require modernizrr
 //= require jquery.fitvids
 //= require owl.carousel.min
@@ -28,4 +26,5 @@
 //= require jquery.nicescroll.min
 //= require jquery.parallax
 //= require jquery.slicknav
+//= require_self
 //= require_tree .
