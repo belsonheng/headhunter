@@ -56,8 +56,8 @@
               <i class="fa fa-bars"></i>
             </button>
             <!-- End Toggle Nav Link For Mobiles -->
-            <a class="navbar-brand" href="index.html">
-              <span style="display: inline; position: absolute; width: 250px; top: 16px;">
+            <a class="navbar-brand" href="<%= root_url %>">
+              <span style="display: inline; position: absolute; width: 250px; top: 16px; padding-bottom: 22px;">
                 <img alt="" src="<%= image_path('stripes.png') %>" class="logo">
                 <img alt="" src="<%= image_path('logo.png') %>">
               </span>
@@ -67,16 +67,16 @@
             <!-- Start Navigation List -->
             <ul class="nav navbar-nav navbar-right">
               <li>
-                <a class="<%= 'active' if params[:controller] == 'pages' && params[:action] == 'how_it_works' %>" href="<%= pages_howitworks_path %>">How it works</a>
+                <a class="<%= 'active' if params[:controller] == 'pages' && params[:action] == 'how_it_works' %>" href="<%= how_it_works_path %>">HOW IT WORKS</a>
               </li>
               <li>
-                <a class="<%= 'active' if params[:controller] == 'pages' && params[:action] == 'employer' %>" href="<%= pages_employer_path %>">Employers</a> 
+                <a class="<%= 'active' if params[:controller] == 'pages' && params[:action] == 'employer' %>" href="<%= employers_path %>">EMPLOYERS</a> 
               </li>
               <li>
-                <a href="#">Sign In</a>
+                <a href="#">SIGN IN</a>
               </li>
               <li>
-                <a href="#">Sign Up</a>
+                <a href="#">SIGN UP</a>
               </li>
             </ul>
             <!-- End Navigation List -->
@@ -86,16 +86,16 @@
         <!-- Mobile Menu Start -->
         <ul class="wpb-mobile-menu">
           <li>
-            <a class="active" href="index.html">How it works</a>
+            <a class="active" href="index.html">HOW IT WORKS</a>
           </li>
           <li>
-            <a href="#">Employers</a>
+            <a href="#">EMPLOYERS</a>
           </li>
           <li>
-            <a href="#">Sign In</a>
+            <a href="#">SIGN IN</a>
           </li>
           <li>
-            <a href="#">Sign Up</a>
+            <a href="#">SIGN UP</a>
           </li>
         </ul>
         <!-- Mobile Menu End -->
