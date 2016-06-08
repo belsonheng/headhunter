@@ -11,8 +11,7 @@ gem 'bson_ext'
 gem 'devise'
 # Use omniauth for social media integration
 gem 'omniauth'
-gem 'omniauth-facebook'
-gem 'omniauth-twitter'
+# gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-linkedin'
 # Use Font Awesome for icons
