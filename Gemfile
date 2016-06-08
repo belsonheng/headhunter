@@ -9,13 +9,15 @@ gem 'mongoid'
 gem 'bson_ext'
 # Use devise for authentication
 gem 'devise'
+# Use twitter to get our tweets
+gem 'twitter'
 # Use omniauth for social media integration
 gem 'omniauth'
 # gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-linkedin'
 # Use Font Awesome for icons
-gem 'font-awesome-sass'
+# gem 'font-awesome-sass'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
