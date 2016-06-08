@@ -8,7 +8,12 @@ Rails.application.routes.draw do
   get   'employers'     =>  'pages#employers'
   get   'how-it-works'  =>  'pages#how_it_works'
 
-
+  # Devise authentication
+  devise_scope :user do 
+    get   'login'         =>  'devise/sessions#new'
+    get   'signup'        =>  'devise/registrations#new'
+  end
+  
   # Footer navigation
   get   'sitemap'       =>  'pages#sitemap'
   get   'privacy'       =>  'pages#privacy'
