@@ -4,7 +4,6 @@ Rails.application.routes.draw do
 
   root  'pages#index'
 
-  get   'pages/index'
   get   'employers'     =>  'pages#employers'
   get   'how-it-works'  =>  'pages#how_it_works'
 
@@ -13,9 +12,9 @@ Rails.application.routes.draw do
     get   'login'         =>  'devise/sessions#new'
     get   'signup'        =>  'devise/registrations#new'
   end
-  
+
   # Footer navigation
-  get   'sitemap'       =>  'pages#sitemap'
+  get   'sitemap'       =>  'pages#sitemap', :defaults => {:format => 'xml'}
   get   'privacy'       =>  'pages#privacy'
   get   'contact'       =>  'pages#contact'
 
