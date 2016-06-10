@@ -1,17 +1,125 @@
 <!-- Start Home Page Slider -->
     <section id="home">
-    	<img alt="" src="<%= image_path('testimonials-bg.jpg') %>" style="width: 100%; height: 20%;">
+      <div style="background-image:url('<%= image_path('testimonials-bg.jpg') %>');">
+        <div class="parallax-text-container-1">
+          <div class="parallax-text-item">
+            <div class="container">
+              <div class="row">
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                  <div class="counter-item">
+                    <i class="fa fa-users"></i>
+                    <div class="timer" id="item1" data-to="991" data-speed="5000"></div>
+                    <h5>Registered Candidates</h5>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                  <div class="counter-item">
+                    <i class="fa fa-building"></i>
+                    <div class="timer" id="item2" data-to="7394" data-speed="5000"></div>
+                    <h5>Registered Employers</h5>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                  <div class="counter-item">
+                    <i class="fa fa-briefcase"></i>
+                    <div class="timer" id="item3" data-to="18745" data-speed="5000"></div>
+                    <h5>Available Jobs</h5>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                  <div class="counter-item">
+                    <i class="fa fa-male"></i>
+                    <div class="timer" id="item4" data-to="8423" data-speed="5000"></div>
+                    <h5>Headhunted</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    	<!--img alt="" src="<%= image_path('testimonials-bg.jpg') %>" style="width: 100%; height: 20%;"-->
+      <!-- Start Full Width Section 2 -->
+      <div class="section" style="padding-top:60px; padding-bottom:60px; border-top:1px solid #eee; border-bottom:1px solid #eee; background:#f9f9f9;">
+        <div class="container">
+
+          <div class="row">
+
+            <!-- Start Left Side -->
+            <div class="col-md-6">
+
+              <!-- Start Big Heading -->
+              <div class="big-title">
+                <h1><strong>Who</strong> are we?</h1>
+                <p class="title-desc">Headhunter</p>
+              </div>
+              <!-- End Big Heading -->
+
+              <!-- Some Text -->
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+              <!-- Divider -->
+              <div class="hr1" style="margin-bottom:14px;"></div>
+
+              <!-- Start Icons Lists -->
+              <div class="row">
+                <div class="col-md-6">
+                  <ul class="icons-list">
+                    <li><i class="fa fa-check-circle"></i> Duis aute irure dolor in reprehenderit.</li>
+                    <li><i class="fa fa-check-circle"></i> Lorem Ipsum is simply dummy text.</li>
+                    <li><i class="fa fa-check-circle"></i> Excepteur sint occaecat cupidatat.</li>
+                    <li><i class="fa fa-check-circle"></i> Sed ut perspiciatis unde omnis.</li>
+                  </ul>
+                </div>
+                <div class="col-md-6">
+                  <ul class="icons-list">
+                    <li><i class="fa fa-check-circle"></i> Duis aute irure dolor in reprehenderit.</li>
+                    <li><i class="fa fa-check-circle"></i> Lorem Ipsum is simply dummy text.</li>
+                    <li><i class="fa fa-check-circle"></i> Excepteur sint occaecat cupidatat.</li>
+                    <li><i class="fa fa-check-circle"></i> Sed ut perspiciatis unde omnis.</li>
+                  </ul>
+                </div>
+              </div>
+              <!-- End Icons Lists -->
+
+              <!-- Divider -->
+              <div class="hr1" style="margin-bottom:20px;"></div>
+
+              <!-- Button -->
+              <a href="#" class="btn-system btn-small">Read More About Us</a>
+            </div>
+            <!-- End Left Side -->
+
+            <!-- Vimeo Iframe -->
+            <div class="col-md-6">
+              <iframe src="https://player.vimeo.com/video/63322694?title=0&amp;byline=0&amp;portrait=0" width="800" height="450"></iframe>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+      <!-- End Full Width Section 2 -->
     </section>
     <!-- End Home Page Slider -->
-
 
     <!-- Start Content -->
     <div id="content">
 
-
       <!-- Start Services Section -->
       <div class="container">
         <div class="row">
+
+          <!-- Start Big Heading -->
+          <div class="big-title text-center">
+            <h1>The Most <span class="accent-color">Flexible</span> & <span class="accent-color">Easy</span> To Use Job Matching Service</h1>
+            <p class="title-desc">Let us tell you why? </p>
+          </div>
+          <!-- End Big Heading -->
+
+          <!-- Divider -->
+          <div class="hr1" style="margin-top:20px; margin-bottom:20px;"></div>
+
           <!-- Start Service Icon 1 -->
           <div class="col-md-3 col-sm-6 service-box service-center" data-animation="fadeIn" data-animation-delay="01">
             <div class="service-icon">
@@ -113,51 +221,11 @@
       </div>
       <!-- .container -->
       <!-- End Services Section -->
-    <div id="parallax-one" class="parallax" style="background-image:url('<%= image_path('bg-02.jpg') %>');">
-      <div class="parallax-text-container-1">
-        <div class="parallax-text-item">
-          <div class="container">
-            <div class="row">
-              <div class="col-xs-12 col-sm-3 col-md-3">
-                <div class="counter-item">
-                  <i class="fa fa-cloud-upload"></i>
-                  <div class="timer" id="item1" data-to="991" data-speed="5000"></div>
-                  <h5>Files uploaded</h5>
-                </div>
-              </div>
-              <div class="col-xs-12 col-sm-3 col-md-3">
-                <div class="counter-item">
-                  <i class="fa fa-check"></i>
-                  <div class="timer" id="item2" data-to="7394" data-speed="5000"></div>
-                  <h5>Projects completed</h5>
-                </div>
-              </div>
-              <div class="col-xs-12 col-sm-3 col-md-3">
-                <div class="counter-item">
-                  <i class="fa fa-code"></i>
-                  <div class="timer" id="item3" data-to="18745" data-speed="5000"></div>
-                  <h5>Lines of code written</h5>
-                </div>
-              </div>
-              <div class="col-xs-12 col-sm-3 col-md-3">
-                <div class="counter-item">
-                  <i class="fa fa-male"></i>
-                  <div class="timer" id="item4" data-to="8423" data-speed="5000"></div>
-                  <h5>Happy clients</h5>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
 
       <!-- Divider -->
       <div class="hr1 margin-60"></div>
 
-
-      <!-- Start News & Skill Section -->
+      <!-- Start Jobs & Skill Section -->
       <div class="container">
         <div class="row">
           <div class="col-md-6">
@@ -248,7 +316,7 @@
         <!-- .row -->
       </div>
       <!-- .container -->
-      <!-- End News & Skill Section -->
+      <!-- End Jobs & Skill Section -->
 
       <!-- Start Team Member Section -->
       <div class="section" style="background:#fff;">
@@ -281,7 +349,7 @@
                   <p>Being able to put my passion for designing into web design is the greatest thing on earth!</p>
                 </div>
                 <!-- Start Progress Bar 1 -->
-                <div class="progress-label">Photoshop</div>
+                <div class="progress-label">Web Development</div>
                 <div class="progress">
                   <div class="progress-bar progress-bar-primary" data-progress-animation="96%" data-appear-animation-delay="400">
                     <span class="percentage">96%</span>
@@ -290,8 +358,8 @@
                 <!-- Start Progress Bar 2 -->
                 <div class="progress-label">Logo Design</div>
                 <div class="progress">
-                  <div class="progress-bar progress-bar-primary" data-progress-animation="94%" data-appear-animation-delay="800">
-                    <span class="percentage">94%</span>
+                  <div class="progress-bar progress-bar-primary" data-progress-animation="74%" data-appear-animation-delay="800">
+                    <span class="percentage">74%</span>
                   </div>
                 </div>
                 <!-- Start Progress Bar 3 -->
@@ -303,7 +371,7 @@
                 </div>
                 <!-- Member Social Links -->
                 <div class="member-socail">
-                  <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
+                  <a class="facebook" href="http://www.facebook.com/belsonheng" target="_blank"><i class="fa fa-facebook"></i></a>
                   <a class="gplus" href="#"><i class="fa fa-google-plus"></i></a>
                   <a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a>
                 </div>
@@ -399,8 +467,6 @@
               </div>
             </div>
             <!-- End Member 3 -->
-
-
 
           </div>
           <!-- End Team Members -->
