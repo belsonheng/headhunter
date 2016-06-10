@@ -12,8 +12,8 @@
 //
 //= require jquery-2.1.4.min
 //= require jquery.migrate
-//= require bootstrap.min
 //= require modernizrr
+//= require bootstrap.min
 //= require jquery.fitvids
 //= require owl.carousel.min
 //= require nivo-lightbox.min
