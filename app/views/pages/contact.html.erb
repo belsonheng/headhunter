@@ -1,0 +1,241 @@
+  <% content_for :style do %>
+<!-- Google Maps -->
+  <style>
+    #google-map,
+    body,
+    html {
+      padding: 0;
+      height: 400px;
+    }
+  </style>
+  <% end %>
+    <!-- Start Map -->
+    <div id="google-map">
+    </div>
+    <!-- End Map -->
+
+    <!-- Start Content -->
+    <div id="content">
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-md-8">
+
+            <!-- Classic Heading -->
+            <h4 class="classic-title"><span>Contact Us</span></h4>
+
+            <!-- Start Contact Form -->
+            <form role="form" class="contact-form" id="contact-form" method="post">
+              <div class="form-group">
+                <div class="controls">
+                  <input type="text" placeholder="Name" name="name">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="controls">
+                  <input type="email" class="email" placeholder="Email" name="email">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="controls">
+                  <input type="text" class="requiredField" placeholder="Subject" name="subject">
+                </div>
+              </div>
+
+              <div class="form-group">
+
+                <div class="controls">
+                  <textarea rows="7" placeholder="Message" name="message"></textarea>
+                </div>
+              </div>
+              <button type="submit" id="submit" class="btn-system btn-large">Send</button>
+              <div id="success" style="color:#34495e;"></div>
+            </form>
+            <!-- End Contact Form -->
+
+          </div>
+
+          <div class="col-md-4">
+
+            <!-- Classic Heading -->
+            <h4 class="classic-title"><span>Information</span></h4>
+
+            <!-- Some Info -->
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum.</p>
+
+            <!-- Divider -->
+            <div class="hr1" style="margin-bottom:10px;"></div>
+
+            <!-- Info - Icons List -->
+            <ul class="icons-list">
+              <li><i class="fa fa-globe">  </i> <strong>Address:</strong> 1234 Street Name, Bangladesh.</li>
+              <li><i class="fa fa-envelope-o"></i> <strong>Email:</strong> info@yourcompany.com</li>
+              <li><i class="fa fa-mobile"></i> <strong>Phone:</strong> +12 345 678 001</li>
+            </ul>
+
+            <!-- Divider -->
+            <div class="hr1" style="margin-bottom:15px;"></div>
+
+            <!-- Classic Heading -->
+            <h4 class="classic-title"><span>Working Hours</span></h4>
+
+            <!-- Info - List -->
+            <ul class="list-unstyled">
+              <li><strong>Monday - Friday</strong> - 9am to 5pm</li>
+              <li><strong>Saturday</strong> - 9am to 2pm</li>
+              <li><strong>Sunday</strong> - Closed</li>
+            </ul>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+    <!-- End content -->
+  <% content_for :script do %>
+    <!-- Google Maps API -->
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.expsensor=false"></script>
+    <!-- Google Maps JS Only for Contact Pages -->
+    <script type="text/javascript">
+    var map;
+    var plain = new google.maps.LatLng(34.0625074, -118.2134539);
+    var mapCoordinates = new google.maps.LatLng(34.0625074, -118.2134539);
+       
+    var markers = [];
+    var image = new google.maps.MarkerImage(
+      '<%= image_path("map-marker.png") %>',
+      new google.maps.Size(84, 70),
+      new google.maps.Point(0, 0),
+      new google.maps.Point(60, 60)
+    );
+    
+    var info = new google.maps.InfoWindow({
+      content: '<div class="map-popup"><h4>Web Development | ZoOm-Arts</h4><p>A web development blog for all your HTML5 and WordPress needs.</p></div>'
+    });
+
+    function addMarker() {
+      var marker = new google.maps.Marker({
+        position: plain,
+        raiseOnDrag: false,
+        icon: image,
+        map: map,
+        draggable: false
+      });
+      marker.addListener('click', function() {
+        info.open(map, marker);
+      });
+      markers.push(marker);
+    }
+    
+    function initialize() {
+      var mapOptions = {
+        backgroundColor: "#ffffff",
+        zoom: 15,
+        disableDefaultUI: true,
+        center: mapCoordinates,
+        zoomControl: false,
+        scaleControl: false,
+        scrollwheel: false,
+        disableDoubleClickZoom: true,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        styles: [{
+          "featureType": "landscape.natural",
+          "elementType": "geometry.fill",
+          "stylers": [{
+            "color": "#ffffff"
+          }
+                     ]
+        }
+                 , {
+                   "featureType": "landscape.man_made",
+                   "stylers": [{
+                     "color": "#ffffff"
+                   }
+                               , {
+                                 "visibility": "off"
+                               }
+                              ]
+                 }
+                 , {
+                   "featureType": "water",
+                   "stylers": [{
+                     "color": "#80C8E5"
+                   }
+                               , {
+                                 "saturation": 0
+                               }
+                              ]
+                 }
+                 , {
+                   "featureType": "road.arterial",
+                   "elementType": "geometry",
+                   "stylers": [{
+                     "color": "#999999"
+                   }
+                              ]
+                 }
+                 , {
+                   "elementType": "labels.text.stroke",
+                   "stylers": [{
+                     "visibility": "off"
+                   }
+                              ]
+                 }
+                 , {
+                   "elementType": "labels.text",
+                   "stylers": [{
+                     "color": "#333333"
+                   }
+                              ]
+                 }
+                 
+                 , {
+                   "featureType": "road.local",
+                   "stylers": [{
+                     "color": "#dedede"
+                   }
+                              ]
+                 }
+                 , {
+                   "featureType": "road.local",
+                   "elementType": "labels.text",
+                   "stylers": [{
+                     "color": "#666666"
+                   }
+                              ]
+                 }
+                 , {
+                   "featureType": "transit.station.bus",
+                   "stylers": [{
+                     "saturation": -57
+                   }
+                              ]
+                 }
+                 , {
+                   "featureType": "road.highway",
+                   "elementType": "labels.icon",
+                   "stylers": [{
+                     "visibility": "off"
+                   }
+                              ]
+                 }
+                 , {
+                   "featureType": "poi",
+                   "stylers": [{
+                     "visibility": "off"
+                   }
+                              ]
+                 }
+                 
+                ]
+        
+        };
+        map = new google.maps.Map(document.getElementById('google-map'), mapOptions);
+        addMarker();
+      }
+
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+  <% end %>
