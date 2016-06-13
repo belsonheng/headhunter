@@ -17,7 +17,8 @@
   <!--[if IE 8]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
-  <link rel="shortcut icon" type="image/png" href="<%= image_path('favicon.ico') %>" />
+  <link rel="shortcut icon" type="image/png" href="<%= image_path('stripes.png') %>" />
+  <%= yield :style %>
 </head>
 <body>
   <!-- Full Body Container -->
@@ -31,6 +32,7 @@
   <!-- Go To Top Link -->
   <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
   <%= javascript_include_tag('script') %>
+  <%= yield :script %>
 </body>
 </html>
 
