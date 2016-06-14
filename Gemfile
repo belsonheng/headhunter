@@ -18,6 +18,10 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-linkedin'
 # Use Font Awesome for icons
 gem 'font-awesome-sass'
+# Use Gibbon for MailChimp's API
+gem 'gibbon'
+# Use Figaro for environment variables
+gem 'figaro'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
