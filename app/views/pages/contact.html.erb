@@ -70,7 +70,7 @@
             <!-- Info - Icons List -->
             <ul class="icons-list">
               <li><i class="fa fa-globe">  </i> <strong>Address:</strong> 180 Ang Mo Kio Ave 8, Singapore 569830</li>
-              <li><i class="fa fa-envelope-o"></i> <strong>Email:</strong> headhunter@gmail.com</li>
+              <li><i class="fa fa-envelope-o"></i> <strong>Email:</strong> headhunter.nyp@gmail.com</li>
               <li><i class="fa fa-mobile"></i> <strong>Phone:</strong> +65 6550 1637</li>
             </ul>
 
@@ -83,7 +83,7 @@
             <!-- Info - List -->
             <ul class="list-unstyled">
               <li><strong>Monday - Friday</strong> - 9am to 5pm</li>
-              <li><strong>Saturday</strong> - 9am to 2pm</li>
+              <li><strong>Saturday</strong> - Closed</li>
               <li><strong>Sunday</strong> - Closed</li>
             </ul>
 
@@ -112,7 +112,7 @@
     );
     
     var info = new google.maps.InfoWindow({
-      content: '<div class="map-popup"><h4>Nanyang Polytechnic | Singapore</h4><p><a href="https://www.google.com.sg/maps/place/Nanyang+Polytechnic/@1.3801175,103.8468408,17z/data=!3m1!4b1!4m5!3m4!1s0x31da16eb64b0249d:0xe5f10ff680eed942!8m2!3d1.3801175!4d103.8490295">Click here to show direction</a></p></div>'
+      content: '<div class="map-popup"><h4>Headhunter @ Nanyang Polytechnic, Singapore</h4><p><a href="https://www.google.com.sg/maps/place/Nanyang+Polytechnic/@1.3801175,103.8468408,17z/data=!3m1!4b1!4m5!3m4!1s0x31da16eb64b0249d:0xe5f10ff680eed942!8m2!3d1.3801175!4d103.8490295">Show Directions</a></p></div>'
     });
 
     function addMarker() {
@@ -126,7 +126,7 @@
       marker.addListener('click', function() {
         info.open(map, marker);
       });
-      markers.push(marker);
+      markers.push(marker);info.open(map, marker);
     }
     
     function initialize() {
