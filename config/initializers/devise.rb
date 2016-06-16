@@ -13,8 +13,8 @@ Devise.setup do |config|
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
   config.omniauth :facebook, ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_APP_SEC"] #, callback_url: "CALLBACK_URL"
-config.omniauth :google_oauth2 , ENV["GOOGLE_CLIENT_ID"] , ENV["GOOGLE_CLIENT_SEC"], skip_jwt: true
-config.omniauth :linkedin, ENV["LINKED_IN_KEY"], ENV["LINKED_IN_SEC"]
+  config.omniauth :google_oauth2 , ENV["GOOGLE_CLIENT_ID"] , ENV["GOOGLE_CLIENT_SEC"], skip_jwt: true, name: "google"
+  config.omniauth :linkedin, ENV["LINKED_IN_KEY"], ENV["LINKED_IN_SEC"]
 
   config.mailer_sender = 'headhunternypsit@gmail.com'
 
