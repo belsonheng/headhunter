@@ -14,8 +14,8 @@ port: 587,
 domain: 'smtp.gmail.com',
 authentication: “plain”,
 enable_starttls_auto: true,
-user_name: 'headhunternypsit@gmail.com',
-password: 'nypsitheadhunter'
+user_name: 'ENV["GMAIL_USERNAME"]',
+password: 'ENV["GMAIL_PASSWORD"]'
 }
 
   # Do not eager load code on boot. This avoids loading your whole application
