@@ -15,7 +15,6 @@
 /log/*.log
 /tmp
 
-Gemfile.lock
 /.DS_Store
 
 # Ignore application configuration
