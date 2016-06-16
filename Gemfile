@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.6'
 
 # Use MongoDB for database
-gem 'mongoid'
+gem 'mongoid', '~> 5.1.0'
 gem 'bson_ext'
 # Use devise for authentication
 gem 'devise'
@@ -16,6 +16,8 @@ gem 'omniauth'
 # gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-linkedin'
+gem 'omniauth-facebook'
+gem 'simple_form'
 # Use Font Awesome for icons
 gem 'font-awesome-sass'
 # Use Gibbon for MailChimp's API
@@ -54,4 +56,3 @@ gem 'spring', group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
