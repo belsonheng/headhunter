@@ -10,19 +10,19 @@ Rails.application.configure do
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
 
-config.action_mailer.default_url_options = { :host => "localhost:3000" }
+  config.action_mailer.default_url_options = { :host => "localhost:3000" }
 
-config.action_mailer.delivery_method = :smtp 
+  config.action_mailer.delivery_method = :smtp 
 
-config.action_mailer.smtp_settings = {
-address: "smtp.gmail.com",
-port: 587,
-domain: ENV["GMAIL_DOMAIN"],
-authentication: "plain",
-enable_starttls_auto: true,
-user_name: ENV["GMAIL_USERNAME"],
-password: ENV["GMAIL_PASSWORD"]
-}
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: ENV["GMAIL_DOMAIN"],
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: ENV["GMAIL_USERNAME"],
+    password: ENV["GMAIL_PASSWORD"]
+  }
 
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
@@ -34,7 +34,7 @@ password: ENV["GMAIL_PASSWORD"]
   # config.action_dispatch.rack_cache = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
-  config.serve_static_assets = true
+  config.serve_static_assets = false
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
