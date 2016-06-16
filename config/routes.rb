@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' , registrations: "registrations" }
 
   root  'pages#index'
 
@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   devise_scope :user do 
     get   'login'         =>  'devise/sessions#new'
     get   'signup'        =>  'devise/registrations#new'
+     get 'signout'        => 'devise/sessions#destroy'
+     get 'editprofile' =>  'devise/registrations#edit'
   end
 
   # Footer navigation
