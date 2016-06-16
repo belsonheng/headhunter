@@ -24,6 +24,13 @@
   <!-- Full Body Container -->
   <div id="container">
     <%= render 'layouts/header' %>
+    <!--Flash Messages-->
+    <% flash.each do |key , value| %>
+<div class="alert alert - <%=key%> alert-dismissable">
+<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+<%= value %>
+</div>
+<% end %>
     <%= yield %>  
     <%= render 'layouts/footer' %>
   </div>
