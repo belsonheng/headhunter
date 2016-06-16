@@ -1,48 +1,51 @@
-<h4 class="classic-title"><span>Log In</span></h4>
+    <!-- Start Content -->
+    <div id="content">
+      <div class="container">
 
+        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { id: 'login-form'}) do |f| %>
+          <h1>Sign In</h1>
+          <% if devise_mapping.omniauthable? %>
+            <div class="social">
+              <ul>
+                <li> 
+                  <a href="http://localhost:3000/users/auth/facebook" class="facebook">
+                    Facebook
+                  </a>
+                </li>
+                <li>
+                  <a href="users/auth/google" class="google-plus">
+                    Google
+                  </a>
+                </li>
+                <li>
+                  <a href="http://localhost:3000/users/auth/linkedin" class="linkedin">
+                    LinkedIn
+                  </a>
+                </li>
+              </ul>
+            </div>
+       
+            <div class="divider">
+              <span>or</span>
+            </div>
+          <% end %>
+          <div class="input-field">
+            <input type="email" name="email" required placeholder="Email" />
+            <input type="password" name="password" required placeholder="Password" />
+            <% if devise_mapping.rememberable? %>
+              <p style="margin-top: 20px;"><%= f.check_box :remember_me %> Remember me</p>
+            <% end %>
+            <hr/>
+            <% if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+              <%= link_to "Forgot your password?", new_password_path(resource_name) %> 
+            <% end %>
+              <input style="float: right;" type="submit" value="Sign In" />
+          </div>
+        <% end %>
 
-<form id="login-form">
-      <div class="social">
-        <h4>Connect with</h4>
-        <ul>
-          <li> 
-          <a href="http://localhost:3000/users/auth/facebook" class="facebook">
-            <span class="fa fa-facebook"></span>
-          </a>
-          </li>
-          <li>
-            <a href="http://localhost:3000/users/auth/linkedin" class="twitter">
-              <span class="fa fa-linkedin"></span>
-            </a>
-          </li>
-          <li>
-            <a href="http://localhost:3000/users/auth/google_oauth2" class="google-plus">
-              <span class="fa fa-google-plus"></span>
-            </a>
-          </li>
-        </ul>
-       </div>
- 
-       <div class="divider">
-         <span>or</span>
-       </div>
-        
-      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="input-field">
-        <label for="email">Email<i class="fa fa-envelope-o"></i></label>  
-        <%= f.email_field :email, autofocus: true , class: "form-control" , placeholder: "you@example.com", required: "email" %>
-        <label for="password">Password<i class="fa fa-key fa-fw"></i></label> 
-        <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "password" , required: true %>
-        <% if devise_mapping.rememberable? -%>
-        <%= f.check_box :remember_me %> Remember Me
-<% end -%>
+        <p class="text-p">Don't have an account? <a href="#">Sign up now!</a></p>
 
-<div class="form-group">
-    <div class="col-sm-6 col-sm-offset-2">
-        <%= f.submit "Sign in" %>
-    </div>
-</div>
       </div>
-      
-      </form>
-  <% end %>
+    </div>
+    <!-- End Content -->
+
