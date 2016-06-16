@@ -1,3 +1,151 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* For Login Form */
+
+form#login-form {
+	overflow: hidden;
+	position: relative;
+	border: 1px solid #DEE0E5;
+	margin: 30px auto;
+	max-width: 500px;
+	background-color: #FFF;
+	color: #36373E;
+	border-radius: 0.2rem;
+	width: 100%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+form#login-form h1 {
+	font-family: sans-serif;
+	font-style: normal;
+	text-align: center;
+	padding: 20px;
+	border-bottom: 1px solid #DEE0E5;
+}
+
+.social {
+	display: block;
+	margin: 0 auto;
+	margin-top: 20px;
+	overflow: hidden;
+	width: 82%;
+}
+
+.social h4 {
+	color: #666;
+	font-weight: normal;
+	margin: 30px 0 20px;
+	text-align: center;
+}
+
+.social ul {
+	display: block;
+}
+
+.social ul li {
+	list-style: none;
+	float: left;
+	width: 31.33%;
+	margin: 0 1%;
+}
+
+.social ul li a {
+	display: inline-block;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: #fff;
+	padding: 6px;
+	display: block;
+	text-align: center;
+	/*-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;*/
+	-moz-transition: all 0.4s ease-in-out;
+	-o-transition: all 0.4s ease-in-out;
+	-webkit-transition: all 0.4s ease-in-out;
+	transition: all 0.4s ease-in-out;
+}
+
+.social ul li a { background: #A4A5AD; /* opacity: .8;*/ }
+
+.social ul li a.facebook:hover {
+	background: #507CBE;
+}
+
+.social ul li a.linkedin:hover {
+	background: #0280BD;
+}
+.social ul li a.google-plus:hover {
+	background: #F16261;
+}
+
+.divider {
+	background: #ddd;
+	height: 2px;
+	display: block;
+	position: relative;
+	width: 80%;
+	margin: 30px auto;
+}
+
+.divider span {
+	width: 30px;
+	height: 20px;
+	background: #fff;
+	position: absolute;
+	left: 50%;
+	margin-left: -10px;
+	top: -12px;
+	text-align: center;
+	color: #999;
+}
+
+.input-field {
+	width: 80%;
+	margin: 0 auto;
+	padding-bottom: 30px;
+}
+
+.input-field label {
+	color: #888;
+	display: block;
+	font-size: 14px;
+	margin-top: 5px;
+}
+
+.input-field input[type="email"], .input-field input[type="password"] {
+	border: 1px solid #dfdfdf;
+	border-radius: 4px;
+	box-shadow: 0 0 4px rgba(223, 223, 223, 0.2);
+	margin: 6px 0;
+	padding: 12px;
+	transition: all 0.15s ease-in-out 0s;
+	width: 100%;
+}
+
+.input-field input[type="email"]:focus, .input-field input[type="password"]:focus {
+	outline: none;
+	border: 1px solid #bdbdbd;
+}
+
+.text-p {
+	font-size: 14px;
+	text-align: center;
+	margin: 10px 0;
+}
+
+.text-p a {
+	color: #175690;
+}
+
+@media (max-width: 480px) {
+	form#login-form {
+		 width: 90%;
+		 margin: 30px auto;
+	}
+}
+
+/* End Login Form */
