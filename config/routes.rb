@@ -1,19 +1,12 @@
 Rails.application.routes.draw do
 
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' , registrations: "registrations" }
-
   root  'pages#index'
+
+  # Devise authentication navigation
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: "registrations" }, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'signup' }
 
   get   'employers'     =>  'pages#employers'
   get   'how-it-works'  =>  'pages#how_it_works'
-
-  # Devise authentication
-  devise_scope :user do 
-    get   'login'         =>  'devise/sessions#new'
-    get   'signup'        =>  'devise/registrations#new'
-     get 'signout'        => 'devise/sessions#destroy'
-     get 'editprofile' =>  'devise/registrations#edit'
-  end
 
   # Footer navigation
   get   'sitemap'       =>  'pages#sitemap', :defaults => {:format => 'xml'}
