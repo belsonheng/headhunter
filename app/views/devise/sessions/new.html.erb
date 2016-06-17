@@ -1,7 +1,7 @@
     <!-- Start Content -->
-    <div id="content">
+    <div id="content" style="background: url('<%= image_path('testimonials-bg3.jpg') %>');">
       <div class="container">
-
+        <%= render "shared/messages" %>
         <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { id: 'login-form'}) do |f| %>
           <h1>Sign In</h1>
           <% if devise_mapping.omniauthable? %>
@@ -13,7 +13,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="users/auth/google" class="google-plus">
+                  <a href="<%= user_omniauth_path(:google_oauth2) %>" class="google-plus">
                     Google
                   </a>
                 </li>
@@ -39,11 +39,11 @@
             <% if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
               <%= link_to "Forgot your password?", new_password_path(resource_name) %> 
             <% end %>
-              <input style="float: right;" type="submit" value="Sign In" />
+              <button id="submit" class="btn-system btn-large" type="submit" style="float: right;">Sign In</button>
           </div>
         <% end %>
 
-        <p class="text-p">Don't have an account? <a href="#">Sign up now!</a></p>
+        <p class="text-p">Don't have an account? <a href="<%= signup_path %>" style="text-decoration: underline;">Apply now!</a></p>
 
       </div>
     </div>
