@@ -12,10 +12,6 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.omniauth :facebook, ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_APP_SEC"] #, callback_url: "CALLBACK_URL"
-  config.omniauth :google_oauth2 , ENV["GOOGLE_CLIENT_ID"] , ENV["GOOGLE_CLIENT_SEC"], skip_jwt: true, name: "google"
-  config.omniauth :linkedin, ENV["LINKED_IN_KEY"], ENV["LINKED_IN_SEC"]
-
   config.mailer_sender = 'headhunternypsit@gmail.com'
 
   # Configure the class responsible to send e-mails.
@@ -246,6 +242,11 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
+
+  config.omniauth_path_prefix = "users/auth"
+  config.omniauth :facebook, ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_APP_SEC"] #, callback_url: "CALLBACK_URL"
+  config.omniauth :google_oauth2 , ENV["GOOGLE_CLIENT_ID"] , ENV["GOOGLE_CLIENT_SEC"], { skip_jwt: true, name: "google" }
+  config.omniauth :linkedin, ENV["LINKED_IN_KEY"], ENV["LINKED_IN_SEC"]
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
