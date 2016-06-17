@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root  'pages#index'
 
   # Devise authentication navigation
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: "registrations" }, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'signup' }
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: "registrations" }, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'signup', password: 'users/password'}
 
   get   'employers'     =>  'pages#employers'
   get   'how-it-works'  =>  'pages#how_it_works'
