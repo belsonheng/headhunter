@@ -76,15 +76,15 @@
               </li>
               <% if user_signed_in? %>
               <li>
-                <a class="<%= 'active' if params[:controller] == 'devise/sessions' && params[:action] == 'new' %>" href="<%= signout_path %>">SIGN OUT</a>
+                <a class="<%= 'active' if params[:controller] == 'devise/sessions' && params[:action] == 'new' %>" href="<%= destroy_user_session_path %>">SIGN OUT</a>
               </li>
               <% else %>
               <li>
-                <a class="<%= 'active' if params[:controller] == 'devise/sessions' && params[:action] == 'new' %>" href="<%= login_path %>">SIGN IN</a>
+                <a class="<%= 'active' if params[:controller] == 'devise/sessions' && params[:action] == 'new' %>" href="<%= new_user_session_path %>">SIGN IN</a>
               </li>
               <%end %>
               <li>
-                <a class="<%= 'active' if params[:controller] == 'devise/registrations' && params[:action] == 'new' %>" href="<%= signup_path %>">SIGN UP</a>
+                <a class="<%= 'active' if params[:controller] == 'devise/registrations' && params[:action] == 'new' %>" href="<%= new_user_registration_path %>">SIGN UP</a>
               </li>
             </ul>
             <!-- End Navigation List -->

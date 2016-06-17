@@ -13,7 +13,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="<%= user_omniauth_path(:google_oauth2) %>" class="google-plus">
+                  <a href="<%= omniauth_authorize_path(:user, :google) %>" class="google-plus">
                     Google
                   </a>
                 </li>
@@ -43,7 +43,7 @@
           </div>
         <% end %>
 
-        <p class="text-p">Don't have an account? <a href="<%= signup_path %>" style="text-decoration: underline;">Apply now!</a></p>
+        <p class="text-p">Don't have an account? <a href="<%= new_user_registration_path %>" style="text-decoration: underline;">Apply now!</a></p>
 
       </div>
     </div>
