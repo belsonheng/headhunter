@@ -1,7 +1,12 @@
     <!--Flash Messages-->
-    <% flash.each do |key , value| %>
-      <div class="alert alert - <%=key%> alert-dismissable">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+<% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>">
+    <a href="#" data-dismiss="alert" class="close">×</a>
+    <ul>
+      <li>
         <%= value %>
-      </div>
-    <% end %>
+      </li>
+    </ul>
+  </div>
+<% end %>
+    
