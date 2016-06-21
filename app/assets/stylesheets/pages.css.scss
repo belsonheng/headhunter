@@ -2,6 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/* For Tabs (Register) */
+.tab-content {
+
+position: relative;
+border: 20px solid rgba(0, 0, 0, 0);
+max-width: 500px;
+width: 100%;
+	margin-right: auto;
+	margin-left: auto;
+
+}
+
 /* For Login Form */
 
 form#login-form {
@@ -145,3 +157,32 @@ form#login-form h1 {
 }
 
 /* End Login Form */
+
+/*flash Messages */
+.alert-error {
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+    text-align: left;
+ }
+
+.alert-alert {
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+    text-align: left;
+ }
+
+.alert-success {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
+    text-align: left;
+ }
+
+.alert-notice {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
+    text-align: left;
+ }
