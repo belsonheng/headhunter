@@ -7,7 +7,13 @@ class ApplicationController < ActionController::Base
 
   private
   def load_tweets
-  	@tweets = "my recent 3 tweets here"
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key        = ENV["TWITTER_CONSUMER_KEY"]
+      config.consumer_secret     = ENV["TWITTER_CONSUMER_SEC"]
+      config.access_token        = ENV["TWITTER_ACCESS_TOKEN"]
+      config.access_token_secret = ENV["TWITTER_ACCESS_TOKEN_SEC"]
+  end
+    @tweets = client.user_timeline("headhunter_nyp")
   end
 
     protected
