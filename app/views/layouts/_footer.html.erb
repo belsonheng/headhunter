@@ -39,8 +39,21 @@
           <div class="col-md-3" style="display:inline-block">
             <div class="footer-widget twitter-widget">
               <h4>Recent Tweets<span class="head-line"></span></h4>
-             <a class="twitter-timeline" href="https://twitter.com/headhunter_nyp" data-widget-id="739645090604318721">Tweets by @headhunter_nyp</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+              <ul><% @tweets.each { |tweet| %>
+                  <li>
+                  <p><a href = "https://twitter.com/headhunter_nyp">@headhunter_nyp</a>
+                  
+                <%= tweet.text %> </p>
+
+              <span>  <%= tweet.created_at.strftime('%d %B %Y') %> </span>
+                  
+                
+                </li>
+
+
+                
+              <% } %>
+              </ul>
             </div>
           </div>
           <!-- .col-md-3 -->
