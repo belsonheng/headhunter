@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get   'how-it-works'  =>  'pages#how_it_works'
 
   # Footer navigation
+  post 'emailapi/subscribe' => 'layouts#_footer'
   get   'sitemap'       =>  'pages#sitemap', :defaults => {:format => 'xml'}
   get   'privacy'       =>  'pages#privacy'
   get   'contact'       =>  'pages#contact'
