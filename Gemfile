@@ -21,7 +21,7 @@ gem 'simple_form'
 # Use Font Awesome for icons
 gem 'font-awesome-sass'
 # Use Gibbon for MailChimp's API
-gem 'gibbon'
+gem 'gibbon', :git => 'https://github.com/amro/gibbon.git'
 # Use Figaro for environment variables
 gem 'figaro'
 # Use SCSS for stylesheets

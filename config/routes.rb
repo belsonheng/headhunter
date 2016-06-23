@@ -3,12 +3,13 @@ Rails.application.routes.draw do
   root  'pages#index'
 
   # Devise authentication navigation
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: "registrations" }, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'signup', password: 'users/password'}
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: "registrations" }, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'signup', password: 'users/password', edit:'edit'}
 
   get   'employers'     =>  'pages#employers'
   get   'how-it-works'  =>  'pages#how_it_works'
 
   # Footer navigation
+  post 'emailapi/subscribe' => 'layouts#_footer'
   get   'sitemap'       =>  'pages#sitemap', :defaults => {:format => 'xml'}
   get   'privacy'       =>  'pages#privacy'
   get   'contact'       =>  'pages#contact'

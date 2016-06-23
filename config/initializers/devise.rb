@@ -113,7 +113,7 @@ Devise.setup do |config|
   # able to access the website for two days without confirming their account,
   # access will be blocked just in the third day. Default is 0.days, meaning
   # the user cannot access the website without confirming their account.
-  # config.allow_unconfirmed_access_for = 2.days
+   config.allow_unconfirmed_access_for = 3.days
 
   # A period that the user is allowed to confirm their account before their
   # token becomes invalid. For example, if set to 3.days, the user can confirm
@@ -140,7 +140,7 @@ Devise.setup do |config|
   config.expire_all_remember_me_on_sign_out = true
 
   # If true, extends the user's remember period when remembered via cookie.
-  # config.extend_remember_period = false
+   config.extend_remember_period = false
 
   # Options to be passed to the created cookie. For instance, you can set
   # secure: true in order to force SSL only cookies.
@@ -243,7 +243,7 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
-  config.omniauth_path_prefix = "users/auth"
+  config.omniauth_path_prefix = "/users/auth"
   config.omniauth :facebook, ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_APP_SEC"] #, callback_url: "CALLBACK_URL"
   config.omniauth :google_oauth2 , ENV["GOOGLE_CLIENT_ID"] , ENV["GOOGLE_CLIENT_SEC"], { skip_jwt: true, name: "google" }
   config.omniauth :linkedin, ENV["LINKED_IN_KEY"], ENV["LINKED_IN_SEC"]
