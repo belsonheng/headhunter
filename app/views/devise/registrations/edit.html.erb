@@ -1,4 +1,4 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h4 class="classic-title"><span>Edit Profile</span></h4>
 
 <div id="content">
  <div class="container">
@@ -7,7 +7,6 @@
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put,id: 'login-form' }) do |f| %>
   <%= f.error_notification %>
 
- <h1>Edit Profile</h1>
 
   <div class="form-inputs">
     <input type="email" name="user[email]" required placeholder="Email" disabled= true  value= <%= @user.email %>/><br/>
