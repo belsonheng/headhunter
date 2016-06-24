@@ -26,12 +26,12 @@ end
 def after_sign_in_path_for(resource_or_scope)
   if @user.type == "JobSeeker"
     ## Path for JobSeeker
- how_it_works_path
- # Will Change Route 
+ jobseeker_home_path
+
 else
   ## Path for Employers
-employers_path
-# Will Change Route 
+employer_home_path
+
 end
 
 end
