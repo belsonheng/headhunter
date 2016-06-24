@@ -1,0 +1,66 @@
+	<style type="text/css">
+	 
+	table {
+	font-family: "Lato","sans-serif";   
+}       
+
+	 
+
+	table.one {                                 
+	margin-bottom: 3em;
+	border-collapse:collapse;   
+              }  
+
+	td {                            
+
+	text-align: center;    
+	width: 10em;                   
+	padding: 1em;       
+       }      
+	th {                              
+
+	text-align: center;                
+
+	padding: 1em;
+	background-color: #e8503a;       
+	color: white;       }                 
+	tr {   
+	height: 1em;    }
+
+	table tr:nth-child(even) {            
+
+	    background-color: #eee;     }
+
+	table tr:nth-child(odd) {            
+
+	background-color:#fff; }
+
+	</style>
+
+
+	<table>
+	<thead>
+	        <tr>
+	            <th>Name</th>
+	            <th>Email</th>
+	            <th>Career Path</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	<% @users = User.all %>
+	<% @users.each do |user|%>
+	 
+	        <tr>
+	<% if user.type == "JobSeeker"%>
+
+	  <td><%= user.name %></td>
+	  <td><%= user.email %></td>
+	  <td><%= user.careerpath %></td>
+	</tr>
+	  <%else %>
+	  <!--Don't display anything-->
+	<% end %>
+
+	<% end %>
+	</tbody>
+	</table>
