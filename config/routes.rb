@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'jobseeker/home'
+
+  get 'employer/home'
+
   root  'pages#index'
 
   # Devise authentication navigation
@@ -7,6 +11,12 @@ Rails.application.routes.draw do
 
   get   'employers'     =>  'pages#employers'
   get   'how-it-works'  =>  'pages#how_it_works'
+
+  #Pages for Employers
+get   'EHome'  =>  'employer#home'
+
+  #Pages for JobSeekers
+  get   'JHome'  =>  'jobseeker#home'
 
   # Footer navigation
   post 'emailapi/subscribe' => 'layouts#_footer'
