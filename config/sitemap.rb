@@ -1,6 +1,6 @@
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = "http://www.example.com"
-#Change URL
+SitemapGenerator::Sitemap.default_host = "http://immense-hollows-84672.herokuapp.com/"
+#Change URL?
 
 SitemapGenerator::Sitemap.create do
   add how_it_works_path, :changefreq => 'weekly' 
