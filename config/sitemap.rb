@@ -1,21 +1,20 @@
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = "http://immense-hollows-84672.herokuapp.com/"
-#Change URL?
+SitemapGenerator::Sitemap.default_host = "http://headhuntersg.herokuapp.com/"
 
 SitemapGenerator::Sitemap.create do
   add how_it_works_path, :changefreq => 'weekly' 
   add employers_path, :changefreq => 'weekly'
 
-  #Need to Put in Login Features?
+  # Need to Put in Login Features?
   add destroy_user_session_path, :changefreq => 'weekly'
   add new_user_session_path, :changefreq => 'weekly'
   add edit_user_registration_path, :changefreq => 'weekly'
   add new_user_registration_path, :changefreq => 'weekly'
 
-  #JobSeeker Paths
+  # Jobseeker Path
   add jobseeker_home_path, :changefreq => 'weekly'
 
-  #Employer Paths
+  # Employer Path
   add employer_home_path, :changefreq => 'weekly'
 
 
