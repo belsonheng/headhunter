@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
 
-  get 'jobseeker/home'
-
-  get 'employer/home'
+  get   'jobseeker/home'
+  get   'employer/home'
 
   root  'pages#index'
 
@@ -13,16 +12,16 @@ Rails.application.routes.draw do
   get   'how-it-works'  =>  'pages#how_it_works'
 
   #Pages for Employers
-get   'EHome'  =>  'employer#home'
+  get   'EHome'  =>  'employer#home'
 
   #Pages for JobSeekers
   get   'JHome'  =>  'jobseeker#home'
 
   # Footer navigation
-  post 'emailapi/subscribe' => 'layouts#_footer'
-  get   'sitemap'       =>  'pages#sitemap', :defaults => {:format => 'xml'}
-  get   'privacy'       =>  'pages#privacy'
-  get   'contact'       =>  'pages#contact'
+  post  'email/subscribe' =>  'emails#subscribe'
+  get   'sitemap'         =>  'pages#sitemap', :defaults => {:format => 'xml'}
+  get   'privacy'         =>  'pages#privacy'
+  get   'contact'         =>  'pages#contact'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
