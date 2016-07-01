@@ -9,7 +9,7 @@
               <h4>Get in touch<span class="head-line"></span></h4>
               <p>Join our mailing list to stay up to date and get notices about our new releases!</p>
               <form class="subscribe" accept-charset="UTF-8" action="/emailapi/subscribe" data-remote="true" id="subscribe" method="post">
-                <input type="text" placeholder="mail@example.com" name="email[address]"><br/>
+                <input type="text" placeholder="mail@example.com" name="email[address]">
                 <input type="submit" class="btn-system" value="Send">
               </form>
             </div>
@@ -39,20 +39,13 @@
           <div class="col-md-3" style="display:inline-block">
             <div class="footer-widget twitter-widget">
               <h4>Recent Tweets<span class="head-line"></span></h4>
-              <ul><% @tweets.each { |tweet| %>
-                  <li>
-                  <p><a href = "https://twitter.com/headhunter_nyp">@headhunter_nyp</a>
-                  
-                <%= tweet.text %> </p>
-
-              <span>  <%= tweet.created_at.strftime('%d %B %Y') %> </span>
-                  
-                
+              <ul>
+                <% @tweets.each { |tweet| %>
+                <li>
+                  <p><a href = "https://twitter.com/headhunter_nyp">@headhunter_nyp</a><%= tweet.text %></p>
+                  <span><%= tweet.created_at.strftime('%d %B %Y') %></span>
                 </li>
-
-
-                
-              <% } %>
+                <% } %>
               </ul>
             </div>
           </div>
