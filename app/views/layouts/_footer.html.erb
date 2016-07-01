@@ -42,7 +42,7 @@
               <ul>
                 <% @tweets.each { |tweet| %>
                 <li>
-                  <p><a href = "https://twitter.com/headhunter_nyp">@headhunter_nyp</a><%= tweet.text %></p>
+                  <p><a href = "https://twitter.com/headhunter_nyp">@headhunter_nyp</a> <%= tweet.text %></p>
                   <span><%= tweet.created_at.strftime('%d %B %Y') %></span>
                 </li>
                 <% } %>
