@@ -1,2 +1,38 @@
-<h1>Jobseeker#home</h1>
-<p>Find me in app/views/jobseeker/home.html.erb</p>
+<h2>Upload Resume</h2>
+
+<%= render "shared/messages" %>
+<div id="content">
+ <div class="container">
+  <%= simple_form_for :document, html: { multipart: true, id: 'login-form'} do |f| %>
+  <h1>Upload Resume</h1>
+  <input type="hidden" name="document[owner_email]" required  value= <%= current_user.email %>><br/>
+    <input id="resume_attachment" name="document[file]" required type="file" accept=".doc, .pdf, .txt" />
+    <button id="submit" class="btn-system btn-large" type="submit" style="float: right;">Save</button>
+  <% end %>
+
+
+  <table>
+  <thead>
+    <tr>
+      <th>Filename</th>
+      <th>Owner</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @documents = Document.all %>
+    <% @documents.each do |document| %>
+      <tr>
+        <td><%= document.filename %></td>
+         <td><%= document.owner_email %></td>
+        <td><%= button_to 'Download', document, method: :get %></td>
+        <td><%= button_to 'Destroy', document, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+</div>
+
+
