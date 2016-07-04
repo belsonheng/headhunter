@@ -128,7 +128,7 @@ form#login-form h1 {
 	margin-top: 5px;
 }
 
-.input-field input[type="email"], .input-field input[type="password"] {
+.input-field input[type="email"], .input-field input[type="password"], .input-field input[type="text"] , .input-field input[type="number"] {
 	border: 1px solid #dfdfdf;
 	border-radius: 4px;
 	box-shadow: 0 0 4px rgba(223, 223, 223, 0.2);
@@ -138,7 +138,7 @@ form#login-form h1 {
 	width: 100%;
 }
 
-.input-field input[type="email"]:focus, .input-field input[type="password"]:focus {
+.input-field input[type="email"]:focus, .input-field input[type="password"]:focus , .input-field input[type="text"]:focus, .input-field input[type="number"]:focus{
 	outline: none;
 	border: 1px solid #bdbdbd;
 }
