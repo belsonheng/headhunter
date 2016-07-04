@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
 
-  get   'jobseeker/home'
-  get   'employer/home'
 
   root  'pages#index'
+  resources :documents
 
   # Devise authentication navigation
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: "registrations" }, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'signup', password: 'users/password', edit:'edit'}
@@ -12,10 +11,11 @@ Rails.application.routes.draw do
   get   'how-it-works'  =>  'pages#how_it_works'
 
   #Pages for Employers
-  get   'EHome'  =>  'employer#home'
+  get   'employer/home'  =>  'employer#home'
 
   #Pages for JobSeekers
-  get   'JHome'  =>  'jobseeker#home'
+ get   'jobseeker/home'  =>  'jobseeker#home'
+  post 'jobseeker/home' => 'documents#checkRecord'
 
   # Footer navigation
   post  'email/subscribe' =>  'emails#subscribe'
