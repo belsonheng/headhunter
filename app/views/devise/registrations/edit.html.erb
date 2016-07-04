@@ -1,28 +1,28 @@
 <h4 class="classic-title"><span>Edit Profile</span></h4>
 
-<div id="content">
+<div id="content" style="background: url('<%= image_path('testimonials-bg3.jpg') %>');">
  <div class="container">
         <%= render "shared/messages" %>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put,id: 'login-form' }) do |f| %>
   <%= f.error_notification %>
 
-
-  <div class="form-inputs">
-    <input type="email" name="user[email]" required placeholder="Email" disabled= true  value= <%= @user.email %>/><br/>
-    <input type="text" name="user[name]" required placeholder="Name" value= <%= @user.name %> /><br/>
-    <input type="number" name="user[contact]" required placeholder="Contact No." value= <%= @user.contact %> /><br/>
+<h1>Edit Profile</h1>
+  <div class="input-field">
+    <label>Email:</label><input type="email" name="user[email]" required placeholder="Email" disabled= true  value= <%= @user.email %>>
+    <label>Full Name:</label>
+    <input type="text" name="user[name]" required placeholder="Name" value= <%= @user.name %>>
+    
 
     <% if @user.type == "JobSeeker" %>
-    <select name="user[careerpath]" required value= <%= @user.careerpath %> >
-    <option value="" disabled selected>Select your option</option>
-    <option value="IT">IT</option>
-    <option value="Human Resource">Human Resource</option>
-    <option value="Business">Business</option>
-    </select>
+    <label>Location:</label>
+    <input type="text" name="user[location]" required placeholder="Location" value= <%= @user.location %>>
     <% else %>
     <% if @user.type == "Employers"  %>
-    <input type="text" name="user[company]" required placeholder="Company" value= <%= @user.company %> /><br/>
+    <label>Contact No.:</label>
+    <input type="number" name="user[contact]" required placeholder="Contact No." value= <%= @user.contact %>>
+    <label>Company:</label>
+    <input type="text" name="user[company]" required placeholder="Company" value= <%= @user.company %>>
     <% end %>
     <% end %>
 
@@ -30,8 +30,11 @@
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 <% if user_signed_in? && current_user.provider != 'facebook' && current_user.provider != 'linkedin' && current_user.provider != 'google_oauth2'%>
-    <input type="password" name="user[password]" required placeholder="Password" />
+<label>New Password:</label>
+    <input type="password" name="user[password]" required placeholder="New Password" />
+    <label>Confirm Password:</label>
     <input type="password" name="user[password_confirmation]" required placeholder=" Confirm Password" />
+    <label>Previous Password:</label>
     <input type="password" name="user[current_password]" required placeholder=" Previous Password" />
   </div>
   <%end%>
@@ -40,10 +43,7 @@
 <% end %>
 </div>
 
-<h3>Cancel my account</h3>
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-</div>
 </div>
 
-<%= link_to "Back", :back %>
+
