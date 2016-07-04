@@ -68,15 +68,36 @@
           <div class="navbar-collapse collapse">
             <!-- Start Navigation List -->
             <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+            <% else %>
               <li>
                 <a class="<%= 'active' if params[:controller] == 'pages' && params[:action] == 'how_it_works' %>" href="<%= how_it_works_path %>">HOW IT WORKS</a>
               </li>
+              <%end %>
+              <% if user_signed_in? %>
+              <%if  current_user.type == "JobSeeker"%>
+              <li>
+                <a class="<%= 'active' if params[:controller] == 'jobseeker' && params[:action] == 'home' %>" href="<%= jobseeker_home_path %>">HOME</a>
+                </li>
+                <% else%>
+                <%if current_user.type == "Employers"%>
+              <li>
+                <a class="<%= 'active' if params[:controller] == 'employer' && params[:action] == 'home' %>" href="<%= employer_home_path %>">HOME</a>
+                </li>
+                <%end %>
+                <%end %>
+                <%end %>
+                <% if user_signed_in? == false %>
               <li>
                 <a class="<%= 'active' if params[:controller] == 'pages' && params[:action] == 'employers' %>" href="<%= employers_path %>">EMPLOYERS</a> 
               </li>
+              <%end %>
+              
+            
+              
               <% if user_signed_in? %>
               <li>
-                <a class="<%= 'active' if params[:controller] == 'devise/sessions' && params[:action] == 'new' %>" href="<%= destroy_user_session_path%>" data-method="delete" rel="nofollow">SIGN OUT</a>
+                <a class="<%= 'active' if params[:controller] == 'registrations' && params[:action] == 'edit' %>" href="<%= edit_user_registration_path %>">PROFILE</a>
               </li>
               <% else %>
               <li>
@@ -85,7 +106,7 @@
               <%end %>
               <% if user_signed_in? %>
               <li>
-              <a class="<%= 'active' if params[:controller] == 'registrations' && params[:action] == 'new' %>" href="<%= edit_user_registration_path %>">PROFILE</a>
+              <a class="<%= 'active' if params[:controller] == 'devise/sessions' && params[:action] == 'new' %>" href="<%= destroy_user_session_path%>" data-method="delete" rel="nofollow">SIGN OUT</a>
               </li>
               <%else %>
               <li>
