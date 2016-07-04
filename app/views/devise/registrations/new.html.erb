@@ -3,69 +3,31 @@
       <div class="container">
         <%= render "shared/messages" %>
 
-    <div class="panel-group" id="accordion">
-
-                  <!-- Start Accordion 1 -->
-                  <div class="panel panel-default">
-                    <div class="panel-heading">
-                      <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-4" aria-expanded="true" class="">
-                          <i class="fa fa-angle-up control-icon"></i>
-                          <i></i> Talent
-                        </a>
-                      </h4>
-                    </div>
-                    <div id="collapse-4" class="panel-collapse collapse in" aria-expanded="true">    
-
-
-<div class="panel-body">
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name),html: { id: 'login-form'}) do |f| %>
+<h1><a href="#tab-1" data-toggle="tab">Talent</a>|
+<a href="#tab-2" data-toggle="tab">Employer</a></h1>
+<% end %>
 
-<h1>Talent</h1>
+
+<div class="tab-pane fade in active" id="tab-1" style="position:relative;margin-top:-30px">
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name),html: { id: 'login-form'}) do |f| %>
 <%= devise_error_messages! %>
-
-  <div class="input-field">
-  <input type="text" name="user[name]" required placeholder="Name" />
+  <div id = "Talent" class="input-field">
+  <input type="text" name="user[name]" required placeholder="Full Name" />
     <input type="email" name="user[email]" required placeholder="Email" />
-    <input type="number" name="user[contact]" required placeholder="Contact No." /><br/>
-    <select name="user[careerpath]" required>
-    <option value="" disabled selected>Select your option</option>
-    <option value="IT">IT</option>
-    <option value="Human Resource">Human Resource</option>
-    <option value="Business">Business</option>
-    </select>
-    <input type="password" name="user[password]" required placeholder="Password" />
-    <input type="password" name="user[password_confirmation]" required placeholder=" Confirm Password" />
+    <input type="text" name="user[location]" required placeholder="Where you live" /><br/>
+    <input type="password" name="user[password]" required placeholder="Create Password" />
     <input type="hidden" value="JobSeeker" name="user[type]" required />
   </div>
-
   <button id="submit" class="btn-system btn-large" type="submit" style="float: right;">Sign Up</button>
-<% end %>
-</div>
-                  </div>
-                  </div>
-                  <!-- End Accordion 1 -->
+  </div>
+  <% end %>
 
-                  <!-- Start Accordion 2 -->
-                  <div class="panel panel-default">
-                    <div class="panel-heading">
-                      <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-5" class="collapsed" aria-expanded="false">
-                          <i class="fa fa-angle-down control-icon"></i>
-                          <i></i>Employer
-                        </a>
-                      </h4>
-                    </div>
-                    <div id="collapse-5" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
-<div class="panel-body">           
+<div class="tab-pane fade" id="tab-2" style="position:relative;margin-top:-280px">
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name),html: { id: 'login-form'}) do |f| %>
-  
-
-  <h1>Employer</h1>
-  <%= devise_error_messages! %>
-
-  <div class="input-field">
-  <input type="text" name="user[name]" required placeholder="Name" />
+<%= devise_error_messages! %>
+   <div id="Employer" class="input-field">
+  <input type="text" name="user[name]" required placeholder="Full Name" />
     <input type="email" name="user[email]" required placeholder="Email" />
     <input type="number" name="user[contact]" required placeholder="Contact No." /><br/>
     <input type="text" name="user[company]" required placeholder="Company" />
@@ -73,12 +35,19 @@
     <input type="password" name="user[password_confirmation]" required placeholder=" Confirm Password" />
     <input type="hidden" value="Employers" name="user[type]" required />
   </div>
-
   <button id="submit" class="btn-system btn-large" type="submit" style="float: right;">Sign Up</button>
-<% end %>
 </div>
-                    </div>
-                  </div>
+  
+<% end %>
+
+                  <!-- End Accordion 1 -->
+
+                  <!-- Start Accordion 2 -->
+                  
+                    
+                              
+
+                   
                   <!-- End Accordion 2 -->
               
 </div>
