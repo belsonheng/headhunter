@@ -26,7 +26,9 @@
             <h4 class="classic-title"><span>Contact Us</span></h4>
 
             <!-- Start Contact Form -->
-            <form role="form" class="contact-form" id="contact-form" method="POST" action="email/subscribe">
+            
+            <form role="form" class="contact-form" id="contact-form" method="POST" action="http://formspree.io/headhunternypsit@gmail.com">
+            <input type="hidden" name="_next" value= <%= contact_path %> />
               <div class="form-group">
                 <div class="controls">
                   <input type="text" placeholder="Name" name="name">

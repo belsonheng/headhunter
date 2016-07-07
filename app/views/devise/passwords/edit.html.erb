@@ -6,10 +6,11 @@
   
 <h1>Change your password</h1>
   <div class="input-field">
-    <input id="user_reset_password_token" name="user[reset_password_token]" type="hidden" value= <%= reset_password_token %> />
+    <%= f.hidden_field :reset_password_token %>
 
- 
+ <label>Password:</label>
     <input type="password" name="user[password]" required placeholder="Password" />
+    <label>Confirm Password:</label>
     <input type="password" name="user[password_confirmation]" required placeholder="Confirm Password" />
 
 
