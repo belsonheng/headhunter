@@ -1,22 +1,29 @@
 Rails.application.routes.draw do
-
-
   root  'pages#index'
   resources :documents
 
   # Devise authentication navigation
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: "registrations" }, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'signup', password: 'users/password', edit:'edit'}
 
-  get   'employers'     =>  'pages#employers'
+  # Static pages
   get   'how-it-works'  =>  'pages#how_it_works'
+  get   'employers'     =>  'pages#employers'
+
+  # Onboarding pages
+  get   'onboarding/job-info'         =>  'pages#job_info'
+  get   'onboarding/online-presence'  =>  'pages#online_presence'
+  get   'onboarding/history'          =>  'pages#history'
 
   #Pages for Employers
-  get   'employer/home'  =>  'employer#home'
+  get   'employer/home'   =>  'employer#home'
 
   #Pages for JobSeekers
- get   'jobseeker/home'  =>  'jobseeker#home'
-  post 'jobseeker/home' => 'documents#checkRecord'
+  get  'jobseeker/home'   =>  'jobseeker#home'
+  post 'jobseeker/home'   =>  'documents#checkRecord'
 
+  get   'settings'        =>  'pages#settings'
+  get   'integrations'    =>  'pages#integrations'
+  
   # Footer navigation
   post  'email/subscribe' =>  'emails#subscribe'
   get   'sitemap'         =>  'pages#sitemap', :defaults => {:format => 'xml'}
