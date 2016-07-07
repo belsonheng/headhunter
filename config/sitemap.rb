@@ -17,7 +17,6 @@ SitemapGenerator::Sitemap.create do
   # Employer Path
   add employer_home_path, :changefreq => 'weekly'
 
-
   # Put links creation logic here.
   #
   # The root path '/' and sitemap index file are added automatically for you.
