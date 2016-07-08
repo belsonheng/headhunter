@@ -121,16 +121,16 @@
         <!-- Mobile Menu Start -->
         <ul class="wpb-mobile-menu">
           <li>
-            <a class="active" href="index.html">HOW IT WORKS</a>
+            <a class="<%= 'active' if params[:controller] == 'pages' && params[:action] == 'how_it_works' %>" href="<%= how_it_works_path %>">HOW IT WORKS</a>
           </li>
           <li>
-            <a href="<%= employers_path %>">EMPLOYERS</a>
+            <a class="<%= 'active' if params[:controller] == 'pages' && params[:action] == 'employers' %>" href="<%= employers_path %>">EMPLOYERS</a>
           </li>
           <li>
-            <a href="<%= new_user_session_path %>">SIGN IN</a>
+            <a class="<%= 'active' if params[:controller] == 'devise/sessions' && params[:action] == 'new' %>" href="<%= new_user_session_path %>">SIGN IN</a>
           </li>
           <li>
-            <a href="<%= new_user_registration_path %>">SIGN UP</a>
+            <a class="<%= 'active' if params[:controller] == 'registrations' && params[:action] == 'new' %>" href="<%= new_user_registration_path %>">SIGN UP</a>
           </li>
         </ul>
         <!-- Mobile Menu End -->
