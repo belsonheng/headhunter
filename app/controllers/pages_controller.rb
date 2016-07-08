@@ -24,4 +24,19 @@ class PagesController < ApplicationController
   end 
   def JHome
   end
+  def settings
+  end
+  def integrations
+  end
+
+  # Onboarding actions
+  def job_info
+    render 'pages/onboarding/job_info'
+  end
+  def online_presence
+    render 'pages/onboarding/online_presence'
+  end
+  def history
+    render 'pages/onboarding/history'
+  end
 end

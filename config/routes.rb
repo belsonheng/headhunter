@@ -10,10 +10,12 @@ Rails.application.routes.draw do
   get   'employers'     =>  'pages#employers'
 
   # Onboarding pages
-  get   'onboarding/job-info'         =>  'pages#job_info'
-  get   'onboarding/online-presence'  =>  'pages#online_presence'
-  get   'onboarding/history'          =>  'pages#history'
-
+  scope '/onboarding' do
+    get   'job-info'         =>  'pages#job_info'
+    get   'online-presence'  =>  'pages#online_presence'
+    get   'history'          =>  'pages#history'
+  end
+  
   #Pages for Employers
   get   'employer/home'   =>  'employer#home'
 
@@ -23,7 +25,7 @@ Rails.application.routes.draw do
 
   get   'settings'        =>  'pages#settings'
   get   'integrations'    =>  'pages#integrations'
-  
+
   # Footer navigation
   post  'email/subscribe' =>  'emails#subscribe'
   get   'sitemap'         =>  'pages#sitemap', :defaults => {:format => 'xml'}
