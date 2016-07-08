@@ -20,7 +20,7 @@
     <% else %>
     <% if @user.type == "Employers"  %>
     <label>Contact No.:</label>
-    <input type="number" name="user[contact]" required placeholder="Contact No." value= <%= @user.contact %>>
+    <input type="text" name="user[contact]" required placeholder="Contact No." value= <%= @user.contact %>>
     <label>Company:</label>
     <input type="text" name="user[company]" required placeholder="Company" value= <%= @user.company %>>
     <% end %>
