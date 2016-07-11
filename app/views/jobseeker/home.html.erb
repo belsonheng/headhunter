@@ -1,8 +1,8 @@
 <h1>Jobseeker Home Page</h1>
 
-<%= render "shared/messages" %>
 <div id="content">
  <div class="container">
+ <%= render "shared/messages" %>
   <%= simple_form_for :document, html: { multipart: true, id: 'login-form'} do |f| %>
   <h1>Upload Resume</h1>
   <input type="hidden" name="document[owner_email]" required  value= <%= current_user.email %>><br/>
@@ -32,6 +32,14 @@
     <% end %>
   </tbody>
 </table>
+
+<!--Resume Contents-->
+
+
+
+
+
+
 </div>
 </div>
 
