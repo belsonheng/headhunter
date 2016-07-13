@@ -29,7 +29,7 @@
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
-<% if user_signed_in? && current_user.provider != 'facebook' && current_user.provider != 'linkedin' && current_user.provider != 'google_oauth2'%>
+<% if user_signed_in? && current_user.provider != 'facebook' && current_user.provider != 'linkedin' && current_user.provider != 'google'%>
 <label>New Password:</label>
     <input type="password" name="user[password]" required placeholder="New Password" />
     <label>Confirm Password:</label>
