@@ -4,11 +4,23 @@ class User
   # :confirmable, :lockable, :timeoutable and :omniauthable
   # Resume
 
-  devise :database_authenticatable, :registerable, :omniauthable, :lockable, :confirmable, 
+  devise :database_authenticatable, :registerable, :omniauthable, :lockable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauth_providers => [:facebook, :linkedin, :google]
 
-##Resume
-has_one :document, dependent: :destroy
+##Link to other Models
+has_one :document, :dependent => :destroy
+has_one :info, :dependent => :destroy
+has_one :history, :dependent => :destroy
+has_one :preferences, :dependent => :destroy
+has_one :summary, :dependent => :destroy
+has_many :identities, :dependent => :destroy
+has_many :skill, :dependent => :destroy
+has_many :portfolio, :dependent => :destroy
+has_many :listing, :dependent => :destroy
+
+
+
+after_create :first_identity
 
 
   ## Database authenticatable
@@ -45,7 +57,7 @@ has_one :document, dependent: :destroy
  field :company,              type: String
   field :contact,              type: String
 
-
+#Profile Picture:
    
   ## Confirmable
   field :confirmation_token,   type: String
@@ -58,12 +70,22 @@ has_one :document, dependent: :destroy
    field :unlock_token,    type: String # Only if unlock strategy is :email or :both
    field :locked_at,       type: Time
 
+
 def self.from_omniauth(auth)
-  where(provider: auth.provider, uid: auth.uid , type: "JobSeeker").first_or_create do |user|
+  where(auth.slice(:uid, :provider)).first_or_create do |user|
+    user.uid = auth.uid
+    user.provider = auth.provider
     user.email = auth.info.email
     user.password = Devise.friendly_token[0,20]
-    #user.name = auth.info.name   # assuming the user model has a name
-    #user.image = auth.info.image # assuming the user model has an image
+    user.type = "JobSeeker"
   end
 end
+
+#Prevents Duplication of Data
+def first_identity
+  self.identities.first_or_create!(:uid => self.uid, :provider => self.provider, :user_id => self.id)
+  Identity.where(:user_id => nil).destroy_all
+end
+
+
 end 
