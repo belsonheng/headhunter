@@ -1,1 +1,58 @@
-This is an online presence page.
+<div id="content">
+   <div class="container">
+   <%= render 'pages/onboarding/sidebar' %>
+<%= render "shared/messages" %>
+<%@documents = Document.where(:user_id => current_user.id).to_a.to_a%>
+<%@documents.each do |document|%>
+<%= simple_form_for :document, html: { multipart: true, id: 'login-form' } do |f| %>
+<h1>Link</h1>
+<div class="input-field">
+<input type="hidden" name="document[user_id]" value= <%= current_user.id %>>
+<label>Public LinkedIn URL:</label>
+<input type="hidden" name="[id]" value=<%= document.id %>>
+<input type="url" name="document[LinkedIn_URL]" placeholder="http://www.linkedin.com/in/myusername" required value=<%= document.LinkedIn_URL %>>
+<label>CV:</label>
+<input name="document[file]" type="file" accept=".doc, .pdf, .txt"  required/>
+<%if document.filename != nil%>
+<label>Uploaded Documents:</label>
+<%= document.filename %>
+<%= button_to 'Download', document, method: :get %>
+<%= button_to 'Delete', document, method: :delete, data: { confirm: 'Are you sure?' } %> 
+<%end%>
+<label>Personal Website:</label>
+<input type="url" name="document[Personal_URL]" placeholder="http://example.com" required value=<%= document.Personal_URL %> >
+<label>Stack Overflow URL:</label>
+<input type="url" name="document[StackOverflow_URL]" placeholder="http://stackoverflow.com/users/1234/myusername" required value=<%= document.StackOverflow_URL %>>
+<label>Blog URL:</label>
+<input type="url" name="document[Blog_URL]" placeholder="http://www.example.com/blog" required value=<%= document.Blog_URL %>>
+<hr>
+<%end%>
+<input class="btn-system btn-large" type="submit" value="Save" style="float: right;">
+</div>
+</div>
+   </div>
+<%end%>
+
+<% if @documents = Document.where(:user_id => current_user.id).blank?%>
+<%= simple_form_for :document, html: { multipart: true, id: 'login-form'} do |f| %>
+<h1>Link</h1>
+<div class="input-field">
+<input type="hidden" name="document[user_id]" value= <%= current_user.id %>>
+<label>Public LinkedIn URL:</label>
+<input type="url" name="document[LinkedIn_URL]" placeholder="http://www.linkedin.com/in/myusername" required>
+<label>CV:</label>
+<input name="document[file]" type="file" accept=".doc, .pdf, .txt"  required/>
+<label>Personal Website:</label>
+<input type="url" name="document[Personal_URL]" placeholder="http://example.com" required >
+<label>Stack Overflow URL:</label>
+<input type="url" name="document[StackOverflow_URL]" placeholder="http://stackoverflow.com/users/1234/myusername" required >
+<label>Blog URL:</label>
+<input type="url" name="document[Blog_URL]" placeholder="http://www.example.com/blog" required>
+<hr>
+<%end%>
+
+<input class="btn-system btn-large" type="submit" value="Save" style="float: right;">
+   </div>
+   </div>
+   <%end%>
+   
