@@ -1,6 +1,98 @@
-<h1>Employers Home Page</h1>
+<center><h1>Employers Home Page</h1></center>
 <div id="content">
- <div class="container">
- <%= render "shared/messages" %>
- </div>
-  </div>
+      <div class="container">
+       <%= render "shared/messages" %>
+       <h2>All Candidates:</h2>
+         <%@listing = Listing.all%>
+    <%@listing.each do |listing|%>
+        <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="media">
+                            <div class="media-left media-middle">
+                               <%@info = Info.where(:user_id => listing.user_id).to_a.to_a%>
+    <%@info.each do |info|%>
+    <%= image_tag info.avatar.url(:medium) %>
+                                <%end%>
+                            </div>
+                            <div class="media-body">
+                            <%@user = User.where(:id => listing.user_id).to_a.to_a%>
+    <%@user.each do |user|%> 
+                                <span id="Name"><h4 class="media-heading"><%= user.name%></h4></span>
+                                <%end%>
+
+                                <span id="Status"><strong>Status:</strong> <%=listing.status%></span>
+                                <br>
+                                <span id="Profile"><strong>Profile:</strong> <a href='/users/<%=listing.user_id%>' target="_blank">
+                                 Profile Link</a>
+                                <br/>
+                                <!--Skills-->
+                               <%@skill = Skill.where(:user_id => listing.user_id).to_a.to_a%>
+    <%@skill.each do |skill|%> 
+                                <span id="Area"><strong>Area of Expertise:</strong> <%=skill.area%></span>
+                                <br>
+                                <span id="Skill"><strong>Top Skill:</strong> <%=skill.skill%></span>
+                                <%end%>
+                                <br>
+                                <!--Preference-->
+     <%@preferences = Preferences.where(:user_id => listing.user_id).to_a.to_a%>
+    <%@preferences.each do |preference|%>
+                                <span id="Preference"><strong>Preference:</strong> Prefers only <%= preference.type%> roles with a base salary of <span style="color:green;"> $<%= preference.salary%>/yr</span>
+    <%end%>
+                                <br>
+                                <br>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Place Offer-->
+                <h2>Interested?</h2>
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="media">
+                            <div class="media-left media-middle">
+                            </div>
+                            <div class="media-body">
+                            <!--If Offer Exists-->
+<%@offer = Offer.where(:listing_id => listing.id).to_a.to_a%>
+<%@offer.each do |offer|%>
+                           <%= simple_form_for :offer, html: { multipart: true} do |f| %>
+                                <span id="Offer"><h4 class="media-heading">Place an Offer:</h4></span>
+                                <input type="hidden" name="[id]" value= '<%= offer.id %>'>
+                                <input type="hidden" name="offer[listing_id]" value= <%= listing.id %>>
+                                <span id="Amount"><strong>Amount:</strong><input type= "number" name="offer[amount]" value= '<%= offer.amount %>'><br/></span>
+                                
+                                <span id="Profile"><strong>Comments:</strong> 
+                                 <textarea name="offer[comment]"><%= offer.comment %></textarea>
+                                <br/>
+                                <input class="btn-system btn-large" type="submit" value="Offer" style="float: right;">
+                                <%end%>
+                                <%end%>
+                                <!--If Offer does not Exist-->
+                               <% if @offer = Offer.where(:listing_id => listing.id ).blank?%>
+                                <%= simple_form_for :offer, html: { multipart: true} do |f| %>
+                                <span id="Offer"><h4 class="media-heading">Place an Offer:</h4></span>
+                                <input type="hidden" name="[id]" value= <%= offer.id %>>
+                                <input type="hidden" name="offer[listing_id]" value= <%= listing.id %>>
+                                <span id="Amount"><strong>Amount:</strong><input type= "number" name="offer[amount]"><br/></span>
+                                
+                                <span id="Profile"><strong>Comments:</strong> 
+                                 <textarea name="offer[comment]"></textarea>
+                                <br/>
+                                <input class="btn-system btn-large" type="submit" value="Offer" style="float: right;">
+                                <%end%>
+                                <%end%>
+                                <%end%>
+                                <br>
+                                
+                                <br>
+                                <br>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+      </div>
+    </div>
