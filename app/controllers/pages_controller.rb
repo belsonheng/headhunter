@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  before_action :authenticate_user!, :except => [:index, :employers, :how_it_works, :sitemap, :privacy, :contact]
   def index
   end
   def employers
@@ -38,5 +39,17 @@ class PagesController < ApplicationController
   end
   def history
     render 'pages/onboarding/history'
+  end
+  def summary
+    render 'pages/onboarding/summary'
+  end
+  def portfolio
+    render 'pages/onboarding/portfolio'
+  end
+  def role_skill
+    render 'pages/onboarding/role_skill'
+  end
+  def info
+    render 'pages/onboarding/info'
   end
 end
