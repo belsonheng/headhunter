@@ -1,49 +1,50 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  def facebook
-    # You need to implement the method below in your model (e.g. app/models/user.rb)
-    @user = User.from_omniauth(request.env["omniauth.auth"])
-     #user.type ="JobSeeker"
-    if @user.persisted?
-      @user.skip_confirmation!
-      sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
-      set_flash_message(:notice, :success, :kind => "Facebook") if is_navigational_format?
-    else
-      flash[:notice] = "An error has occured, Please Register a new account or try again"
-      session["devise.facebook_data"] = request.env["omniauth.auth"]
-      redirect_to new_user_registration_url
+skip_before_filter :verify_authenticity_token
+  def all
+    auth = request.env["omniauth.auth"]
+    # Find an identity here
+    @identity = Identity.all.find_by(:uid => auth.uid, :provider => auth.provider)
+
+    if @identity.nil?
+    # If no identity was found, create a brand new one here
+      @identity = Identity.create(:uid => auth.uid, :provider => auth.provider)
     end
-  end
-  
-  def linkedin
-    @user = User.from_omniauth(request.env["omniauth.auth"])
-
-    if @user.persisted?
-      @user.skip_confirmation!
-      sign_in_and_redirect @user, :event => :authentication
-      set_flash_message(:notice, :success, :kind => "LinkedIn") if is_navigational_format?
+    if signed_in?
+      if @identity.user == current_user
+        # User is signed in so they are trying to link an identity with their
+        # account. But we found the identity and the user associated with it 
+        # is the current user. So the identity is already associated with 
+        # this user. So let's display an error message.
+        redirect_to jobseeker_home_path, notice: "Account has already been linked!"
+      else
+        # The identity is not associated with the current_user so lets 
+        # associate the identity
+        @identity.user = current_user
+        @identity.save()
+        redirect_to jobseeker_home_path, notice: "Account was sucessfully linked!"
+      end
     else
-      flash[:notice] = "An error has occured, Please Register a new account or try again"
-      session["devise.linkedin_uid"] = request.env["omniauth.auth"].except("extra")
-      redirect_to new_user_session_url
+      if @identity.user.present?
+        # The identity we found had a user associated with it so let's 
+        # just log them in here
+        user = @identity.user
+        flash.notice = "Signed in!"
+        user.skip_confirmation! if user.respond_to?(:skip_confirmation)
+        sign_in_and_redirect user
+      else
+        # Logic for the case when we actually need to create a new user
+          user = User.from_omniauth(auth)
+          if user.persisted?
+            flash.notice = "Signed in!"
+            sign_in_and_redirect user
+          else
+            session["devise.user_attributes"] = user.attributes
+            redirect_to new_user_registration_url
+          end
+        end
+      end
     end
-  end
-
-  def google
-    # You need to implement the method below in your model (e.g. app/models/user.rb)
-    @user = User.from_omniauth(request.env["omniauth.auth"])
-
-    if @user.persisted?
-      @user.skip_confirmation!
-      flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Google"
-      sign_in_and_redirect @user, :event => :authentication
-    else
-      flash[:notice] = "An error has occured, Please Register a new account or try again"
-      session["devise.google_data"] = request.env["omniauth.auth"]
-      redirect_to new_user_registration_url
-    end
-  end
-
-  def failure
-    redirect_to root_path
-  end
+  alias_method :facebook, :all
+  alias_method :linkedin, :all
+  alias_method :google, :all 
 end
