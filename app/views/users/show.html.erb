@@ -1,0 +1,217 @@
+<div id="content">
+   <div class="container">
+<!--Basic Info-->
+<div class="col-lg-12">
+<div class="panel panel-default">
+<div class="media">
+<div class="media-left media-middle"> 
+<%@info = Info.where(:user_id => @user.id).to_a.to_a%>
+    <%@info.each do |info|%>
+    <%= image_tag info.avatar.url(:medium) %>
+                                <%end%>
+</div>
+<div class="media-body">
+<label><strong>Name:</strong></label><%= @user.name %><br/>
+<label><strong>Email:</strong></label><%= @user.email%><br/>
+<label><strong>Current Location:</strong></label> <%=@user.location%>
+<%@preferences = Preferences.where(:user_id => @user.id).to_a.to_a%>
+<%@preferences.each do |preference|%>
+<ul>
+<li>Prefers only <%= preference.type%> roles with a base salary of <span style="color:green;"> $<%= preference.salary%>/yr</span></li>
+</ul>
+<%end%>
+
+
+</div>
+</div>
+</div>
+</div>
+<!--Basic Info END-->
+
+<!--Links-->
+<div class="col-lg-12">
+<div class="panel panel-default">
+<div class="media">
+<div class="media-left media-middle"> </div>
+<div class="media-body">
+<h2>Résumé and Links</h2>
+<%@document = Document.where(:user_id => @user.id).to_a.to_a%>
+<%@document.each do |document|%>
+<ul class="list-inline">
+<li><a href= 'http://<%= document.LinkedIn_URL%>' target="_blank">LinkedIn</a></li>
+<li><a href= 'http://<%= document.Personal_URL%>' target="_blank">Personal Website</a></li>
+<li><a href= 'http://<%= document.StackOverflow_URL%>' target="_blank">StackOverFlow</a></li>
+<li><a href= 'http://<%= document.Blog_URL%>' target="_blank">Blog</a></li>
+</ul>
+<form method="get" action='/documents/<%= document.id%>'>
+<button type="submit">Download Résumé</button>
+</form>
+<%end%>
+
+<% if @document = Document.where(:user_id => @user.id).blank? && current_user.id == @user.id %>
+<a href="/onboarding/online-presence">+Add Résumé/Links</a>
+<%else%>
+
+<%end%>
+</div>
+</div>
+</div>
+</div>
+<!--Links END-->
+
+
+<!--Summary-->
+<div class="col-lg-12">
+<div class="panel panel-default">
+<div class="media">
+<div class="media-left media-middle"> </div>
+<div class="media-body">
+<h2>About <%=@user.name%></h2>
+<!--If Preference(Summary) Exists-->
+<%@summary = Summary.where(:user_id => @user.id).to_a.to_a%>
+<%@summary.each do |summary|%>
+
+  <%= summary.summary %>
+</textarea>
+<%end%>
+
+<!--If Preference(Summary) is blank -->
+<% if @summary = Summary.where(:user_id => @user.id).blank? && current_user.id == @user.id%>
+<a href="/onboarding/summary">+Add Summary</a>
+<%end%>
+</div>
+</div>
+</div>
+</div>
+<!--Summary END-->
+
+<!---Area of Expertise-->
+<div class="col-lg-12">
+<div class="panel panel-default">
+<div class="media">
+<div class="media-left media-middle"> </div>
+<div class="media-body">
+<h2>Primary Area of Expertise</h2>
+<%@skill = Skill.where(:user_id => @user.id).to_a.to_a%>
+<%@skill.each do |skill|%>
+<label><strong>Area of Expertise:</strong></label><%= skill.area%><br/>
+<label><strong>Role:</strong></label><%= skill.role%>
+<%end%>
+
+<!--If Area of Expertise is blank-->
+<% if @skill = Skill.where(:user_id => @user.id).blank? && current_user.id == @user.id%>
+<a href="/onboarding/role_skill">+ Add Skill </a>
+<%end%>
+</div>
+</div>
+</div>
+</div>
+<!---Area of Expertise END-->
+
+<!--Work History-->
+<div class="col-lg-12">
+<div class="panel panel-default">
+<div class="media">
+<div class="media-left media-middle"> </div>
+<div class="media-body">
+<h2> Work History </h2>
+<!--If Experience(Work) Exists-->
+<%@experiences = Experience.where(:user_id => @user.id).to_a.to_a%>
+<%@experiences.each do |experience|%>
+<%@work = Work.where(:experience_id => experience.id).to_a.to_a%>
+<%@work.each do |work|%>
+<i class="fa fa-briefcase" aria-hidden="true"></i>
+<label>Company: <%=work.company%></label><br/>
+<label>Title: <%=work.title%></label><br/>
+<label>Duration: <%=work.start_Month%>-<%=work.start_Year%> to <%=work.end_Month%>-<%=work.end_Year%></label><br/>
+<label>Description</label>: <%=work.description%><br/>
+<hr>
+<%end%>
+<%end%>
+<!--If Experience(Work) is blank-->
+<%if @experiences = Experience.where(:user_id => @user.id).blank? && current_user.id == @user.id%>
+<a href="/onboarding/history">+Add Previous Work Experience</a>
+<%end%>
+</div>
+</div>
+</div>
+</div>
+<!--Work History END-->
+
+<!--Education-->
+<div class="col-lg-12">
+<div class="panel panel-default">
+<div class="media">
+<div class="media-left media-middle"> </div>
+<div class="media-body">
+<h2>Education History</h2>
+<!--If Experience(Education) Exists-->
+<%@experiences = Experience.where(:user_id => @user.id).to_a.to_a%>
+<%@experiences.each do |experience|%>
+<%@education = Education.where(:experience_id => experience.id).to_a.to_a%>
+<%@education.each do |education|%>
+<i class="fa fa-graduation-cap" aria-hidden="true"></i>
+<label>University: <%=education.university%></label><br/>
+<label>Course: <%=education.course%></label><br/>
+<label>Graduation Year: <%=education.year%></label><br/>
+<hr>
+<%end%>
+<%end%>
+
+<!--If Experience(Education) is blank-->
+<%if @experiences = Experience.where(:user_id => @user.id).blank? && current_user.id == @user.id%>
+<a href="/onboarding/history">+Add Previous Education Experience</a>
+<%end%>
+</div>
+</div>
+</div>
+</div>
+<!--Education END-->
+
+<!--Portfolio-->
+<div class="col-lg-12">
+<div class="panel panel-default">
+<div class="media">
+<div class="media-left media-middle"> </div>
+<div class="media-body">
+<h2>Portfolio</h2>
+<!--If Portfolio Exists-->
+<%@portfolio = Portfolio.where(:user_id => @user.id).to_a.to_a%>
+<%@portfolio.each do |portfolio|%>
+<label><strong>Project Name:</strong></label> <%=portfolio.project_Name%><br/>
+<label><strong>Project Description:</strong></label> <%=portfolio.project_Description%><br/>
+<%end%>
+
+<!--If Portfolio is blank-->
+<%if @portfolio = Portfolio.where(:user_id => @user.id).blank? && current_user.id == @user.id%>
+<a href="/onboarding/portfolio">+Add Portfolio </a>
+<%end%>
+</div>
+</div>
+</div>
+</div>
+
+<!--Portfolio END-->
+
+<!--Ask me Anything-->
+<div class="col-lg-12">
+<div class="panel panel-default">
+<div class="media">
+<div class="media-left media-middle"> </div>
+<div class="media-body">
+<div class="panel-heading"><h2>Ask Me Anything</h2></div>
+<%@preferences = Preferences.where(:user_id => @user.id).to_a.to_a%>
+<%@preferences.each do |preference|%>
+<label>Q:Where are you in your job search?</label><br/>
+<label><span style="color:green;"><%=@user.name%></span>:&nbsp<%=preference.where%></label><br/>
+<label>Q:Why are you interested in new job opportunities?</label><br/>
+<label><span style="color:green;"><%=@user.name%></span>:&nbsp<%=preference.why%></label><br/>
+<%end%>
+</div>
+</div>
+</div>
+</div>
+<!--Ask me Anything END-->
+</div>
+</div>
+
