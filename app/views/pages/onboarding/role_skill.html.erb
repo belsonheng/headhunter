@@ -1,0 +1,250 @@
+	<!--Javascript-->
+	<script>
+	$(document).ready(function(){
+			//Hide all Roles until a selection is made:
+		$('.Software').hide();
+		$('.Design').hide();
+	$('.Data').hide();
+	$('.Product').hide();
+	$('.Sales').hide();
+	$('.Marketing').hide();
+	$('.Recruiting').hide();
+	$('.Finance').hide()
+	$('.Other').hide()
+
+	    $('input[type="radio"]').click(function(){
+	        if($(this).attr("value")=='Software Engineering'){
+	            $('.Software').show();
+
+	$('.Design').hide();
+	$('.Data').hide();
+	$('.Product').hide();
+	$('.Sales').hide();
+	$('.Marketing').hide();
+	$('.Recruiting').hide();
+	$('.Finance').hide()
+	$('.Other').hide()
+
+	        }
+	        if($(this).attr("value")=='Design'){
+	            $('.Design').show();
+
+	$('.Software').hide();
+	$('.Data').hide();
+	$('.Product').hide();
+	$('.Sales').hide();
+	$('.Marketing').hide();
+	$('.Recruiting').hide();
+	$('.Finance').hide()
+	$('.Other').hide()
+	        }
+	        if($(this).attr("value")=='Data Science'){
+	            $('.Data').show();
+
+	$('.Software').hide();
+	$('.Design').hide();
+	$('.Product').hide();
+	$('.Sales').hide();
+	$('.Marketing').hide();
+	$('.Recruiting').hide();
+	$('.Finance').hide()
+	$('.Other').hide()
+	        }
+	if($(this).attr("value")=='Product Management'){
+	            $('.Product').show();
+
+	$('.Software').hide();
+	$('.Design').hide();
+	$('.Data').hide();
+	$('.Sales').hide();
+	$('.Marketing').hide();
+	$('.Recruiting').hide();
+	$('.Finance').hide()
+	$('.Other').hide()
+	        }
+	if($(this).attr("value")=='Sales'){
+	            $('.Sales').show();
+
+	$('.Software').hide();
+	$('.Design').hide();
+	$('.Data').hide();
+	$('.Product').hide();
+	$('.Marketing').hide();
+	$('.Recruiting').hide();
+	$('.Finance').hide()
+	$('.Other').hide()
+	        }
+
+	if($(this).attr("value")=='Marketing'){
+	            $('.Marketing').show();
+
+	$('.Software').hide();
+	$('.Design').hide();
+	$('.Data').hide();
+	$('.Product').hide();
+	$('.Sales').hide();
+	$('.Recruiting').hide();
+	$('.Finance').hide()
+	$('.Other').hide()
+	        }
+
+	if($(this).attr("value")=='Recruiting / People Ops'){
+	            $('.Recruiting').show();
+
+	$('.Software').hide();
+	$('.Design').hide();
+	$('.Data').hide();
+	$('.Product').hide();
+	$('.Sales').hide();
+	$('.Marketing').hide();
+	$('.Finance').hide()
+	$('.Other').hide()
+	        }
+
+	if($(this).attr("value")=='Finance / Operations'){
+	            $('.Finance').show();
+
+	$('.Software').hide();
+	$('.Design').hide();
+	$('.Data').hide();
+	$('.Product').hide();
+	$('.Sales').hide();
+	$('.Marketing').hide();
+	$('.Recruiting').hide()
+	$('.Other').hide()
+	        }
+
+	if($(this).attr("value")=='Other'){
+	            $('.Other').show();
+
+	$('.Software').hide();
+	$('.Design').hide();
+	$('.Data').hide();
+	$('.Product').hide();
+	$('.Sales').hide();
+	$('.Marketing').hide();
+	$('.Recruiting').hide()
+	$('.Finance').hide()
+	        }
+	    });
+	});
+	function myFunction(value) {
+	    document.getElementById("result").textContent = value;
+	}
+	    
+	</script>
+
+
+	<div id="content">
+	   <div class="container">
+	   <%= render 'pages/onboarding/sidebar' %>
+	<%= render "shared/messages" %>
+
+
+
+
+<%@skill = Skill.where(:user_id => current_user.id).to_a.to_a%>
+<%@skill.each do |skill|%>
+<%= simple_form_for :skill, html: {  id: 'login-form'} do |f| %>
+	<h1>Role and Skills</h1>
+	<div class="input-field">
+	<input type="hidden" name="[id]" value=<%= skill.id %>>
+	<input type="hidden" name="skill[user_id]" value= <%= current_user.id %>>
+	<label>What area are you most interested in?</label>
+	<%@industry = Industry.all%>
+	<%@industry.each do |industry|%>
+	  <input id="interest" type="radio" name="skill[area]" value= '<%=industry.area%>' onclick="myFunction(this.value)"><%=industry.area%><br/>
+	  <%end%>
+	  <label>What roles are you most interested in?</label>
+	<%@industry = Industry.all%>
+	<%@industry.each do |industry|%>
+	<%@role = Role.where(:industry_id => industry.id).to_a.to_a%>
+	<%@role.each do |role|%>
+	<div class='<%=industry.area%>'>
+	  <input type="checkbox" name="skill[role][]" value='<%= role.role%>'><%= role.role%>
+	  </div>
+	  <%end%>
+	  <%end%>
+
+	<label>How many years of work experience do you have in <span id="result"></span>? </label>
+	<input type="number" name="skill[years]" value='<%=skill.years%>'>
+
+	<label>What are your top skills?</label>
+	<input type="text" list="skills" name="skill[skill]" value='<%=skill.skill%>' />
+	<datalist id="skills">
+  <option>HTML</option>
+  <option>CSS</option>
+  <option>Javascript</option>
+  <option>MySQL</option>
+</datalist>
+
+
+	<input class="btn-system btn-large" type="submit" value="Save" style="float: right;">
+	</div>
+	<%end%>
+	</div>
+	</div>
+	<%end%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<% if @skill = Skill.where(:user_id => current_user.id).blank?%>
+	<%= simple_form_for :skill, html: {  id: 'login-form'} do |f| %>
+	<h1>Role and Skills</h1>
+	<div class="input-field">
+	<input type="hidden" name="skill[user_id]" value= <%= current_user.id %>>
+	<label>What area are you most interested in?</label>
+	<%@industry = Industry.all%>
+	<%@industry.each do |industry|%>
+	  <input id="interest" type="radio" name="skill[area]" value= '<%=industry.area%>' onclick="myFunction(this.value)"><%=industry.area%><br/>
+	  <%end%>
+	  <label>What roles are you most interested in?</label>
+	<%@industry = Industry.all%>
+	<%@industry.each do |industry|%>
+	<%@role = Role.where(:industry_id => industry.id).to_a.to_a%>
+	<%@role.each do |role|%>
+	<div class='<%=industry.area%>'>
+	  <input type="checkbox" name="skill[role][]" value='<%= role.role%>'><%= role.role%>
+	  </div>
+	  <%end%>
+	  <%end%>
+
+	<label>How many years of work experience do you have in <span id="result"></span>? </label>
+	<input type="number" name="skill[years]">
+
+	<label>What are your top skills?</label>
+	<input type="text" list="skills" name="skill[skill]" />
+	<datalist id="skills">
+  <option>HTML</option>
+  <option>CSS</option>
+  <option>Javascript</option>
+  <option>MySQL</option>
+</datalist>
+
+
+	<input class="btn-system btn-large" type="submit" value="Save" style="float: right;">
+	</div>
+	<%end%>
+	</div>
+	</div>
+	<%end%>

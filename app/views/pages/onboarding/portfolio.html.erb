@@ -1,0 +1,47 @@
+<!--Previous Project-->
+<!--Javascript for text area-->
+<script>
+function textAreaAdjust(o) {
+    o.style.height = "1px";
+    o.style.height = (25+o.scrollHeight)+"px";
+}
+</script>
+
+<div id="content">
+   <div class="container">
+   <%= render 'pages/onboarding/sidebar' %>
+<%= render "shared/messages" %>
+
+<%@portfolio = Portfolio.where(:user_id => current_user.id).to_a.to_a%>
+<%@portfolio.each do |portfolio|%>
+<%= simple_form_for :portfolio, html: { multipart: true, id: 'login-form'} do |f| %>
+<input type="hidden" name="portfolio[user_id]" value= <%= current_user.id %>>
+<input type="hidden" name="[id]" value= <%= portfolio.id %>>
+<div class="input-field">
+<h1>Project Portfoilo</h1>
+<label>Project Name:</label>
+<input type="text" name="portfolio[project_Name]" value=<%= portfolio.project_Name%>>
+<label>Project Description</label>
+<textarea rows="4" cols="50" name="portfolio[project_Description]" placeholder="Project Accomplishments etc..." onkeyup="textAreaAdjust(this)" style="overflow:hidden"><%= portfolio.project_Description%></textarea>
+</div>
+<input class="btn-system btn-large" type="submit" value="Save" style="float: right;">
+<%end%>
+</div>
+</div>
+<%end%>
+
+<%if @portfolio = Portfolio.where(:user_id => current_user.id).blank?%>
+<%= simple_form_for :portfolio, html: { multipart: true, id: 'login-form'} do |f| %>
+<input type="hidden" name="portfolio[user_id]" value= <%= current_user.id %>>
+<div class="input-field">
+<h1>Project Portfoilo</h1>
+<label>Project Name:</label>
+<input type="text" name="portfolio[project_Name]">
+<label>Project Description</label>
+<textarea rows="4" cols="50" name="portfolio[project_Description]" placeholder="Project Accomplishments etc..." onkeyup="textAreaAdjust(this)" style="overflow:hidden"></textarea>
+</div>
+<input class="btn-system btn-large" type="submit" value="Save" style="float: right;">
+<%end%>
+</div>
+</div>
+<%end%>
