@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
   root  'pages#index'
   resources :documents
-
+  
+ 
   # Devise authentication navigation
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: "registrations" }, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'signup', password: 'users/password', edit:'edit'}
 
+  #User Profile Page:
+  get 'users/:id' => 'users#show'
   # Static pages
   get   'how-it-works'  =>  'pages#how_it_works'
   get   'employers'     =>  'pages#employers'
@@ -12,16 +15,37 @@ Rails.application.routes.draw do
   # Onboarding pages
   scope '/onboarding' do
     get   'job-info'         =>  'pages#job_info'
+    post 'job-info' => 'preferences#checkRecord'
+
     get   'online-presence'  =>  'pages#online_presence'
-    get   'history'          =>  'pages#history'
+    post 'online-presence' => 'documents#checkRecord'
+
+    
+    get   'history'  =>  'pages#history'
+    post 'history' => 'experience#checkRecord'
+
+    get 'summary' => 'pages#summary'
+    post 'summary'=> 'summary#checkRecord'
+
+get 'portfolio' => 'pages#portfolio'
+post 'portfolio' => 'portfolio#checkRecord'
+
+get 'role_skill' => 'pages#role_skill'
+post 'role_skill' => 'skill#checkRecord'
+
+get 'info' => 'pages#info'
+post 'info' => 'info#checkRecord'
   end
   
   #Pages for Employers
   get   'employer/home'   =>  'employer#home'
+  post 'employer/home' => 'offer#checkRecord'
 
   #Pages for JobSeekers
   get  'jobseeker/home'   =>  'jobseeker#home'
-  post 'jobseeker/home'   =>  'documents#checkRecord'
+  post 'jobseeker/home' => 'listing#create'
+  
+
 
   get   'settings'        =>  'pages#settings'
   get   'integrations'    =>  'pages#integrations'
