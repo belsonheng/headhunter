@@ -73,8 +73,9 @@
                                <% if @offer = Offer.where(:listing_id => listing.id ).blank?%>
                                 <%= simple_form_for :offer, html: { multipart: true} do |f| %>
                                 <span id="Offer"><h4 class="media-heading">Place an Offer:</h4></span>
-                                <input type="hidden" name="[id]" value= <%= offer.id %>>
+                                <input type="hidden" name="offer[user_id]" value= <%= current_user.id %>>
                                 <input type="hidden" name="offer[listing_id]" value= <%= listing.id %>>
+                                <input type="hidden" name="offer[area]" value= '<%= listing.area %>'>
                                 <span id="Amount"><strong>Amount:</strong><input type= "number" name="offer[amount]"><br/></span>
                                 
                                 <span id="Profile"><strong>Comments:</strong> 
