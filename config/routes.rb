@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get   'how-it-works'  =>  'pages#how_it_works'
   get   'employers'     =>  'pages#employers'
 
+  get 'information' => 'pages#information'
   # Onboarding pages
   scope '/onboarding' do
     get   'job-info'         =>  'pages#job_info'
