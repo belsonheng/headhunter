@@ -1,0 +1,55 @@
+<div id="content">
+   <div class="container">
+   <%= render "shared/messages" %>
+
+<div class="page-banner" style="padding:30px 0; background: url(images/slide-02-bg.jpg) center ;">
+
+<h2 class="xs-gamma xs-mb1 xs-mth0" id="hub-header-text" style="text-align : center">Information</h2></br>
+<div class="text-light text-black-light p--tall md-prl2" id="hub-explination-text" style="text-align : center">
+<center>
+Unsure of how much a certain job pays? This page lists the current (highest) paid position entails</center>
+</div>
+</div>
+</div>
+
+
+<%= pie_chart Listing.pluck(:area , :amount).uniq, height: "400px" , width: "300px" %>
+
+<div class="col-md-7" style="float:right; margin-top:-399px; margin-left: -500px">
+
+              <!-- Classic Heading -->
+              <h4 class="classic-title"><span>JobSeekers:</span></h4>
+
+              <!-- Some Text -->
+              <p>You're in demand. Shouldn't the best companies come to you with interesting projects? We think so. That's why Headhunter is changing the way you find your next freelance job with a faster, more transparent discovery process that puts you in control with hourly rate upfront.</p>
+              <p>
+              This graph shows how much Jobseekers are looking for with their current specific area of expertise!
+              </p>
+
+            </div>
+
+
+
+
+
+
+<%= pie_chart Offer.pluck(:area , :amount).uniq, height: "400px" , width: "300px" %>
+
+<div class="col-md-7" style="float:right; margin-top:-399px; margin-left: -500px">
+
+              <!-- Classic Heading -->
+              <h4 class="classic-title"><span>Employers:</span></h4>
+
+              <!-- Some Text -->
+              <p>Headhunter is the fastest, most cost-effective way to quickly fill your talent pipeline. We bring interested candidates and companies together through a process that averages just a few weeks to hire.</p>
+              <p>
+              This graph shows how much Companies are willing to pay for specific area of expertise!
+              </p>
+
+            </div>
+
+
+
+
+   </div>
+   </div>
