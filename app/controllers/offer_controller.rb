@@ -7,7 +7,7 @@ end
 
 def create 
 	@offer = Offer.new(offer_params)
-	@offer.seller_id = current_user.id
+	@offer.user_id = current_user.id
      if @offer.save
 	flash[:notice] = "Offer was Offered"
 	redirect_to employer_home_path
@@ -40,7 +40,7 @@ def checkRecord
 
 private
 def offer_params
-        params.require(:offer).permit(:listing_id,:amount, :comment)
+        params.require(:offer).permit(:listing_id,:amount, :comment,:area)
       end
 
 end
