@@ -1,12 +1,27 @@
+<style>
+
+</style>
+
 <center><h1>Employers Home Page</h1></center>
 <div id="content">
       <div class="container">
        <%= render "shared/messages" %>
+       <div class="page-banner" style="padding:30px 0; background: url(images/slide-02-bg.jpg) center #f9f9f9;">
+<label><strong>Filter Candidates:</strong></label>
+<select id="Filter" onchange="myFunction(this.value)">
+  <option value="All">All</option>
+<%@industry = Industry.all%>
+    <%@industry.each do |industry|%>
+<option value='<%=industry.area%>'><%=industry.area%></option>
+<%end%>
+  </select>
+       </div>
        <h2>All Candidates:</h2>
+         
          <%@listing = Listing.all%>
     <%@listing.each do |listing|%>
-    <h2>Candidate: </h2>
-        <div class="col-lg-12">
+    <div class = '<%= listing.area%>' style='display:none;'>
+      <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="media">
                             <div class="media-left media-middle">
@@ -41,10 +56,10 @@
     <%end%>
                                 <br>
                                 <br>
-                                
+                                </div>
                             </div>
                         </div>
-                    </div>
+                </div>
                 </div>
                 <%end%>
                                 <br>
@@ -56,3 +71,36 @@
                 
       </div>
     </div>
+ <script>
+function myFunction(value) {
+    console.log(value);
+    var array = ["Design", "Software Engineering", "Data Science", "Sales", "Marketing", "Recruiting", "Finance", "Other"];
+if (value == "All")
+{
+    for(A=0; A<array.length; A++)
+    {
+var cols = document.getElementsByClassName(array[A]);
+for(B=0; B<cols.length; B++) {
+    cols[B].style.display = 'inline';
+}
+
+    }
+
+}
+else {
+      for(i=0; i<array.length; i++) {
+        if(array[i] != value){
+    var cols = document.getElementsByClassName(array[i]);
+    for(k=0; k<cols.length; k++) {
+    cols[k].style.display = 'none';
+}
+}else{
+        var cols = document.getElementsByClassName(value);
+            for(j=0; j<cols.length; j++) {
+        cols[j].style.display = 'inline';
+    }
+    }
+  }
+  }
+}
+</script>
