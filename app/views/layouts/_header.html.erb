@@ -110,6 +110,9 @@
              
               <% if user_signed_in? %>
               <li>
+            <a class="<%= 'active' if params[:controller] == 'pages' && params[:action] == 'information' %>" href="<%= information_path %>">INFORMATION</a>
+          </li>
+              <li>
               <a class="<%= 'active' if params[:controller] == 'devise/sessions' && params[:action] == 'new' %>" href="<%= destroy_user_session_path%>" data-method="delete" rel="nofollow">SIGN OUT</a>
               </li>
               <%else %>
