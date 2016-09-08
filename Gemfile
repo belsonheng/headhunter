@@ -17,12 +17,11 @@ gem "chartkick"
 gem 'twitter'
 # Use omniauth for social media integration
 gem 'omniauth'
-#Sitemap Gem
-gem 'sitemap_generator'
-# gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-linkedin'
 gem 'omniauth-facebook'
+#Sitemap Gem
+gem 'sitemap_generator'
 gem 'simple_form'
 # Use Font Awesome for icons
 gem 'font-awesome-sass'
@@ -50,6 +49,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring', group: :development
+
+# Use letter opening for development so any email will pop up in browser instead of being sent
+gem 'letter_opener', group: :development
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

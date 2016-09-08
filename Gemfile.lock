@@ -84,6 +84,10 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.3)
     jwt (1.5.1)
+    launchy (2.4.3)
+      addressable (~> 2.3)
+    letter_opener (1.4.1)
+      launchy (~> 2.2)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
     memoizable (0.4.2)
@@ -229,6 +233,7 @@ DEPENDENCIES
   gibbon!
   jbuilder (~> 2.0)
   jquery-rails
+  letter_opener
   mongoid (~> 5.1.0)
   mongoid-paperclip
   omniauth
