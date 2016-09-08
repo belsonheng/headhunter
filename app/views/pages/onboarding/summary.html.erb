@@ -1,0 +1,47 @@
+<!--Summary-->
+<!--Javascript for text area-->
+<script>
+function textAreaAdjust(o) {
+    o.style.height = "1px";
+    o.style.height = (25+o.scrollHeight)+"px";
+}
+</script>
+<div id="content">
+   <div class="container">
+   <%= render 'pages/onboarding/sidebar' %>
+<%= render "shared/messages" %>
+
+<%@summary = Summary.where(:user_id => current_user.id).to_a.to_a%>
+<%@summary.each do |summary|%>
+<%= simple_form_for :summary, html: { multipart: true, id: 'login-form'} do |f| %>
+<h1>Summary</h1>
+<p>What is your story?</p>
+<p>This is the most important part of your profile. The summary lets you express, in your own words, what you are looking for and what you have done. You can also include links to projects and other sites you are proud of here.</p>
+<sup>Note: This will appear on your Profile Page!</sup>
+<center>
+<input type="hidden" name="summary[user_id]" value= <%= current_user.id %>>
+<input type="hidden" name="[id]" value= <%= summary.id %>>
+<textarea rows="4" cols="50" name="summary[summary]" placeholder="What I've worked on/What I'm looking to do next etc..." onkeyup="textAreaAdjust(this)" style="overflow:hidden">
+<%= summary.summary%>
+</textarea></center><br/>
+<input class="btn-system btn-large" type="submit" value="Save" style="float: right;">
+<%end%>
+</div>
+</div>
+<%end%>
+
+<% if @summary = Summary.where(:user_id => current_user.id).blank?%>
+<%= simple_form_for :summary, html: { multipart: true, id: 'login-form'} do |f| %>
+<h1>Summary</h1>
+<p>What is your story?</p>
+<p>This is the most important part of your profile. The summary lets you express, in your own words, what you are looking for and what you have done. You can also include links to projects and other sites you are proud of here.</p>
+<sup>Note: This will appear on your Profile Page!</sup>
+<center>
+<input type="hidden" name="summary[user_id]" value= <%= current_user.id %>>
+<textarea rows="4" cols="50" name="summary[summary]" placeholder="What I've worked on/What I'm looking to do next etc..." onkeyup="textAreaAdjust(this)" style="overflow:hidden">
+</textarea></center><br/>
+<input class="btn-system btn-large" type="submit" value="Save" style="float: right;">
+<%end%>
+</div>
+</div>
+<%end%>

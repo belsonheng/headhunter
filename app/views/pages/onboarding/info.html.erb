@@ -1,0 +1,46 @@
+<div id="content">
+   <div class="container">
+   <%= render 'pages/onboarding/sidebar' %>
+<%= render "shared/messages" %>
+
+<!--Info Exist-->
+<%@info = Info.where(:user_id => current_user.id).to_a.to_a%>
+<%@info.each do |info|%>
+<%= simple_form_for :info, html: { multipart: true, id: 'login-form'} do |f| %>
+<h1>Basic Information</h1>
+<div class="input-field">
+<input type="hidden" name="info[user_id]" value= <%= current_user.id %>>
+<input type="hidden" name="[id]" value= <%= info.id %>>
+<label>Profile Picture:</label>
+<%= image_tag info.avatar.url(:medium) %>
+<input type="file" name="info[avatar]">
+<label><strong>Contact Information:</strong></label>
+<label>Email:</label>
+<input type="email"  value= <%= current_user.email %> disabled>
+<label>Phone No.:</label>
+<input type="text"  name="info[contact]" value='<%= info.contact%>' >
+<input class="btn-system btn-large" type="submit" value="Save" style="float: right;">
+<%end%>
+<%end%>
+
+<!--Info is blank-->
+<%if @info = Info.where(:user_id => current_user.id).blank?%>
+<%= simple_form_for :info, html: { multipart: true, id: 'login-form'} do |f| %>
+<h1>Basic Information</h1>
+<div class="input-field">
+<input type="hidden" name="info[user_id]" value= <%= current_user.id %>>
+
+<label>Profile Picture:</label>
+
+<input type="file" name="info[avatar]">
+<label><strong>Contact Information:</strong></label>
+<label>Email:</label>
+<input type="email"  value= <%= current_user.email %> disabled>
+<label>Phone No.:</label>
+<input type="text"  name="info[contact]" >
+<input class="btn-system btn-large" type="submit" value="Save" style="float: right;">
+<%end%>
+<%end%>
+
+</div>
+</div>

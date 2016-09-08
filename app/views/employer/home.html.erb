@@ -1,1 +1,106 @@
-<%= render "shared/messages" %>
+<style>
+
+</style>
+
+<center><h1>Employers Home Page</h1></center>
+<div id="content">
+      <div class="container">
+       <%= render "shared/messages" %>
+       <div class="page-banner" style="padding:30px 0; background: url(images/slide-02-bg.jpg) center #f9f9f9;">
+<label><strong>Filter Candidates:</strong></label>
+<select id="Filter" onchange="myFunction(this.value)">
+  <option value="All">All</option>
+<%@industry = Industry.all%>
+    <%@industry.each do |industry|%>
+<option value='<%=industry.area%>'><%=industry.area%></option>
+<%end%>
+  </select>
+       </div>
+       <h2>All Candidates:</h2>
+         
+         <%@listing = Listing.all%>
+    <%@listing.each do |listing|%>
+    <div class = '<%= listing.area%>' style='display:none;'>
+      <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="media">
+                            <div class="media-left media-middle">
+                               <%@info = Info.where(:user_id => listing.user_id).to_a.to_a%>
+    <%@info.each do |info|%>
+    <%= image_tag info.avatar.url(:medium) %>
+                                <%end%>
+                            </div>
+                            <div class="media-body">
+                            <%@user = User.where(:id => listing.user_id).to_a.to_a%>
+    <%@user.each do |user|%> 
+                                <span id="Name"><h4 class="media-heading"><%= user.name%></h4></span>
+                                <%end%>
+
+                                <span id="Status"><strong>Status:</strong> <%=listing.status%></span>
+                                <br>
+                                <span id="Profile"><strong>Profile:</strong> <a href='/users/<%=listing.user_id%>' target="_blank">
+                                 Profile Link</a>
+                                <br/>
+                                <!--Skills-->
+                               <%@skill = Skill.where(:user_id => listing.user_id).to_a.to_a%>
+    <%@skill.each do |skill|%> 
+                                <span id="Area"><strong>Area of Expertise:</strong> <%=skill.area%></span>
+                                <br>
+                                <span id="Skill"><strong>Top Skill:</strong> <%=skill.skill%></span>
+                                <%end%>
+                                <br>
+                                <!--Preference-->
+     <%@preferences = Preferences.where(:user_id => listing.user_id).to_a.to_a%>
+    <%@preferences.each do |preference|%>
+                                <span id="Preference"><strong>Preference:</strong> Prefers only <%= preference.type%> roles with a base salary of <span style="color:green;"> $<%= preference.salary%>/yr</span>
+    <%end%>
+                                <br>
+                                <br>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                </div>
+                <%end%>
+                                <br>
+                                
+                                <br>
+                                <br>
+                                
+                            
+                
+      </div>
+    </div>
+ <script>
+function myFunction(value) {
+    console.log(value);
+    var array = ["Design", "Software Engineering", "Data Science", "Sales", "Marketing", "Recruiting", "Finance", "Other"];
+if (value == "All")
+{
+    for(A=0; A<array.length; A++)
+    {
+var cols = document.getElementsByClassName(array[A]);
+for(B=0; B<cols.length; B++) {
+    cols[B].style.display = 'inline';
+}
+
+    }
+
+}
+else {
+      for(i=0; i<array.length; i++) {
+        if(array[i] != value){
+    var cols = document.getElementsByClassName(array[i]);
+    for(k=0; k<cols.length; k++) {
+    cols[k].style.display = 'none';
+}
+}else{
+        var cols = document.getElementsByClassName(value);
+            for(j=0; j<cols.length; j++) {
+        cols[j].style.display = 'inline';
+    }
+    }
+  }
+  }
+}
+</script>

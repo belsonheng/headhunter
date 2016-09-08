@@ -4,14 +4,15 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
 
-# For Pagination
-gem 'will_paginate', '~> 3.0.5'
-
+# For Profile Picture:
+gem "mongoid-paperclip", :require => "mongoid_paperclip"
 # Use MongoDB for database
 gem 'mongoid', '~> 5.1.0'
 gem 'bson_ext'
 # Use devise for authentication
 gem 'devise'
+# For Chart:
+gem "chartkick"
 # Use twitter to get our tweets
 gem 'twitter'
 # Use omniauth for social media integration

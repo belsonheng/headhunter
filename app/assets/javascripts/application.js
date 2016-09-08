@@ -29,4 +29,6 @@
 //= require jquery.parallax
 //= require jquery.slicknav
 //= require_self
-//= require_tree .
+//= require_tree
+//= require Chart.bundle
+//= require chartkick

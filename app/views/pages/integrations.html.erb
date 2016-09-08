@@ -1,1 +1,42 @@
-This is the social media integrations page.
+<div id="content">
+   <div class="container">
+   <form id='login-form'>
+
+   <h1>Integrations</h1>
+
+   <img alt="Google" src="https://d1enbull9nrjgw.cloudfront.net/assets/integrations/google-91c794db36a5e4feedc9394a5129497a.png">
+   <% if Identity.where(:user_id => current_user.id, provider: 'google').present? && current_user.provider != 'google' %>
+  <a class="btn-system btn-small" data-confirm="Are you sure you want to disconnect your Google account?" data-remote="true" rel="nofollow" data-method="delete" href="/users/auth/google" style="float:right;">Disconnect</a>
+  <% else if current_user.provider == 'google'%>
+   <label style="float:right;">Logged in From Google</label>
+  <%else %>
+  <a href="/users/auth/google" class="btn-system btn-small" style="float:right;">Connect</a>
+<% end %>
+<% end %>
+
+<hr/>
+
+<img alt="Facebook" src="https://d1enbull9nrjgw.cloudfront.net/assets/integrations/facebook-af2f447bb6c269dbf1ec82c1bd890aec.png">
+<% if Identity.where(:user_id => current_user.id, provider: 'facebook').present? && current_user.provider != 'facebook'%>
+  <a data-confirm="Are you sure you want to disconnect your Facebook account?" data-remote="true" rel="nofollow" data-method="delete" href="/users/auth/facebook" style="float:right;">Disconnect</a>
+  <% else if current_user.provider == 'facebook'%>
+  <label style="float:right;">Logged in From Facebook</label>
+  <%else %>
+  <a href="/users/auth/facebook" class="btn-system btn-small" style="float:right;" >Connect</a>
+<% end %>
+<% end %>
+
+<hr/>
+
+<img alt="LinkedIn" src="<%= image_path('linkedIn.png') %>">
+<% if Identity.where(:user_id => current_user.id, provider: 'linkedin').present? && current_user.provider!= 'linkedin'%>
+  <a data-confirm="Are you sure you want to disconnect your LinkedIn account?" data-remote="true" rel="nofollow" data-method="delete" href="/users/auth/linkedin" style="float:right;">Disconnect</a>
+  <% else if current_user.provider == 'linkedin'%>
+  <label style="float:right;">Logged in From LinkedIn</label>
+  <%else %>
+  <a href="/users/auth/linkedin" class="btn-system btn-small" style="float:right;">Connect</a>
+<% end %>
+<% end %>
+   </form>
+   </div>
+   </div>

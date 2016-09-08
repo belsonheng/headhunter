@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
 
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name,:contact,:location,:type,:email, :password, :password_confirmation, :company])
      devise_parameter_sanitizer.permit(:sign_in, keys: [:login, :username, :email, :password, :remember_me])
-     devise_parameter_sanitizer.permit(:account_update, keys: [:email, :password, :password_confirmation, :current_password, :location])
+     devise_parameter_sanitizer.permit(:account_update, keys: [:email, :password, :password_confirmation, :current_password, :location, :company, :contact,:name])
   end
 
   def after_sign_in_path_for(resource_or_scope)

@@ -1,11 +1,13 @@
-<h4 class="classic-title"><span>Edit Profile</span></h4>
-
-<div id="content" style="background: url('<%= image_path('testimonials-bg3.jpg') %>');">
+<div id="content">
  <div class="container">
+ <% if @user.type == "JobSeeker" %>
+ <%= render 'pages/onboarding/sidebar' %>
+ <%end%>
         <%= render "shared/messages" %>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put,id: 'login-form' }) do |f| %>
-  <%= f.error_notification %>
+
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put,id: 'login-form',:multipart => true }) do |f| %>
+  <%= devise_error_messages! %>
 
 <h1>Edit Profile</h1>
   <div class="input-field">
@@ -17,6 +19,7 @@
     <% if @user.type == "JobSeeker" %>
     <label>Location:</label>
     <input type="text" name="user[location]" required placeholder="Location" value= <%= @user.location %>>
+    
     <% else %>
     <% if @user.type == "Employers"  %>
     <label>Contact No.:</label>
@@ -29,7 +32,7 @@
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
-<% if user_signed_in? && current_user.provider != 'facebook' && current_user.provider != 'linkedin' && current_user.provider != 'google_oauth2'%>
+<% if user_signed_in? && current_user.provider != 'facebook' && current_user.provider != 'linkedin' && current_user.provider != 'google'%>
 <label>New Password:</label>
     <input type="password" name="user[password]" required placeholder="New Password" />
     <label>Confirm Password:</label>
