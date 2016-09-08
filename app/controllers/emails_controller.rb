@@ -4,6 +4,6 @@ class EmailsController < ApplicationController
     gibbon.lists(ENV["LIST_ID"]).members.create(
       body: { email_address: params[:email][:address], status: "subscribed" }
     )
-    render :js => "alert('Subscribed!');"
+    render :js => "alert('Thank you for subscribing. We will keep you updated on our latest features.');"
   end
 end
