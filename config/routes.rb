@@ -28,14 +28,14 @@ Rails.application.routes.draw do
     get 'summary' => 'pages#summary'
     post 'summary'=> 'summary#checkRecord'
 
-get 'portfolio' => 'pages#portfolio'
-post 'portfolio' => 'portfolio#checkRecord'
+    get 'portfolio' => 'pages#portfolio'
+    post 'portfolio' => 'portfolio#checkRecord'
 
-get 'role_skill' => 'pages#role_skill'
-post 'role_skill' => 'skill#checkRecord'
+    get 'role_skill' => 'pages#role_skill'
+    post 'role_skill' => 'skill#checkRecord'
 
-get 'info' => 'pages#info'
-post 'info' => 'info#checkRecord'
+    get 'info' => 'pages#info'
+    post 'info' => 'info#checkRecord'
   end
   
   #Pages for Employers

@@ -68,58 +68,46 @@
           <div class="navbar-collapse collapse">
             <!-- Start Navigation List -->
             <ul class="nav navbar-nav navbar-right">
-            <% if user_signed_in? %>
-            <% else %>
-              <li>
-                <a class="<%= 'active' if params[:controller] == 'pages' && params[:action] == 'how_it_works' %>" href="<%= how_it_works_path %>">HOW IT WORKS</a>
-              </li>
-              <%end %>
-              <% if user_signed_in? %>
-              <%if  current_user.type == "JobSeeker"%>
+              <% if user_signed_in? then %>
+              <% case current_user.type %>
+              <% when "JobSeeker" %>
               <li>
                 <a class="<%= 'active' if params[:controller] == 'jobseeker' && params[:action] == 'home' %>" href="<%= jobseeker_home_path %>">HOME</a>
-                </li>
-                <li>
+              </li>
+              <li>
                 <a class="<%= 'active' if params[:controller] == 'registrations' && params[:action] == 'edit' %>" href="#">PROFILE</a>
                 <ul class="dropdown">
                   <li><a class="<%= 'active' if params[:controller] == 'registrations' && params[:action] == 'edit' %>" href="<%= edit_user_registration_path %>">EDIT PROFILE</a></li>
                   <li><a href="/users/<%=current_user.id %>">VIEW PROFILE</a></li>
                 </ul>
               </li>
-              <li><a class="<%= 'active' if params[:controller] == 'pages' && params[:action] == 'integrations' %>" href="<%= integrations_path %>">INTEGRATIONS</a></li>
-
-                <% else%>
-                <%if current_user.type == "Employers"%>
+              <li><a class="<%= 'active' if params[:controller] == 'pages' && params[:action] == 'integrations' %>" href="<%= integrations_path %>">CONNECT</a>
+              </li>
+              <% when "Employers" %>
               <li>
                 <a class="<%= 'active' if params[:controller] == 'employer' && params[:action] == 'home' %>" href="<%= employer_home_path %>">HOME</a>
-                </li>
-                <li><a class="<%= 'active' if params[:controller] == 'registrations' && params[:action] == 'edit' %>" href="<%= edit_user_registration_path %>">EDIT PROFILE</a></li>
-                <li><a class="" href="#">FAVOURITES</a></li>
-                <%end %>
-                <%end %>
-                <%end %>
-                <% if user_signed_in? == false %>
+              </li>
+              <li><a class="<%= 'active' if params[:controller] == 'registrations' && params[:action] == 'edit' %>" href="<%= edit_user_registration_path %>">EDIT PROFILE</a>
+              </li>
+              <li><a class="" href="#">FAVOURITES</a></li>
+              <% end %>
+              <li>
+              <a class="<%= 'active' if params[:controller] == 'devise/sessions' && params[:action] == 'new' %>" href="<%= destroy_user_session_path%>" data-method="delete" rel="nofollow">SIGN OUT</a>
+              </li>              
+              <% else %>
+              <li>
+                <a class="<%= 'active' if params[:controller] == 'pages' && params[:action] == 'how_it_works' %>" href="<%= how_it_works_path %>">HOW IT WORKS</a>
+              </li>
               <li>
                 <a class="<%= 'active' if params[:controller] == 'pages' && params[:action] == 'employers' %>" href="<%= employers_path %>">EMPLOYERS</a> 
               </li>
               <li>
                 <a class="<%= 'active' if params[:controller] == 'devise/sessions' && params[:action] == 'new' %>" href="<%= new_user_session_path %>">SIGN IN</a>
               </li>
-              <%end %>
-            
-             
-              <% if user_signed_in? %>
-              <li>
-            <a class="<%= 'active' if params[:controller] == 'pages' && params[:action] == 'information' %>" href="<%= information_path %>">INFORMATION</a>
-          </li>
-              <li>
-              <a class="<%= 'active' if params[:controller] == 'devise/sessions' && params[:action] == 'new' %>" href="<%= destroy_user_session_path%>" data-method="delete" rel="nofollow">SIGN OUT</a>
-              </li>
-              <%else %>
               <li>
                 <a class="<%= 'active' if params[:controller] == 'registrations' && params[:action] == 'new' %>" href="<%= new_user_registration_path %>">SIGN UP</a>
               </li>
-              <%end %>
+              <% end %>
             </ul>
             <!-- End Navigation List -->
           </div>
