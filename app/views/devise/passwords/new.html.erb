@@ -2,8 +2,8 @@
     <div id="content" style="background: url('<%= image_path('testimonials-bg3.jpg') %>');">
       <div class="container">
         <%= render "shared/messages" %>
-		<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, id:'login-form'}) do |f| %>
-	      <h1>Reset Password</h1>
+		<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, id: 'login-form', class: 'box' }) do |f| %>
+	      <h3>Reset Password</h3>
 		  <div class="input-field">
 		  	<%= devise_error_messages! %>
 		    <input type="email" name="user[email]" required placeholder="Email" style="margin-top:25px;" autofocus/>

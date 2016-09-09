@@ -16,8 +16,6 @@ class ApplicationController < ActionController::Base
     @tweets = client.user_timeline("headhunter_nyp")
   end
 
- 
-
   protected
   def configure_permitted_parameters
     #devise_parameter_sanitizer.for(:sign_up) { |u| u.permit( :name,:contact,:location,:type,:email, :password, :password_confirmation, :company) }

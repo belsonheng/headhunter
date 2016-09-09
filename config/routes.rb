@@ -1,28 +1,37 @@
 Rails.application.routes.draw do
-  root  'pages#index'
   resources :documents
   
- 
   # Devise authentication navigation
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: "registrations" }, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'signup', password: 'users/password', edit:'edit'}
+
+  authenticated :user, lambda {|u| u.type == 'JobSeeker'} do 
+    root to: 'jobseeker#home', as: :authenticated_jobseeker_root
+    get 'home' => 'jobseeker#home', as: :jobseeker_home
+  end
+  authenticated :user, lambda {|u| u.type == 'Employer'} do 
+    root to: 'employer#home', as: :authenticated_employer_root
+    get 'home' => 'employer#home', as: :employer_home
+  end
+
+  root 'pages#index'
 
   #User Profile Page:
   get 'users/:id' => 'users#show'
   # Static pages
-  get   'how-it-works'  =>  'pages#how_it_works'
-  get   'employers'     =>  'pages#employers'
+  get 'how-it-works' => 'pages#how_it_works'
+  get 'employers' => 'pages#employers'
 
-  get 'information' => 'pages#information'
+  # get 'information' => 'pages#information'
+
   # Onboarding pages
   scope '/onboarding' do
-    get   'job-info'         =>  'pages#job_info'
+    get 'job-info' => 'pages#job_info'
     post 'job-info' => 'preferences#checkRecord'
 
-    get   'online-presence'  =>  'pages#online_presence'
+    get 'online-presence'  =>  'pages#online_presence'
     post 'online-presence' => 'documents#checkRecord'
-
     
-    get   'history'  =>  'pages#history'
+    get 'history' => 'pages#history'
     post 'history' => 'experience#checkRecord'
 
     get 'summary' => 'pages#summary'
@@ -37,17 +46,15 @@ Rails.application.routes.draw do
     get 'info' => 'pages#info'
     post 'info' => 'info#checkRecord'
   end
+
+  # #Pages for Employers
+  # get 'employer/home' => 'employer#home'
+  # post 'employer/home' => 'offer#checkRecord'
+
+  # #Pages for JobSeekers
+  # get  'jobseeker/home' => 'jobseeker#home'
+  # post 'jobseeker/home' => 'listing#create'
   
-  #Pages for Employers
-  get   'employer/home'   =>  'employer#home'
-  post 'employer/home' => 'offer#checkRecord'
-
-  #Pages for JobSeekers
-  get  'jobseeker/home'   =>  'jobseeker#home'
-  post 'jobseeker/home' => 'listing#create'
-  
-
-
   get   'settings'        =>  'pages#settings'
   get   'integrations'    =>  'pages#integrations'
 

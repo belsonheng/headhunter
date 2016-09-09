@@ -2,21 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-/* For Tabs (Register) */
-.tab-content {
-
-position: relative;
-border: 20px solid rgba(0, 0, 0, 0);
-max-width: 500px;
-width: 100%;
-	margin-right: auto;
-	margin-left: auto;
-
-}
-
-/* For Login Form */
-
-form#login-form {
+.box {
 	overflow: hidden;
 	position: relative;
 	border: 1px solid #DEE0E5;
@@ -31,13 +17,31 @@ form#login-form {
 	z-index:1;
 }
 
-form#login-form h1 {
-	font-family: sans-serif;
+.box h3 {
+	font-family: 'Roboto', sans-serif;
+	font-color: #36373E;
 	font-style: normal;
+	font-size: 3rem;
+	font-weight: 400;
+	letter-spacing: 2px;
 	text-align: center;
-	padding: 20px;
+	padding: 3.4rem;
 	border-bottom: 1px solid #DEE0E5;
 }
+
+/* For Tabs (Register) */
+.tab-content {
+
+position: relative;
+border: 20px solid rgba(0, 0, 0, 0);
+max-width: 500px;
+width: 100%;
+	margin-right: auto;
+	margin-left: auto;
+
+}
+
+/* For Login Form */
 
 .social {
 	display: block;

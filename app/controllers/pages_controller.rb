@@ -20,16 +20,14 @@ class PagesController < ApplicationController
     @host = "headhunter.sit.nyp.edu.sg"
   end
   def contact
-  end
-  def EHome
-  end 
-  def JHome
+    @address = "180 Ang Mo Kio Ave 8, Singapore 569830"
+    @email = "headhunter.nyp@gmail.com"
+    @tel = "+65 6550 1637"
   end
   def settings
   end
   def integrations
   end
-
   # Onboarding actions
   def job_info
     render 'pages/onboarding/job_info'

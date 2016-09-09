@@ -3,14 +3,14 @@
       <div class="container">
         <%= render "shared/messages" %>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name),html: { id: 'login-form'}) do |f| %>
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name),html: { id: 'login-form', class: 'box' }) do |f| %>
 <h1><a href="#tab-1" data-toggle="tab">Talent</a>|
 <a href="#tab-2" data-toggle="tab">Employer</a></h1>
 <% end %>
 
 
 <div class="tab-pane fade in active" id="tab-1" style="position:relative;margin-top:-29px">
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name),html: { id: 'login-form'}) do |f| %>
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name),html: { id: 'login-form', class: 'box' }) do |f| %>
 <%= devise_error_messages! %>
   <div id = "Talent" class="input-field">
   <label>Full Name:</label>
@@ -28,7 +28,7 @@
   <% end %>
 
 <div class="tab-pane fade" id="tab-2" style="position:relative;margin-top:-470px">
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name),html: { id: 'login-form'}) do |f| %>
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name),html: { id: 'login-form', class: 'box' }) do |f| %>
 <%= devise_error_messages! %>
    <div id="Employer" class="input-field">
    <label>Full Name:</label>
