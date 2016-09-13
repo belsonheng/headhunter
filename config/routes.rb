@@ -2,12 +2,21 @@ Rails.application.routes.draw do
   resources :documents
   
   # Devise authentication navigation
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: "registrations" }, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'signup', password: 'users/password', edit: 'profile/personal_info'}
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: "registrations" }, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'signup', password: 'users/password', edit: 'settings'}
 
   authenticated :user, lambda {|u| u.type == 'JobSeeker'} do 
     root to: 'jobseeker#home', as: :authenticated_jobseeker_root
     get 'home' => 'jobseeker#home', as: :jobseeker_home
     get 'profile' => 'jobseeker#profile', as: :jobseeker_profile
+    get '/profile/personal_info' => 'jobseeker#personal_info', as: :jobseeker_personal_info
+    get '/profile/desired_headline' => 'jobseeker#pitch', as: :jobseeker_pitch
+    get '/profile/summary' => 'jobseeker#summary', as: :jobseeker_summary
+    get '/profile/role_skill' => 'jobseeker#role_skill', as: :jobseeker_role_skill
+    get '/profile/job_info' => 'jobseeker#job_info', as: :jobseeker_job_info
+    get '/profile/history' => 'jobseeker#history', as: :jobseeker_history
+    get '/profile/online_presence' => 'jobseeker#online_presence', as: :jobseeker_online_presence
+    get '/profile/recommendation' => 'jobseeker#recommendation', as: :jobseeker_recommendation
+    get '/profile/blocked_companies' => 'jobseeker#blocked_companies', as: :jobseeker_blocked_companies
   end
   authenticated :user, lambda {|u| u.type == 'Employer'} do 
     root to: 'employer#home', as: :authenticated_employer_root

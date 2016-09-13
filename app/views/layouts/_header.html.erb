@@ -77,11 +77,16 @@
               <li>
                 <a class="<%= 'active' if params[:controller] == 'registrations' && params[:action] == 'edit' %>" href="<%= jobseeker_profile_path %>">PROFILE</a>
                 <ul class="dropdown">
-                  <li><a href="/users/<%=current_user.id %>">VIEW PROFILE</a></li>
-                  <li><a class="<%= 'active' if params[:controller] == 'registrations' && params[:action] == 'edit' %>" href="<%= edit_user_registration_path %>">EDIT PROFILE</a></li>
+                  <li><a href="/users/<%=current_user.id %>">View Profile</a></li>
+                  <li><a class="<%= 'active' if params[:controller] == 'registrations' && params[:action] == 'edit' %>" href="<%= jobseeker_personal_info_path %>">Edit Profile</a></li>
                 </ul>
               </li>
-              <li><a class="<%= 'active' if params[:controller] == 'pages' && params[:action] == 'integrations' %>" href="<%= integrations_path %>">CONNECT</a>
+              <li>
+                <a style="cursor: pointer;">SETTINGS</a>
+                <ul class="dropdown">
+                  <li><a class="<%= 'active' if params[:controller] == 'registrations' && params[:action] == 'edit' %>" href="<%= edit_user_registration_path %>">My Account</a></li>
+                  <li><a class="<%= 'active' if params[:controller] == 'pages' && params[:action] == 'integrations' %>" href="<%= integrations_path %>">Integrations</a></li>
+                </ul>
               </li>
               <% when "Employers" %>
               <li>
