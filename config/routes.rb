@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     get '/profile/online_presence' => 'jobseeker#online_presence', as: :jobseeker_online_presence
     get '/profile/recommendation' => 'jobseeker#recommendation', as: :jobseeker_recommendation
     get '/profile/blocked_companies' => 'jobseeker#blocked_companies', as: :jobseeker_blocked_companies
+    get 'integrations'    =>  'pages#integrations'
   end
   authenticated :user, lambda {|u| u.type == 'Employer'} do 
     root to: 'employer#home', as: :authenticated_employer_root
@@ -26,7 +27,7 @@ Rails.application.routes.draw do
   root 'pages#index'
 
   #User Profile Page:
-  get 'users/:id' => 'users#show'
+  # get 'users/:id' => 'users#show'
   # Static pages
   get 'how-it-works' => 'pages#how_it_works'
   get 'employers' => 'pages#employers'
@@ -65,8 +66,7 @@ Rails.application.routes.draw do
   # get  'jobseeker/home' => 'jobseeker#home'
   # post 'jobseeker/home' => 'listing#create'
   
-  get   'settings'        =>  'pages#settings'
-  get   'integrations'    =>  'pages#integrations'
+  # get   'settings'        =>  'pages#settings'
 
   # Footer navigation
   post  'email/subscribe' =>  'emails#subscribe'

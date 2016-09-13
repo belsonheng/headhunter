@@ -25,13 +25,14 @@ class User
   field :encrypted_password, type: String, default: ""
   field :name, type: String
   field :location, type: String
-
+  field :phone, type: String
+  
   # Recoverable
   field :reset_password_token,   type: String
   field :reset_password_sent_at, type: Time
 
   # Type of User (To identify them) 
-  field :type,              type: String
+  field :type, type: String
 
   ## Rememberable
   field :remember_created_at, type: Time
@@ -47,7 +48,7 @@ class User
   field :provider, type: String 
   field :uid, type: String 
 
-  #JobSeekers Attr.
+  # JobSeekers Attr.
  
 
   # Employer Attr.

@@ -7,10 +7,10 @@
       <div style="max-width: 650px; margin: 0 auto;">
         <ul class="nav nav-tabs">
           <li class="active" style="width: 50%; margin: 0;">
-            <a data-toggle="tab" href="#tab-1" style="padding: 1.5rem; border: 0; border-radius: 0px; text-align: center;">JOBSEEKER</a>
+            <a data-toggle="tab" href="#tab-1" style="margin: 0; padding: 1.5rem; border: 0; border-radius: 0px; text-align: center;">JOBSEEKER</a>
           </li>
           <li class="" style="width: 50%; margin: 0;">
-            <a data-toggle="tab" href="#tab-2" style="padding: 1.5rem; border: 0; border-radius: 0px; text-align: center;">EMPLOYER</a>
+            <a data-toggle="tab" href="#tab-2" style="margin: 0; padding: 1.5rem; border: 0; border-radius: 0px; text-align: center;">EMPLOYER</a>
           </li>
         </ul>
       </div>
@@ -50,7 +50,7 @@
                 <%= f.label :location, class: 'field-required block-label' %>
               </div>
               <div class="field-input">
-                <%= f.input_field :location %>
+                <%= f.input_field :location, placeholder: 'Address or City, State/Country' %>
               </div>
               <input type="hidden" value="JobSeeker" name="user[type]" required />
             </div>
@@ -66,21 +66,58 @@
         <!-- Tab Content 2 -->
         <div id="tab-2" class="tab-pane">
           <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { id: 'registration-form', class: 'box', style: 'max-width: 650px;' }) do |f| %>
-          <%= devise_error_messages! %>
+            <div class="form-header" style="margin-top: 20px; padding: 2rem;">
+              <h3 style="font-size: 2.7rem;">Sign Up to Start Hiring</h3>
+              <span>Get access to top quality, high intent candidates today.</span>
+            </div>
+            <%= devise_error_messages! %>
+
             <div class="field-container">
-              <label>Full Name:</label>
-              <input type="text" name="user[name]" required placeholder="Full Name" />
-              <label>Email:</label>
-              <input type="email" name="user[email]" required placeholder="Email" />
-              <label>Contact:</label>
-              <input type="text" name="user[contact]" required placeholder="Contact No." />
-              <label>Company:</label>
-              <input type="text" name="user[company]" required placeholder="Company" />
-              <label>Password:</label>
-              <input type="password" name="user[password]" required placeholder=" Create Password" />
+              <div class="field-label">
+                <%= f.label :company, class: 'field-required block-label' %>
+              </div>
+              <div class="field-input">
+                <%= f.input_field :company, required: true, placeholder: 'Company name' %>
+              </div>
+              <div class="field-label">
+                <%= f.label 'Location', class: 'field-required block-label' %>
+              </div>
+              <div class="field-input">
+                <%= f.input_field :location, placeholder: 'Address or City, State/Country' %>
+              </div>
+              <div class="field-label">
+                <%= f.label 'Name', class: 'field-required block-label' %>
+              </div>
+              <div class="field-input">
+                <%= f.input_field :name, required: true, placeholder: 'First and last name' %>
+                <%= f.error :name %>
+              </div>
+              <div class="field-label">
+                <%= f.label :phone, class: 'field-required block-label' %>
+              </div>
+              <div class="field-input">
+                <%= f.input_field :phone, required: true, placeholder: 'xxxx-xxxx' %>
+              </div>
+              <div class="field-label">
+                <%= f.label :email, class: 'field-required block-label' %>
+              </div>
+              <div class="field-input">
+                <%= f.input_field :email, required: true, placeholder: 'name@workplace.com' %>
+              </div>
+              <div class="field-label">
+                <%= f.label :password, class: 'field-required block-label' %>
+              </div>
+              <div class="field-input">
+                <%= f.input_field :password, required: true, placeholder: 'Create password' %>
+              </div>
               <input type="hidden" value="Employers" name="user[type]" required />
             </div>
-            <button id="submit" class="btn-system btn-large" type="submit" style="float: right;">Sign Up</button>
+            <hr/>
+            <div class="field-container">
+              <p style="float:left;">Already have an account?<br/><%= link_to "Sign in.", new_user_session_path %></p>
+              <button id="submit" class="btn-system btn-large" type="submit" style="float: right; margin-bottom: 30px;">Apply As Employer</button>
+              <div style="clear: both;"></div>
+            </div>
           <% end %>       
         </div>
       </div>

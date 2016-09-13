@@ -11,11 +11,13 @@ en:
     error_notification:
       default_message: "Please review the problems below:"
     labels:
-      user:
-        name: 'Full Name'
+      defaults:
         email: 'Email'
         password: 'Password'
-        location: 'Where You Live'
+        location: 'Where you live'
+      user:
+          name: 'Full Name'
+          phone: 'Phone'
     # Examples
     # labels:
     #   defaults:

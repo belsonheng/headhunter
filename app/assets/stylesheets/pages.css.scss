@@ -33,7 +33,6 @@
 
 .profile-body {
 	width: 100%; 
-	order: 2
 }
 
 .box-yellow-light {
@@ -79,6 +78,11 @@ div.field-label {
 	width: 33%;
 	text-align: left;
 	vertical-align: middle;
+}
+
+div.field-label label {
+	font-weight: 600;
+	letter-spacing: .5pt;	
 }
 
 div.field-input {
