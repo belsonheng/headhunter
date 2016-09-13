@@ -2,11 +2,12 @@ Rails.application.routes.draw do
   resources :documents
   
   # Devise authentication navigation
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: "registrations" }, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'signup', password: 'users/password', edit:'edit'}
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: "registrations" }, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'signup', password: 'users/password', edit: 'profile/personal_info'}
 
   authenticated :user, lambda {|u| u.type == 'JobSeeker'} do 
     root to: 'jobseeker#home', as: :authenticated_jobseeker_root
     get 'home' => 'jobseeker#home', as: :jobseeker_home
+    get 'profile' => 'jobseeker#profile', as: :jobseeker_profile
   end
   authenticated :user, lambda {|u| u.type == 'Employer'} do 
     root to: 'employer#home', as: :authenticated_employer_root

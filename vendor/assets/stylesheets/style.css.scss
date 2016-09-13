@@ -32,7 +32,7 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800);
 @import url(http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic);
 @import url(http://fonts.googleapis.com/css?family=Raleway:400,300,700);
-
+@import url(http://fonts.googleapis.com/css?family=Roboto:300);
 
 
 
@@ -41,7 +41,7 @@
 /*	     01 - General & Basic Styles
 /*------------------------------------------*/
 body {
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Roboto', 'Open Sans', sans-serif;
 	font-size: 13px;
     line-height: 21px;
 	font-weight: 300;
@@ -1109,7 +1109,7 @@ input[type="submit"] {
 #contact-form input[type="text"],
 #contact-form textarea,
 #respond input[type="text"],
-#respond textarea, .email {
+#respond textarea, #contact-form .email {
     color: #666fb5;
     font-size: 13px;
     font-family: 'Open Sans', sans-serif;

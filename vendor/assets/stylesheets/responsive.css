@@ -181,6 +181,20 @@
 
 @media (max-width: 768px) {
 
+	.profile {
+		flex-flow: row wrap;
+		flex-direction: column;
+	}
+
+	.profile-body {
+		margin-left: 0;
+		margin-top: 20px;
+	}
+
+	.candidate-profile-photo {
+		margin: 0 auto;
+	}
+
 	.tp-leftarrow,
 	.tp-rightarrow {
 		display: none!important;

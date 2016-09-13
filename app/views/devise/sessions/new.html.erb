@@ -3,7 +3,7 @@
       <div class="container">
         <%= render "shared/messages" %>
         <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { id: 'login-form', class: 'box' }) do |f| %>
-          <h3>Sign In</h3>
+          <div class="form-header"><h3>Sign In</h3></div>
           <%= devise_error_messages! %>
 
           <% if devise_mapping.omniauthable? %>
@@ -32,17 +32,15 @@
             </div>
           <% end %>
 
-          <div class="input-field">
+          <div class="field-container">
             <input type="email" name="user[email]" required placeholder="Email" />
             <input type="password" name="user[password]" required placeholder="Password" />
-            <% if devise_mapping.rememberable? %>
-              <p style="margin-top: 20px;"><%= f.check_box :remember_me %> Remember me</p>
-            <% end %>
+            <%= f.input :remember_me, :as => :boolean, :label => false, :inline_label => true, html: { style: 'width: 300px;' } if devise_mapping.rememberable? %>
             <hr/>
             <% if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
               <%= link_to "Forgot your password?", new_password_path(resource_name) %> 
             <% end %>
-              <button id="submit" class="btn-system btn-large" type="submit" style="float: right;">Sign In</button>
+            <button id="submit" class="btn-system btn-large" type="submit" style="float: right; margin-bottom:30px;">Sign In</button>
           </div>
         <% end %>
 

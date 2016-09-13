@@ -1,67 +1,92 @@
 
 <div id="content" style="background: url('<%= image_path('testimonials-bg3.jpg') %>');">
-      <div class="container">
-        <%= render "shared/messages" %>
+  <div class="container">
+    <%= render "shared/messages" %>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name),html: { id: 'login-form', class: 'box' }) do |f| %>
-<h1><a href="#tab-1" data-toggle="tab">Talent</a>|
-<a href="#tab-2" data-toggle="tab">Employer</a></h1>
-<% end %>
+    <div class="tabs-section">
+      <div style="max-width: 650px; margin: 0 auto;">
+        <ul class="nav nav-tabs">
+          <li class="active" style="width: 50%; margin: 0;">
+            <a data-toggle="tab" href="#tab-1" style="padding: 1.5rem; border: 0; border-radius: 0px; text-align: center;">JOBSEEKER</a>
+          </li>
+          <li class="" style="width: 50%; margin: 0;">
+            <a data-toggle="tab" href="#tab-2" style="padding: 1.5rem; border: 0; border-radius: 0px; text-align: center;">EMPLOYER</a>
+          </li>
+        </ul>
+      </div>
+      <!-- Tab panels -->
+      <div class="tab-content" style="max-width: 100%; border: 0; padding: 0; margin-top: -1px;">
+        <!-- Tab Content 1 -->
+        <div id="tab-1" class="tab-pane active">
+          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { id: 'registration-form', class: 'box', style: 'max-width: 650px;' }) do |f| %>
+            <div class="form-header" style="margin-top: 20px; padding: 2rem;">
+              <h3 style="font-size: 2.7rem;">We Bring Job Offers to You</h3>
+              <span>Join thousands of people who've found their dream job using Headhunter.</span>
+            </div>
 
-
-<div class="tab-pane fade in active" id="tab-1" style="position:relative;margin-top:-29px">
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name),html: { id: 'login-form', class: 'box' }) do |f| %>
-<%= devise_error_messages! %>
-  <div id = "Talent" class="input-field">
-  <label>Full Name:</label>
-  <input type="text" name="user[name]" required placeholder="Full Name" />
-  <label>Email:</label>
-    <input type="email" name="user[email]" required placeholder="Email" />
-    <label>Location:</label>
-    <input type="text" name="user[location]" required placeholder="Where you live" />
-    <label>Password:</label>
-    <input type="password" name="user[password]" required placeholder="Create Password" />
-    <input type="hidden" value="JobSeeker" name="user[type]" required />
+            <%= devise_error_messages! %>
+            
+            <div class="field-container">
+              <div class="field-label">
+                <%= f.label :name, class: 'field-required block-label' %>
+              </div>
+              <div class="field-input">
+                <%= f.input_field :name, required: true, placeholder: 'First and last name' %>
+                <%= f.error :name %>
+              </div>
+              <div class="field-label">
+                <%= f.label :email, class: 'field-required block-label' %>
+              </div>
+              <div class="field-input">
+                <%= f.input_field :email, required: true, placeholder: 'you@example.com' %>
+              </div>
+              <div class="field-label">
+                <%= f.label :password, class: 'field-required block-label' %>
+              </div>
+              <div class="field-input">
+                <%= f.input_field :password, required: true, placeholder: 'Create password' %>
+              </div>
+              <div class="field-label">
+                <%= f.label :location, class: 'field-required block-label' %>
+              </div>
+              <div class="field-input">
+                <%= f.input_field :location %>
+              </div>
+              <input type="hidden" value="JobSeeker" name="user[type]" required />
+            </div>
+            <hr/>
+            <div class="field-container">
+              <p style="float:left;">Already have an account?<br/><%= link_to "Sign in.", new_user_session_path %></p>
+              <button id="submit" class="btn-system btn-large" type="submit" style="float: right; margin-bottom: 30px;">Get Started</button>
+              <div style="clear: both;"></div>
+            </div>
+          <% end %>
+        </div>
+        
+        <!-- Tab Content 2 -->
+        <div id="tab-2" class="tab-pane">
+          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { id: 'registration-form', class: 'box', style: 'max-width: 650px;' }) do |f| %>
+          <%= devise_error_messages! %>
+            <div class="field-container">
+              <label>Full Name:</label>
+              <input type="text" name="user[name]" required placeholder="Full Name" />
+              <label>Email:</label>
+              <input type="email" name="user[email]" required placeholder="Email" />
+              <label>Contact:</label>
+              <input type="text" name="user[contact]" required placeholder="Contact No." />
+              <label>Company:</label>
+              <input type="text" name="user[company]" required placeholder="Company" />
+              <label>Password:</label>
+              <input type="password" name="user[password]" required placeholder=" Create Password" />
+              <input type="hidden" value="Employers" name="user[type]" required />
+            </div>
+            <button id="submit" class="btn-system btn-large" type="submit" style="float: right;">Sign Up</button>
+          <% end %>       
+        </div>
+      </div>
+    </div>
   </div>
-  <button id="submit" class="btn-system btn-large" type="submit" style="float: right;">Sign Up</button>
-  </div>
-  <% end %>
-
-<div class="tab-pane fade" id="tab-2" style="position:relative;margin-top:-470px">
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name),html: { id: 'login-form', class: 'box' }) do |f| %>
-<%= devise_error_messages! %>
-   <div id="Employer" class="input-field">
-   <label>Full Name:</label>
-  <input type="text" name="user[name]" required placeholder="Full Name" />
-  <label>Email:</label>
-    <input type="email" name="user[email]" required placeholder="Email" />
-    <label>Contact:</label>
-    <input type="text" name="user[contact]" required placeholder="Contact No." />
-    <label>Company:</label>
-    <input type="text" name="user[company]" required placeholder="Company" />
-    <label>Password:</label>
-    <input type="password" name="user[password]" required placeholder=" Create Password" />
-    <input type="hidden" value="Employers" name="user[type]" required />
-  </div>
-  <button id="submit" class="btn-system btn-large" type="submit" style="float: right;">Sign Up</button>
 </div>
-  
-<% end %>
-
-                  <!-- End Accordion 1 -->
-
-                  <!-- Start Accordion 2 -->
-                  
-                    
-                              
-
-                   
-                  <!-- End Accordion 2 -->
-              
-</div>
-</div>
-</div>
-
 
 
 

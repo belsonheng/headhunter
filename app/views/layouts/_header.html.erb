@@ -75,10 +75,10 @@
                 <a class="<%= 'active' if params[:controller] == 'jobseeker' && params[:action] == 'home' %>" href="<%= jobseeker_home_path %>">HOME</a>
               </li>
               <li>
-                <a class="<%= 'active' if params[:controller] == 'registrations' && params[:action] == 'edit' %>" href="#">PROFILE</a>
+                <a class="<%= 'active' if params[:controller] == 'registrations' && params[:action] == 'edit' %>" href="<%= jobseeker_profile_path %>">PROFILE</a>
                 <ul class="dropdown">
-                  <li><a class="<%= 'active' if params[:controller] == 'registrations' && params[:action] == 'edit' %>" href="<%= edit_user_registration_path %>">EDIT PROFILE</a></li>
                   <li><a href="/users/<%=current_user.id %>">VIEW PROFILE</a></li>
+                  <li><a class="<%= 'active' if params[:controller] == 'registrations' && params[:action] == 'edit' %>" href="<%= edit_user_registration_path %>">EDIT PROFILE</a></li>
                 </ul>
               </li>
               <li><a class="<%= 'active' if params[:controller] == 'pages' && params[:action] == 'integrations' %>" href="<%= integrations_path %>">CONNECT</a>

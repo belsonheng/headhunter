@@ -1,134 +1,95 @@
-<div id="content">
-   <div class="container">
-   <%= render "shared/messages" %>
-   <div class="page-banner" style="padding:30px 0; background: url(images/slide-02-bg.jpg) center #f9f9f9;">
-<%if @listing = Listing.where(:user_id => current_user.id , :status => "Open").blank? %>
-<h2 class="xs-gamma xs-mb1 xs-mth0" id="hub-header-text" style="text-align : center">We don't have opportunities for you — yet.</h2></br>
-<div class="text-light text-black-light p--tall md-prl2" id="hub-explination-text" style="text-align : center">
-<center>
-You have great experience! Unfortunately, at this time we don’t have enough opportunities that match your role and location preferences. We’ve added your name to our waitlist and will be in touch as soon as we’re confident that we can provide you with quality opportunities!</center>
-<%else%>
-<h2 class="xs-gamma xs-mb1 xs-mth0" id="hub-header-text" style="text-align : center">Congrats! You have recieved an offer from a company!</h2></br>
-<div class="text-light text-black-light p--tall md-prl2" id="hub-explination-text" style="text-align : center">
-<center>
-Congrats on recieving an offer! Scroll below to see the offers and comments left by the company!
-</center>
-<%end%>
-<%if @listing = Listing.where(:user_id => current_user.id , :status => "Open").blank? %>
-<!--If there is no listing-->
-<%= simple_form_for :listing, html: { multipart: true} do |f| %>
-<%@preferences = Preferences.where(:user_id => current_user.id).to_a.to_a%>
-<%@preferences.each do |preference|%>
-<input type="hidden" name="listing[amount]" value= '<%= preference.salary %>'>
-<%end%>
-<%@skill = Skill.where(:user_id => current_user.id).to_a.to_a%>
-    <%@skill.each do |skill|%> 
-<input type="hidden" name="listing[area]" value= '<%= skill.area %>'>
-<%end%>
-   <input class="btn-system btn-large" type="submit" value="Apply">
-   <%end%>
-   <%else%>
-   <!--If There's a current Listing-->
-   <p>Please wait for the current listing to end!</p>
-   <%end%>
-   </div>
- </div>
+    <!-- Start Content -->
+    <div id="content">
 
-   
+      <!-- Start Services Section -->
+      <div class="container">
+        <div class="row">
 
-<h2> Your Listings: </h2>
-       <%@listing = Listing.where(:user_id => current_user.id).to_a.to_a%>
-    <%@listing.each do |listing|%>
-        <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="media">
-                            <div class="media-left media-middle">
-                            <%@info = Info.where(:user_id => current_user.id).to_a.to_a%>
-    <%@info.each do |info|%>
-    <%= image_tag info.avatar.url(:medium) %>
-                                <%end%>
-                            </div>
-                            <div class="media-body">
-
-                                <span id="Name"><h4 class="media-heading"><%= current_user.name%></h4></span>
-
-                                <span id="Status"><strong>Status:</strong> <%=listing.status%></span>
-                                <br>
-                                <span id="Profile"><strong>Profile:</strong> <a href='/users/<%=current_user.id%>' target="_blank">
-                                 Profile Link</a>
-                                <br/>
-                                <!--Skills-->
-                               <%@skill = Skill.where(:user_id => listing.user_id).to_a.to_a%>
-    <%@skill.each do |skill|%> 
-                                <span id="Area"><strong>Area of Expertise:</strong> <%=skill.area%></span>
-                                <br>
-                                <span id="Skill"><strong>Top Skill:</strong> <%=skill.skill%></span>
-                                <%end%>
-                                <br>
-                                <!--Preference-->
-     <%@preferences = Preferences.where(:user_id => listing.user_id).to_a.to_a%>
-    <%@preferences.each do |preference|%>
-                                <span id="Preference"><strong>Preference:</strong> Prefers only <%= preference.type%> roles with a base salary of <span style="color:green;"> $<%= preference.salary%>/yr</span>
-    <%end%>
-                                <br>
-                                <br>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <%end%>
-
-
-<h2>Your Offers:</h2>
-<!--If there is a Offer-->
-            <div class="col-lg-12">
-                <div class="panel panel-default">
-                    <div class="media">
-                        <div class="media-left media-middle"> </div>
-                        <div class="media-body">
- <%@listing = Listing.where(:user_id => current_user.id).to_a.to_a%>
-    <%@listing.each do |listing|%>
-<%@offer = Offer.where(:listing_id => listing.id).to_a.to_a%>
-    <%@offer.each do |offer|%>
-                            <span id="Amount"><strong>Amount Offered:</strong><span style="color:green;">$<%= offer.amount%></span></span>
-                            <br>
-                            <span id="Comment"><strong>Comment:</strong><%= offer.comment%></span>
-                            <br>
-                            <%@user = User.where(:id => offer.user_id).to_a.to_a%>
-                            <%@user.each do |user|%>
-                            <span id="Company"><strong>Company:</strong> <%= user.company%></span><br/>
-                            <span id= "Name"><strong>Name:</strong> <%=user.name%></span><br/>
-                            <span id= "contact"><strong>Contact:</strong><a href='mailto:<%=user.email%>'><%=user.email%></a></span>
-                            <%end%>
-                            
-                        </div>
-                    </div>
-                </div>
+          <!-- Start Big Heading -->
+          <div class="big-title text-center" style="display: flex; flex-direction: row !important; justify-content: center; align-items: center; text-align: center;">
+            <img alt="" src="<%= image_path('checkbox_green.png') %>" style="vertical-align: middle; margin-right: 2rem;"></img>
+            <div>
+              <h1>Better matches are on the way</h1>
+              <p class="title-desc">In the meantime, feel free to <a href="#" style="text-decoration: underline;">edit your responses</a>. </p>
             </div>
-<%end%>
-<%end%>
+          </div>
+          <!-- End Big Heading -->
 
-<!--If there is no offer-->
-<%@listing = Listing.where(:user_id => current_user.id).to_a.to_a%>
-    <%@listing.each do |listing|%>
-<% if @offer = Offer.where(:listing_id => listing.id).blank?%>
-                            <p><strong>Sorry, no offer was placed!</strong></p>
-                        </div>
-                    </div>
-                </div>
+          <!-- Divider -->
+          <hr/>
+          <div class="hr1 margin-60"></div>
+
+          <!-- Start Big Heading -->
+          <div class="big-title text-center">
+            <h1>What happens next if there's a fit for you on Headhunter?</h1>
+          </div>
+          <!-- End Big Heading -->
+
+          <div class="hr1 margin-60"></div>
+
+          <!-- Start Service Icon 1 -->
+          <div class="col-md-3 col-sm-6 service-box service-center" data-animation="fadeIn" data-animation-delay="01">
+            <div class="service-icon">
+              <i class="fa fa-globe icon-large"></i>
             </div>
-<%end%>
-<%end%>
+            <div class="service-content">
+              <h4>Worldwide</h4>
+              <p>We have all the jobs available for you no matter where you are! Don't be afraid of being jobless anymore!</p>
 
+            </div>
+          </div>
+          <!-- End Service Icon 1 -->
 
+          <!-- Start Service Icon 2 -->
+          <div class="col-md-3 col-sm-6 service-box service-center" data-animation="fadeIn" data-animation-delay="02">
+            <div class="service-icon">
+              <i class="fa fa-rocket icon-large"></i>
+            </div>
+            <div class="service-content">
+              <h4>Fast &amp; Easy</h4>
+              <p>Think it is a hassle to find a job online? Fret not! Just upload your resume and that's about it!</p>
+            </div>
+          </div>
+          <!-- End Service Icon 2 -->
 
+          <!-- Start Service Icon 3 -->
+          <div class="col-md-3 col-sm-6 service-box service-center" data-animation="fadeIn" data-animation-delay="03">
+            <div class="service-icon">
+              <i class="fa fa-envelope icon-large"></i>
+            </div>
+            <div class="service-content">
+              <h4>Notification</h4>
+              <p>Get instant notifications when there are companies interested in you. That means: Less hours on the lookout for jobs.</p>
+            </div>
+          </div>
+          <!-- End Service Icon 3 -->
 
-  </div>
-  </div>
-   </div>
- </div>
- </div>
- </div>
+          <!-- Start Service Icon 4 -->
+          <div class="col-md-3 col-sm-6 service-box service-center" data-animation="fadeIn" data-animation-delay="04">
+            <div class="service-icon">
+              <i class="fa fa-code icon-large"></i>
+            </div>
+            <div class="service-content">
+              <h4>Job Matching</h4>
+              <p>We bring jobs to you after deep analyzing on your particular set of skills from your profile. So now, you can do what you do best!</p>
+            </div>
+          </div>
+          <!-- End Service Icon 4 -->
+        </div>
+        <!-- .row -->
+      </div>
+      <!-- .container -->
+      <!-- End Services Section -->
 
+      <!-- Divider -->
+      <hr/>
+      <div class="hr1 margin-60"></div>
 
+      <!-- Start Big Heading -->
+      <div class="big-title text-center">
+        <h1>Otherwise, if there isn't a fit for you this time....</h1>
+        <p class="title-desc">You'll be added to our waitlist and we'll reach out to you when we can promise you a great experience on Headhunter.</p>
+      </div>
+      <!-- End Big Heading -->
+    </div>
+    <!-- .content -->

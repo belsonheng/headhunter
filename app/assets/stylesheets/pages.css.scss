@@ -2,31 +2,122 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.candidate-profile-photo {
+ 	position: relative;
+ 	max-width: 150px;
+}
+
+.candidate-profile-add-photo {
+	font-weight: bold;
+	text-align: center;
+	top: 110px;
+	left: 0;
+	width: 100%;
+	position: absolute;
+}
+
 .box {
 	overflow: hidden;
 	position: relative;
-	border: 1px solid #DEE0E5;
-	margin: 30px auto;
+	//border: 1px solid #DEE0E5;
+	//margin: 30px auto;
 	max-width: 500px;
 	background-color: #FFF;
 	color: #36373E;
-	border-radius: 0.2rem;
+	//border-radius: 0.2rem;
 	width: 100%;
 	margin-right: auto;
 	margin-left: auto;
 	z-index:1;
 }
 
-.box h3 {
+.profile-body {
+	width: 100%; 
+	order: 2
+}
+
+.box-yellow-light {
+	padding: 1rem;
+	background-color: #FCDD87;
+	border: 1px solid #FFC200;
+}
+
+.box-yellow-light > a {
+	color: #36373E;
+}
+
+.box-yellow-light:hover {
+	cursor: pointer;
+	border: 1px dashed #53545B;
+}
+
+.box-yellow-light:hover > a {
+	
+}
+
+div.form-header {
+	text-align: center;
+	border-bottom: 1px solid #DEE0E5;
+	padding: 3.4rem;
+}
+
+div.form-header h3 {
 	font-family: 'Roboto', sans-serif;
 	font-color: #36373E;
 	font-style: normal;
 	font-size: 3rem;
 	font-weight: 400;
 	letter-spacing: 2px;
-	text-align: center;
-	padding: 3.4rem;
-	border-bottom: 1px solid #DEE0E5;
+}
+
+div.form-header > span {
+	line-height: 40px;
+}
+
+div.field-label {
+	display: inline-block;
+	width: 33%;
+	text-align: left;
+	vertical-align: middle;
+}
+
+div.field-input {
+	display: inline-block;
+	width: 66%;
+}
+
+.simple_form label {
+	cursor: default;
+}
+
+.simple_form div.user_remember_me {
+	width: 100px;
+	margin-left: 20px;
+	margin-top: 20px;
+}
+
+.simple_form div.user_remember_me label.checkbox {
+    color: #666!important;
+	font-size: 1.3rem!important;
+}
+
+#registration-form .field-container input {
+	border: 1px solid #dfdfdf;
+	border-radius: 2px;
+	margin: 6px 0;
+	padding: 0.8rem;
+	transition: all 0.15s ease-in-out 0s;
+	width: 100%;
+}
+
+#registration-form .field-container input:focus {
+	outline: none;
+	border: 1px solid #bdbdbd;
+}
+
+.field-required:after {
+    color: #E14245;
+	content: " *";
 }
 
 /* For Tabs (Register) */
@@ -120,30 +211,32 @@ width: 100%;
 	color: #999;
 }
 
-.input-field {
+.field-container {
 	width: 80%;
-	margin: 0 auto;
-	padding-bottom: 30px;
+	margin: 20px auto;
 }
 
-.input-field label {
+#login-form .field-container label {
 	color: #888;
 	display: block;
 	font-size: 14px;
 	margin-top: 5px;
 }
 
-.input-field input[type="email"], .input-field input[type="password"], .input-field input[type="text"] , .input-field input[type="number"] {
+//, .input-field input[type="text"] , .input-field input[type="number"]
+
+#login-form .field-container input[type="email"], 
+#login-form .field-container input[type="password"] {
 	border: 1px solid #dfdfdf;
-	border-radius: 4px;
-	box-shadow: 0 0 4px rgba(223, 223, 223, 0.2);
+	border-radius: 2px;
 	margin: 6px 0;
-	padding: 12px;
+	padding: 0.8rem;
 	transition: all 0.15s ease-in-out 0s;
 	width: 100%;
 }
 
-.input-field input[type="email"]:focus, .input-field input[type="password"]:focus , .input-field input[type="text"]:focus, .input-field input[type="number"]:focus{
+#login-form .field-container input[type="email"]:focus, 
+#login-form .field-container input[type="password"]:focus {
 	outline: none;
 	border: 1px solid #bdbdbd;
 }
