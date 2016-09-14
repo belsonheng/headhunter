@@ -69,8 +69,8 @@
             <!-- Start Navigation List -->
             <ul class="nav navbar-nav navbar-right">
               <% if user_signed_in? then %>
-              <% case current_user.type %>
-              <% when "JobSeeker" %>
+              <% case current_user.type.downcase %>
+              <% when "jobseeker" %>
               <li>
                 <a class="<%= 'active' if params[:controller] == 'jobseeker' && params[:action] == 'home' %>" href="<%= jobseeker_home_path %>">HOME</a>
               </li>
@@ -88,7 +88,7 @@
                   <li><a class="<%= 'active' if params[:controller] == 'pages' && params[:action] == 'integrations' %>" href="<%= integrations_path %>">Integrations</a></li>
                 </ul>
               </li>
-              <% when "Employers" %>
+              <% when "employer" %>
               <li>
                 <a class="<%= 'active' if params[:controller] == 'employer' && params[:action] == 'home' %>" href="<%= employer_home_path %>">HOME</a>
               </li>

@@ -14,10 +14,15 @@ en:
       defaults:
         email: 'Email'
         password: 'Password'
+      jobseeker:
+        name: 'Full Name'
+        phone: 'Phone'
         location: 'Where you live'
-      user:
-          name: 'Full Name'
-          phone: 'Phone'
+      employer:
+        name: 'Company'
+        phone: 'Phone'
+        location: 'Location'
+        contact_name: 'Name'
     # Examples
     # labels:
     #   defaults:

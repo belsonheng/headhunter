@@ -1,6 +1,5 @@
 class Employer < User
   include Mongoid::Document
 
-  field :company, type: String
-  
+  field :contact_name, type: String
 end

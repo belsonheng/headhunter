@@ -5,6 +5,7 @@ class JobseekerController < ApplicationController
   end
   def profile
   	@name = current_user.name
+    @location = current_user.location
     render 'pages/jobseeker/profile/index'
   end
   def personal_info

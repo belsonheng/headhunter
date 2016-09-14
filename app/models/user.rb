@@ -2,31 +2,23 @@ class User
   include Mongoid::Document
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  # Resume
 
   devise :database_authenticatable, :registerable, :omniauthable, :lockable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauth_providers => [:facebook, :linkedin, :google]
 
   # Link to other Models
-  has_one :document, :dependent => :destroy
-  has_one :info, :dependent => :destroy
-  has_one :history, :dependent => :destroy
-  has_one :preferences, :dependent => :destroy
-  has_one :summary, :dependent => :destroy
   has_many :identities, :dependent => :destroy
-  has_many :skill, :dependent => :destroy
-  has_many :portfolio, :dependent => :destroy
-  has_many :listing, :dependent => :destroy
+
 
   after_create :first_identity
 
-  # Database authenticatable
+  # Common attributes
   field :email, type: String, default: ""
   field :encrypted_password, type: String, default: ""
   field :name, type: String
   field :location, type: String
   field :phone, type: String
-  
+
   # Recoverable
   field :reset_password_token,   type: String
   field :reset_password_sent_at, type: Time
@@ -47,13 +39,6 @@ class User
   #Loging in with Third-Party Websites (JobSeekers)
   field :provider, type: String 
   field :uid, type: String 
-
-  # JobSeekers Attr.
- 
-
-  # Employer Attr.
-  field :company, type: String
-  field :contact, type: String
 
   # Profile Picture:
    
@@ -83,5 +68,17 @@ class User
   def first_identity
     self.identities.first_or_create!(:uid => self.uid, :provider => self.provider, :user_id => self.id)
     Identity.where(:user_id => nil).destroy_all
+  end
+
+  def admin?
+    type.casecmp('admin')
+  end
+
+  def jobseeker?
+    type.casecmp('jobseeker')
+  end
+
+  def employer?
+    type.casecmp('employer')
   end
 end 

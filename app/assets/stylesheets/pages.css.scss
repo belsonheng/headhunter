@@ -105,7 +105,8 @@ div.field-input {
 	font-size: 1.3rem!important;
 }
 
-#registration-form .field-container input {
+#jobseeker-registration .field-container input,
+#employer-registration .field-container input {
 	border: 1px solid #dfdfdf;
 	border-radius: 2px;
 	margin: 6px 0;
@@ -114,7 +115,8 @@ div.field-input {
 	width: 100%;
 }
 
-#registration-form .field-container input:focus {
+#jobseeker-registration .field-container input:focus,
+#employer-registration .field-container input:focus {
 	outline: none;
 	border: 1px solid #bdbdbd;
 }

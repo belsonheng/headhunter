@@ -22,17 +22,16 @@ class ApplicationController < ActionController::Base
     #devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:login, :username, :email, :password, :remember_me) }
     #devise_parameter_sanitizer.for(:account_update) { |u| u.permit( :email, :password, :password_confirmation, :current_password, :location) }
 
-     devise_parameter_sanitizer.permit(:sign_up, keys: [:name,:contact,:location,:type,:email, :password, :password_confirmation, :company])
+     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :phone, :location, :type, :email, :password, :password_confirmation, :contact_name ])
      devise_parameter_sanitizer.permit(:sign_in, keys: [:login, :username, :email, :password, :remember_me])
-     devise_parameter_sanitizer.permit(:account_update, keys: [:email, :password, :password_confirmation, :current_password, :location, :company, :contact,:name])
+     devise_parameter_sanitizer.permit(:account_update, keys: [:email, :password, :password_confirmation, :current_password, :location, :company, :phone, :name])
   end
 
-  def after_sign_in_path_for(resource_or_scope)
-    if @user.type == "JobSeeker"
-      # Path for JobSeeker
+  def after_sign_in_path_for(resource)
+    if resource.type.casecmp('jobseeker')
       jobseeker_home_path
-    else
-      # Path for Employers
+    end
+    if resource.type.casecmp('employer')
       employer_home_path
     end
   end

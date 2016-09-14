@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # Devise authentication navigation
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: "registrations" }, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'signup', password: 'users/password', edit: 'settings'}
 
-  authenticated :user, lambda {|u| u.type == 'JobSeeker'} do 
+  authenticated :user, lambda {|u| u.type == 'jobseeker' } do 
     root to: 'jobseeker#home', as: :authenticated_jobseeker_root
     get 'home' => 'jobseeker#home', as: :jobseeker_home
     get 'profile' => 'jobseeker#profile', as: :jobseeker_profile
@@ -19,7 +19,8 @@ Rails.application.routes.draw do
     get '/profile/blocked_companies' => 'jobseeker#blocked_companies', as: :jobseeker_blocked_companies
     get 'integrations'    =>  'pages#integrations'
   end
-  authenticated :user, lambda {|u| u.type == 'Employer'} do 
+
+  authenticated :user, lambda {|u| u.type == 'employer' } do 
     root to: 'employer#home', as: :authenticated_employer_root
     get 'home' => 'employer#home', as: :employer_home
   end
