@@ -1,0 +1,61 @@
+<div id="content" style="background: url('<%= image_path('testimonials-bg3.jpg') %>');">
+  <div class="container">
+    <div class="tabs-section">
+      <div style="max-width: 650px; margin: 0 auto;">
+        <ul class="nav nav-tabs">
+          <li class="active" style="width: 50%; margin: 0;">
+            <a data-toggle="tab" href="" style="margin: 0; padding: 1.5rem; border: 0; border-radius: 0px; text-align: center;">JOBSEEKER</a>
+          </li>
+          <li class="" style="width: 50%; margin: 0;">
+            <a href="<%= employer_signup_path %>" style="margin: 0; padding: 1.5rem; border: 0; border-radius: 0px; text-align: center;">EMPLOYER</a>
+          </li>
+        </ul>
+      </div>
+      <!-- Tab panels -->
+      <div class="tab-content" style="max-width: 100%; border: 0; padding: 0; margin-top: -1px;">
+        <!-- Tab Content 1 -->
+        <div id="tab-1" class="tab-pane active">
+          <%= simple_form_for(resource, as: resource_name, url: jobseeker_registration_path, html: { id: 'jobseeker-registration', class: 'box', style: 'max-width: 650px;' }) do |f| %>
+            <div class="form-header" style="margin-top: 20px; padding: 2rem;">
+              <h3 style="font-size: 2.7rem;">We Bring Job Offers to You</h3>
+              <span>Join thousands of people who've found their dream job using Headhunter.</span>
+            </div>
+            <div class="field-container">
+            <%= f.input :name, required: true, placeholder: 'First and last name' %>
+            <%= f.input :email, required: true, placeholder: 'you@example.com' %>
+            <%= f.input :password, required: true, placeholder: 'Create password' %>
+            <%= f.input :location, required: true, placeholder: 'Address or City, State/Country', input_html: { id: 'jobseeker_location' } %>
+            <%= f.hidden_field :type, value: 'jobseeker' %>
+            </div>
+            <hr/>
+            <div class="field-container">
+              <p style="float:left;">Already have an account?<br/><%= link_to "Sign in.", new_user_session_path %></p>
+              <button id="submit" class="btn-system btn-large" type="submit" style="float: right; margin-bottom: 30px;">Get Started</button>
+              <div style="clear: both;"></div>
+            </div>
+          <% end %>
+        </div>
+        
+        <!-- Tab Content 2 -->
+        <div id="tab-2" class="tab-pane">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for :script do %>
+  <script type="text/javascript">
+    function initAutocomplete() {
+      j_autocomplete = new google.maps.places.Autocomplete(document.getElementById('jobseeker_location'));
+      e_autocomplete = new google.maps.places.Autocomplete(document.getElementById('employer_location'));
+      j_autocomplete.addListener('place_changed', fillInAddress);
+      e_autocomplete.addListener('place_changed', fillInAddress);
+    }
+    function fillInAddress() {
+      var place = autocomplete.getPlace();
+    }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWAoUTOh1XBroVBrgQqcOErGW1pvkhDaM&libraries=places&callback=initAutocomplete" async defer></script>
+<% end %>
+

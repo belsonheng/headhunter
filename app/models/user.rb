@@ -13,8 +13,8 @@ class User
   after_create :first_identity
 
   # Common attributes
-  field :email, type: String, default: ""
-  field :encrypted_password, type: String, default: ""
+  field :email, type: String
+  field :encrypted_password, type: String
   field :name, type: String
   field :location, type: String
   field :phone, type: String
@@ -60,7 +60,7 @@ class User
       user.provider = auth.provider
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
-      user.type = "JobSeeker"
+      user.type = "jobseeker"
     end
   end
 
@@ -81,4 +81,11 @@ class User
   def employer?
     type.casecmp('employer')
   end
+
+  validates_uniqueness_of :email
+  validates_presence_of :email
+  validates_presence_of :name
+  validates_presence_of :password
+  validates_presence_of :location
+  validates_presence_of :phone
 end 

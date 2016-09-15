@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   resources :documents
-  
+
   # Devise authentication navigation
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: "registrations" }, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'signup', password: 'users/password', edit: 'settings'}
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: "registrations" }, path: '', path_names: { sign_in: 'login', sign_out: 'logout', password: 'users/password', edit: 'settings'}
 
   authenticated :user, lambda {|u| u.type == 'jobseeker' } do 
     root to: 'jobseeker#home', as: :authenticated_jobseeker_root
@@ -33,6 +33,12 @@ Rails.application.routes.draw do
   get 'how-it-works' => 'pages#how_it_works'
   get 'employers' => 'pages#employers'
 
+  devise_scope :user do
+    get 'signup' => 'registrations#new_jobseeker', as: :jobseeker_signup
+    post 'signup' => 'registrations#create', as: :jobseeker_registration
+    get 'employer_signup' => 'registrations#new_employer'
+    post 'employer_signup' => 'registrations#create', as: :employer_registration
+  end
   # get 'information' => 'pages#information'
 
   # Onboarding pages

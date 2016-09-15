@@ -73,6 +73,16 @@ div.form-header > span {
 	line-height: 40px;
 }
 
+div.field-error {
+	display: inline-block;
+	margin-left: 33%;
+	padding-left: 2px;
+	width: 66%;
+	padding-bottom: 1rem;
+	color: #E97174;
+	font-size: 1.2rem;
+}
+
 div.field-label {
 	display: inline-block;
 	width: 33%;
@@ -88,6 +98,14 @@ div.field-label label {
 div.field-input {
 	display: inline-block;
 	width: 66%;
+}
+
+.field_with_errors label {
+	color: #E14245;
+}
+
+.field_with_errors input {
+	border: 1px solid #E14245 !important;	
 }
 
 .simple_form label {
@@ -121,7 +139,7 @@ div.field-input {
 	border: 1px solid #bdbdbd;
 }
 
-.field-required:after {
+label.required:after {
     color: #E14245;
 	content: " *";
 }

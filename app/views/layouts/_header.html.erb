@@ -110,7 +110,7 @@
                 <a class="<%= 'active' if params[:controller] == 'devise/sessions' && params[:action] == 'new' %>" href="<%= new_user_session_path %>">SIGN IN</a>
               </li>
               <li>
-                <a class="<%= 'active' if params[:controller] == 'registrations' && params[:action] == 'new' %>" href="<%= new_user_registration_path %>">SIGN UP</a>
+                <a class="<%= 'active' if params[:controller] == 'registrations' && params[:action] == 'new' %>" href="<%= jobseeker_signup_path %>">SIGN UP</a>
               </li>
               <% end %>
             </ul>

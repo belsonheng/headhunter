@@ -7,7 +7,7 @@
             <a data-toggle="tab" href="#tab-1" style="margin: 0; padding: 1.5rem; border: 0; border-radius: 0px; text-align: center;">JOBSEEKER</a>
           </li>
           <li class="" style="width: 50%; margin: 0;">
-            <a data-toggle="tab" href="#tab-2" style="margin: 0; padding: 1.5rem; border: 0; border-radius: 0px; text-align: center;">EMPLOYER</a>
+            <a href="<%= employer_signup_path %>" style="margin: 0; padding: 1.5rem; border: 0; border-radius: 0px; text-align: center;">EMPLOYER</a>
           </li>
         </ul>
       </div>
@@ -15,44 +15,20 @@
       <div class="tab-content" style="max-width: 100%; border: 0; padding: 0; margin-top: -1px;">
         <!-- Tab Content 1 -->
         <div id="tab-1" class="tab-pane active">
-          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { id: 'jobseeker-registration', class: 'box', style: 'max-width: 650px;' }) do |f| %>
+          <%= simple_form_for(resource, as: :jobseeker, url: registration_path(resource_name), html: { id: 'jobseeker-registration', class: 'box', style: 'max-width: 650px;' }) do |f| %>
             <div class="form-header" style="margin-top: 20px; padding: 2rem;">
               <h3 style="font-size: 2.7rem;">We Bring Job Offers to You</h3>
               <span>Join thousands of people who've found their dream job using Headhunter.</span>
             </div>
-
-            <%= devise_error_messages! %>
-
-            <%= f.simple_fields_for :jobseeker do |j| %>
             <div class="field-container">
-              <div class="field-label">
-                <%= j.label :name, class: 'field-required block-label' %>
-              </div>
-              <div class="field-input">
-                <%= f.input_field :name, id: '', required: true, placeholder: 'First and last name' %>
-                <%= f.error :name %>
-              </div>
-              <div class="field-label">
-                <%= f.label :email, class: 'field-required block-label' %>
-              </div>
-              <div class="field-input">
-                <%= f.input_field :email, id: '', required: true, placeholder: 'you@example.com' %>
-              </div>
-              <div class="field-label">
-                <%= f.label :password, class: 'field-required block-label' %>
-              </div>
-              <div class="field-input">
-                <%= f.input_field :password, id: '', required: true, placeholder: 'Create password' %>
-              </div>
-              <div class="field-label">
-                <%= j.label :location, class: 'field-required block-label' %>
-              </div>
-              <div class="field-input">
-                <%= f.input_field :location, id: 'jobseeker_location', placeholder: 'Address or City, State/Country' %>
-              </div>
-              <%= f.hidden_field :type, value: 'jobseeker' %>
-            </div>
+            <%= simple_fields_for :jobseeker do |j| %>  
+              <%= f.input :name, required: true, placeholder: 'First and last name' %>
+              <%= f.input :email, required: true, placeholder: 'you@example.com' %>
+              <%= f.input :password, required: true, placeholder: 'Create password' %>
+              <%= f.input :location, required: true, placeholder: 'Address or City, State/Country', input_html: { id: 'jobseeker_location' } %>
+              <%= f.hidden_field :type, name: "#{resource_name}[type]", value: 'jobseeker' %>
             <% end %>
+            </div>
             <hr/>
             <div class="field-container">
               <p style="float:left;">Already have an account?<br/><%= link_to "Sign in.", new_user_session_path %></p>
@@ -64,54 +40,20 @@
         
         <!-- Tab Content 2 -->
         <div id="tab-2" class="tab-pane">
-          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { id: 'employer-registration', class: 'box', style: 'max-width: 650px;' }) do |f| %>
+          <%= simple_form_for(resource, as: :employer, url: registration_path(resource_name), html: { id: 'employer-registration', class: 'box', style: 'max-width: 650px;' }) do |f| %>
             <div class="form-header" style="margin-top: 20px; padding: 2rem;">
               <h3 style="font-size: 2.7rem;">Sign Up to Start Hiring</h3>
               <span>Get access to top quality, high intent candidates today.</span>
             </div>
-            
-            <%= devise_error_messages! %>
-            
-            <%= f.simple_fields_for :employer do |e| %>
+            <%= simple_fields_for :employer do |e| %>
             <div class="field-container">
-              <div class="field-label">
-                <%= e.label :name, class: 'field-required block-label' %>
-              </div>
-              <div class="field-input">
-                <%= f.input_field :name, required: true, placeholder: 'Company name' %>
-              </div>
-              <div class="field-label">
-                <%= e.label :location, class: 'field-required block-label' %>
-              </div>
-              <div class="field-input">
-                <%= f.input_field :location, id: 'employer_location', placeholder: 'Address or City, State/Country' %>
-              </div>
-              <div class="field-label">
-                <%= e.label :contact_name, class: 'field-required block-label' %>
-              </div>
-              <div class="field-input">
-                <%= e.input_field :contact_name, required: true, name: "#{resource_name}[contact_name]", placeholder: 'First and last name' %>
-                <%= e.error :contact_name %>
-              </div>
-              <div class="field-label">
-                <%= e.label :phone, class: 'field-required block-label' %>
-              </div>
-              <div class="field-input">
-                <%= f.input_field :phone, required: true, placeholder: 'xxxx-xxxx' %>
-              </div>
-              <div class="field-label">
-                <%= f.label :email, class: 'field-required block-label' %>
-              </div>
-              <div class="field-input">
-                <%= f.input_field :email, required: true, placeholder: 'name@workplace.com' %>
-              </div>
-              <div class="field-label">
-                <%= f.label :password, class: 'field-required block-label' %>
-              </div>
-              <div class="field-input">
-                <%= f.input_field :password, required: true, placeholder: 'Create password' %>
-              </div>
-              <%= f.hidden_field :type, value: 'employer' %>
+              <%= f.input :name, required: true, placeholder: 'Company name' %>
+              <%= f.input :location, required: true, placeholder: 'Address or City, State/Country', input_html: { id: 'employer_location' } %>
+              <%= e.input :contact_name, required: true, placeholder: 'First and last name' %>
+              <%= f.input :phone, required: true, placeholder: 'xxxx-xxxx' %>
+              <%= f.input :email, required: true, placeholder: 'name@workplace.com' %>
+              <%= f.input :password, required: true, placeholder: 'Create password' %>
+              <%= f.hidden_field :type, name: "#{resource_name}[type]", value: 'employer' %>
             </div>
             <% end %>
             <hr/>
