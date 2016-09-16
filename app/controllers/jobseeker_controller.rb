@@ -35,4 +35,7 @@ class JobseekerController < ApplicationController
   def blocked_companies
   	render 'pages/jobseeker/profile/blocked_companies'
   end
+  def settings
+    render 'pages/jobseeker/settings'
+  end
 end

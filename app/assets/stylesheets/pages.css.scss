@@ -2,6 +2,32 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.navbar-signed-in {
+	background: #F1EFE2 none repeat scroll 0% 0%;
+}
+
+.navbar-signed-in li.drop > a {
+	padding: 16px 15px;
+}
+
+.navbar-signed-in .navbar-brand {
+	padding: 10px 0;
+	height: 55px;
+}
+
+.navbar-signed-in .navbar-brand > span {
+	position: relative;
+	top: 0;
+}
+
+.navbar-brand > span {
+	display: inline; 
+	width: 250px;
+	position: absolute;
+	top: 17px;
+	padding-bottom: 22px;
+}
+
 .candidate-profile-photo {
  	position: relative;
  	max-width: 150px;

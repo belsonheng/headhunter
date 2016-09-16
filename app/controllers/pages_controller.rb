@@ -24,8 +24,6 @@ class PagesController < ApplicationController
     @email = "headhunter.nyp@gmail.com"
     @tel = "+65 6550 1637"
   end
-  def settings
-  end
   def integrations
   end
   # Onboarding actions

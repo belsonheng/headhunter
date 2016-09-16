@@ -21,4 +21,12 @@ class Jobseeker < User
       user.type = "jobseeker"
     end
   end
+
+  def first_name
+    name.split(' ')[0].capitalize
+  end
+
+  def last_name
+    name.split(' ')[1].capitalize
+  end
 end

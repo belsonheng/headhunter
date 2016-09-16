@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
       config.consumer_secret     = ENV["TWITTER_CONSUMER_SEC"]
       config.access_token        = ENV["TWITTER_ACCESS_TOKEN"]
       config.access_token_secret = ENV["TWITTER_ACCESS_TOKEN_SEC"]
-  end
+    end
     @tweets = client.user_timeline("headhunter_nyp")
   end
 

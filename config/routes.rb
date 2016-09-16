@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :documents
 
   # Devise authentication navigation
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: "registrations" }, path: '', path_names: { sign_in: 'login', sign_out: 'logout', password: 'users/password', edit: 'settings'}
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: "registrations" }, path: '', path_names: { sign_in: 'login', sign_out: 'logout', password: 'users/password' }#, edit: 'settings'}
 
   authenticated :user, lambda {|u| u.type == 'jobseeker' } do 
     root to: 'jobseeker#home', as: :authenticated_jobseeker_root
@@ -18,11 +18,13 @@ Rails.application.routes.draw do
     get '/profile/recommendation' => 'jobseeker#recommendation', as: :jobseeker_recommendation
     get '/profile/blocked_companies' => 'jobseeker#blocked_companies', as: :jobseeker_blocked_companies
     get 'integrations'    =>  'pages#integrations'
+    get 'settings' => 'jobseeker#settings', as: :jobseeker_account_settings
   end
 
   authenticated :user, lambda {|u| u.type == 'employer' } do 
     root to: 'employer#home', as: :authenticated_employer_root
     get 'home' => 'employer#home', as: :employer_home
+    get 'settings' => 'employer#settings', as: :employer_account_settings
   end
 
   root 'pages#index'

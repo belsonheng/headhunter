@@ -5,4 +5,7 @@ class EmployerController < ApplicationController
   	@contact_name = current_user.contact_name
   	render 'pages/employer/home'
   end
+  def settings
+  	render 'pages/employer/settings'
+  end
 end
