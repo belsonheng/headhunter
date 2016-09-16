@@ -22,19 +22,19 @@
           <%= simple_form_for(resource, as: resource_name, url: employer_registration_path, html: { id: 'employer-registration', class: 'box', style: 'max-width: 650px;' }) do |f| %>
             <div class="form-header" style="margin-top: 20px; padding: 2rem;">
               <h3 style="font-size: 2.7rem;">Sign Up to Start Hiring</h3>
-              <span>Get access to top quality, high intent candidates today.</span>
+              <div>Get access to top quality, high intent candidates today.</div>
             </div>
             <div class="field-container">
-            <%= f.input :name, required: true, placeholder: 'Company name' %>
+            <%= f.input :name, label: 'Company', required: true, placeholder: 'Company name' %>
             <%= f.input :location, required: true, placeholder: 'Address or City, State/Country', input_html: { id: 'employer_location' } %>
-            <%= f.input :contact_name, required: true, placeholder: 'First and last name' %>
+            <%= f.input :contact_name, label: 'Name', required: true, placeholder: 'First and last name' %>
             <%= f.input :phone, required: true, placeholder: 'xxxx-xxxx' %>
             <%= f.input :email, required: true, placeholder: 'name@workplace.com' %>
             <%= f.input :password, required: true, placeholder: 'Create password' %>
             <%= f.hidden_field :type, value: 'employer' %>
             </div>
             <hr/>
-            <div class="field-container">
+            <div class="form-footer field-container">
               <p style="float:left;">Already have an account?<br/><%= link_to "Sign in.", new_user_session_path %></p>
               <button id="submit" class="btn-system btn-large" type="submit" style="float: right; margin-bottom: 30px;">Apply As Employer</button>
               <div style="clear: both;"></div>

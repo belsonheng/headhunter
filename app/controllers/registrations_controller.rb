@@ -13,6 +13,7 @@ class RegistrationsController < Devise::RegistrationsController
         respond_with resource, location: after_inactive_sign_up_path_for(resource)
       end
     else
+      puts resource.errors.inspect
       clean_up_passwords resource
       set_minimum_password_length
       render 'new_jobseeker' if resource.is_a? Jobseeker
@@ -46,14 +47,9 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def build_resource(hash=nil)
-    puts hash[:type]
-    puts hash
     if hash.empty? then
       self.resource = resource_class.new_with_session(hash || {}, session)
     else
-      # jobseeker = hash[:type] == 'jobseeker' ? Jobseeker.new_with_session(hash || {}, session) : nil
-      # employer = hash[:type] == 'employer' ? Employer.new_with_session(hash || {}, session) : nil
-      # self.resource = {:jobseeker => jobseeker, :employer => employer}
       if hash.key?(:type)
         case hash[:type]
         when 'jobseeker'

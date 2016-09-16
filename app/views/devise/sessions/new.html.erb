@@ -35,8 +35,10 @@
           <div class="field-container">
             <input type="email" name="user[email]" required placeholder="Email" />
             <input type="password" name="user[password]" required placeholder="Password" />
-            <%= f.input :remember_me, :as => :boolean, :label => false, :inline_label => true, html: { style: 'width: 300px;' } if devise_mapping.rememberable? %>
+            <%= f.input :remember_me, :as => :boolean, :label => false, :inline_label => true if devise_mapping.rememberable? %>
             <hr/>
+          </div>
+          <div class="form-footer field-container">
             <% if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
               <%= link_to "Forgot your password?", new_password_path(resource_name) %> 
             <% end %>

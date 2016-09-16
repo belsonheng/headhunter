@@ -69,8 +69,8 @@ div.form-header h3 {
 	letter-spacing: 2px;
 }
 
-div.form-header > span {
-	line-height: 40px;
+div.form-header > div {
+	padding: 2rem;
 }
 
 div.field-error {
@@ -113,7 +113,7 @@ div.field-input {
 }
 
 .simple_form div.user_remember_me {
-	width: 100px;
+	width: 100%;
 	margin-left: 20px;
 	margin-top: 20px;
 }

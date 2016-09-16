@@ -54,16 +54,6 @@ class User
   field :locked_at, type: Time
 
 
-  def self.from_omniauth(auth)
-    where(auth.slice(:uid, :provider)).first_or_create do |user|
-      user.uid = auth.uid
-      user.provider = auth.provider
-      user.email = auth.info.email
-      user.password = Devise.friendly_token[0,20]
-      user.type = "jobseeker"
-    end
-  end
-
   # Prevents duplication
   def first_identity
     self.identities.first_or_create!(:uid => self.uid, :provider => self.provider, :user_id => self.id)
@@ -87,5 +77,4 @@ class User
   validates_presence_of :name
   validates_presence_of :password
   validates_presence_of :location
-  validates_presence_of :phone
 end 

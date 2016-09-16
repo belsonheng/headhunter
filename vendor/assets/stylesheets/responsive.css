@@ -238,6 +238,46 @@
 }
 @media only screen and (max-width: 479px) { 
 
+	.form-header h3 {
+		font-size: 2.9rem!important;
+	}
+
+	#jobseeker-registration .form-header h3,
+	#employer-registration .form-header h3 {
+		font-size:  2rem!important;
+	}
+
+	#jobseeker-registration .field-label,
+	#employer-registration .field-label {
+		display: block;
+		width: 100%;
+	}
+
+	#jobseeker-registration .field-input,
+	#employer-registration .field-input {
+		display: block;
+		width: 100%;
+	}
+
+	.form-footer {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.form-footer > button {
+		order: 1;
+		margin-right: 0;
+	}
+
+	.form-footer > p, .form-footer > a {
+		order: 2;
+	}
+
+	.social > ul > li {
+		width: 100%!important;
+		padding: .1rem;	
+	}
+
 	.navbar-brand span {
 		left: 5px;
 	}
@@ -385,8 +425,9 @@
     
 }
 
+@media screen and (max-width: : 375px) {
 
-
+}
 
 @media (min-width : 992px) {
     
@@ -436,7 +477,6 @@
 	}
     
 }
-
 
 @media (max-width : 479px) {
     
