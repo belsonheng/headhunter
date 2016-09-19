@@ -32,18 +32,57 @@ class RegistrationsController < Devise::RegistrationsController
     respond_with self.resource
   end
 
-  protected
+  def edit
+    render 'pages/jobseeker/settings' if params[:type] == 'jobseeker'
+    render 'pages/employer/settings' if params[:type] == 'employer'
+  end
+
+  def update
+    self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
+    prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
+
+    resource_updated = update_resource(resource, account_update_params)
+
+    if resource_updated
+      if is_flashing_format?
+        flash_key = update_needs_confirmation?(resource, prev_unconfirmed_email) ?
+          :update_needs_confirmation : :updated
+        set_flash_message :notice, flash_key
+      end
+      # bypass_sign_in resource, scope: resource_name
+      respond_with resource, location: after_update_path_for(resource)
+    else
+      clean_up_passwords resource
+      render 'pages/jobseeker/settings' if resource.is_a? Jobseeker
+      render 'pages/employer/settings' if resource.is_a? Employer      
+      # respond_with resource
+    end
+  end
+
   def after_update_path_for(resource)
-    edit_user_registration_path
+    return jobseeker_account_update_path if resource.is_a? Jobseeker
+    return employer_account_update_path if resource.is_a? Employer      
   end
 
   def update_resource(resource, params)
-    if current_user.provider.casecmp("facebook") || current_user.provider.casecmp('linkedin') || current_user.provider.casecmp('google')
-      params.delete("current_password")
-      resource.update_without_password(params)
-    else
-      resource.update_with_password(params)
-    end
+    params.delete('password') if (params[:password].empty?)
+    resource.update_attributes(params)
+    # puts "update resource"
+    # puts resource.inspect
+    # if (params[:password].blank?) then
+    #   resource.update_without_password(params)
+    # else
+    #   params[:current_password] = resource.password
+    #   puts "new params"
+    #   puts params
+    #   resource.update_with_password(params)
+    # end
+    # if current_user.provider.casecmp("facebook") || current_user.provider.casecmp('linkedin') || current_user.provider.casecmp('google')
+    #   params.delete("current_password")
+    #   resource.update_without_password(params)
+    # else
+    #   resource.update_with_password(params)
+    # end
   end
 
   def build_resource(hash=nil)

@@ -9,7 +9,7 @@ class User
   # Link to other Models
   has_many :identities, :dependent => :destroy
 
-
+  before_save :capitalize_fields
   after_create :first_identity
 
   # Common attributes
@@ -72,9 +72,14 @@ class User
     type.casecmp('employer')
   end
 
+  def capitalize_fields
+    # self.name.capitalize!
+    self.name = self.name.split.map(&:capitalize)*' '
+  end
+
   validates_uniqueness_of :email
   validates_presence_of :email
   validates_presence_of :name
-  validates_presence_of :password
+  validates_presence_of :password, on: :create
   validates_presence_of :location
 end 

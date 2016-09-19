@@ -49,9 +49,7 @@
 <% content_for :script do %>
   <script type="text/javascript">
     function initAutocomplete() {
-      j_autocomplete = new google.maps.places.Autocomplete(document.getElementById('jobseeker_location'));
       e_autocomplete = new google.maps.places.Autocomplete(document.getElementById('employer_location'));
-      j_autocomplete.addListener('place_changed', fillInAddress);
       e_autocomplete.addListener('place_changed', fillInAddress);
     }
     function fillInAddress() {

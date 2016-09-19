@@ -259,6 +259,15 @@
 		width: 100%;
 	}
 
+	.field-label {
+		margin-top: .5rem!important;
+	}
+
+	.field-error {
+		margin: 0!important;
+		width: 100%!important;
+	}
+
 	.form-footer {
 		display: flex;
 		flex-direction: column;

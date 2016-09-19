@@ -84,7 +84,7 @@
                   <a class="<%= 'active' if params[:controller] == 'jobseeker' && params[:action] == 'home' %>" href="<%= jobseeker_home_path %>">HOME</a>
                 </li>
                 <li>
-                  <a class="<%= 'active' if params[:controller] == 'registrations' && params[:action] == 'edit' %>" href="<%= jobseeker_profile_path %>">PROFILE</a>
+                  <a class="<%= 'active' if params[:controller] == 'jobseeker' && params[:action] == 'profile' %>" href="<%= jobseeker_profile_path %>">PROFILE</a>
                   <ul class="dropdown">
                     <li><a href="/users/<%=current_user.id %>">View Profile</a></li>
                     <li><a class="<%= 'active' if params[:controller] == 'registrations' && params[:action] == 'edit' %>" href="<%= jobseeker_personal_info_path %>">Edit Profile</a></li>
@@ -93,8 +93,8 @@
                 <li>
                   <a style="cursor: pointer;">SETTINGS</a>
                   <ul class="dropdown">
-                    <li><a class="<%= 'active' if params[:controller] == 'registrations' && params[:action] == 'edit' %>" href="<%= edit_user_registration_path %>">My Account</a></li>
-                    <li><a class="<%= 'active' if params[:controller] == 'pages' && params[:action] == 'integrations' %>" href="<%= integrations_path %>">Integrations</a></li>
+                    <li><a class="<%= 'active' if params[:controller] == 'registrations' && params[:action] == 'edit' %>" href="<%= jobseeker_account_settings_path %>">My Account</a></li>
+                    <li><a class="<%= 'active' if params[:controller] == 'pages' && params[:action] == 'integrations' %>" href="<%= jobseeker_integrations_path %>">Integrations</a></li>
                   </ul>
                 </li>
                 <li>
@@ -105,10 +105,10 @@
                   <a style="cursor:pointer; font-size: 1.3rem; font-weight: 600; letter-spacing: 1px;"><%= current_user.first_name + ' ' + current_user.last_name[0].upcase + '.' %> <i class="fa fa-caret-down" style="margin-left: 1rem;" aria-hidden="true"></i></a>
                   <ul>
                     <li>
-                      <a href="#">Hiring Needs</a>
+                      <a href="#">+ New Job Advert</a>
                     </li>
                     <li style="border-bottom: 1px solid">
-                      <a href="#">Co-workers</a>
+                      <a href="#">All Job Advertisements</a>
                     </li>
                     <li>
                       <a href="#">Company Profile</a>
@@ -117,7 +117,7 @@
                       <a href="#">Edit Company Profile</a>
                     </li>
                     <li>
-                      <a class="<%= 'active' if params[:controller] == 'registrations' && params[:action] == 'edit' %>" href="<%= edit_user_registration_path %>">My Account</a>
+                      <a class="<%= 'active' if params[:controller] == 'registrations' && params[:action] == 'edit' %>" href="<%= employer_account_settings_path %>">My Account</a>
                     </li>
                     <li>
                       <a class="<%= 'active' if params[:controller] == 'devise/sessions' && params[:action] == 'new' %>" href="<%= destroy_user_session_path%>" data-method="delete" rel="nofollow">Sign Out</a>

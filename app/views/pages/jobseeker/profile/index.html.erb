@@ -5,7 +5,7 @@
       <div class="box" style="max-width: 80%; padding: 2rem;">
       	<div class="profile" style="display: flex;">
       	  <div class="candidate-profile-photo">
-            <a href="<%= edit_user_registration_path %>">
+            <a href="<%= jobseeker_personal_info_path %>">
           	  <img alt="Add Profile Photo" src="<%= image_path('add_profile_photo.png') %>" width="150"></img>
             </a>
       	    <div class="candidate-profile-add-photo">+ Add Photo</div>
@@ -14,7 +14,7 @@
       	  </div>
       	  <div class="profile-body">
       	      <div style="font-weight: 300; font-size: 2.4rem; float: left;"><%= @name %></div>
-      	      <div><a href="<%= edit_user_registration_path %>" class="btn-system btn-small" style="float:right;">Edit Profile</a></div>
+      	      <div><a href="<%= jobseeker_personal_info_path %>" class="btn-system btn-small" style="float:right;">Edit Profile</a></div>
       	      <div style="clear:both;"></div>
 	        <div style="padding: 1rem 0;">
 	          <p>Lives in <%= @location %></p>

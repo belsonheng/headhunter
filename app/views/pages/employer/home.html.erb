@@ -1,101 +1,84 @@
-<div id="content">
+    <!-- Start Content -->
+    <div id="content">
+
       <div class="container">
-       <%= render "shared/messages" %>
-       <div class="page-banner" style="padding:30px 0; background: url(images/slide-02-bg.jpg) center #f9f9f9;">
-<label><strong>Filter Candidates:</strong></label>
-<select id="Filter" onchange="myFunction(this.value)">
-  <option value="All">All</option>
-<%@industry = Industry.all%>
-    <%@industry.each do |industry|%>
-<option value='<%=industry.area%>'><%=industry.area%></option>
-<%end%>
-  </select>
-       </div>
-       <h2>All Candidates:</h2>
-         
-         <%@listing = Listing.all%>
-    <%@listing.each do |listing|%>
-    <div class = '<%= listing.area%>' style='display:none;'>
-      <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="media">
-                            <div class="media-left media-middle">
-                               <%@info = Info.where(:user_id => listing.user_id).to_a.to_a%>
-    <%@info.each do |info|%>
-    <%= image_tag info.avatar.url(:medium) %>
-                                <%end%>
-                            </div>
-                            <div class="media-body">
-                            <%@user = User.where(:id => listing.user_id).to_a.to_a%>
-    <%@user.each do |user|%> 
-                                <span id="Name"><h4 class="media-heading"><%= user.name%></h4></span>
-                                <%end%>
+        <div class="row">
 
-                                <span id="Status"><strong>Status:</strong> <%=listing.status%></span>
-                                <br>
-                                <span id="Profile"><strong>Profile:</strong> <a href='/users/<%=listing.user_id%>' target="_blank">
-                                 Profile Link</a>
-                                <br/>
-                                <!--Skills-->
-                               <%@skill = Skill.where(:user_id => listing.user_id).to_a.to_a%>
-    <%@skill.each do |skill|%> 
-                                <span id="Area"><strong>Area of Expertise:</strong> <%=skill.area%></span>
-                                <br>
-                                <span id="Skill"><strong>Top Skill:</strong> <%=skill.skill%></span>
-                                <%end%>
-                                <br>
-                                <!--Preference-->
-     <%@preferences = Preferences.where(:user_id => listing.user_id).to_a.to_a%>
-    <%@preferences.each do |preference|%>
-                                <span id="Preference"><strong>Preference:</strong> Prefers only <%= preference.type%> roles with a base salary of <span style="color:green;"> $<%= preference.salary%>/yr</span>
-    <%end%>
-                                <br>
-                                <br>
-                                </div>
-                            </div>
-                        </div>
+          <!-- Start Big Heading -->
+          <div class="big-title text-center" style="display: flex; flex-direction: row !important; justify-content: center; align-items: center; text-align: center;">
+            <img alt="" src="<%= image_path('checkbox_green.png') %>" style="vertical-align: middle; margin-right: 2rem;"></img>
+            <div>
+              <h1>Better matches are on the way</h1>
+              <p class="title-desc">In the meantime, feel free to <a href="#" style="text-decoration: underline;">add new job adverts</a>. </p>
+            </div>
+          </div>
+          <!-- End Big Heading -->
+
+          <!-- Divider -->
+          <hr/>
+          <div class="hr1 margin-60"></div>
+
+          <!-- Start Big Heading -->
+          <div class="big-title text-center">
+            <h1>Software Engineer</h1>
+          </div>
+          <!-- End Big Heading -->
+
+          <div class="hr1 margin-60"></div>
+
+          <section class="container potential-candidate">
+            <div class="col-md-3 col-sm-6">
+              <div style="display: flex; justify-content: flex-end">
+                <div class="action-icons">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-times"></i>
                 </div>
+                <img alt="" src="<%= image_path('boy.png') %>"></img>
+              </div>
+            </div>
+
+            <div class="col-md-9 col-sm-6">
+              <h2><a href="#">Alex Lee</a></h2>
+              <h4>Senior Software Engineer at ThriveMind who build a consuer side ATS using Ruby and Javascript.</h4>
+              <br/>
+              <p>Senior Software Engineer at ThriveMind</p>
+              <p>Nanyang Polytechnic School of Information Technology, Diploma in Information Technology</p>
+              <br/>
+              <p>Singapore, Singapore</p>
+              <p>Prefer working as </p>
+            </div>
+          </section>
+
+          <hr width="75%" />
+
+          <section class="container potential-candidate">
+            <div class="col-md-3 col-sm-6">
+              <div style="display: flex; justify-content: flex-end">
+                <div class="action-icons">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-times"></i>
                 </div>
-                <%end%>
-                                <br>
-                                
-                                <br>
-                                <br>
-                                
-                            
-                
+                <img alt="" src="<%= image_path('girl.png') %>"></img>
+              </div>
+            </div>
+
+            <div class="col-md-9 col-sm-6">
+              <div>
+                <h2><a href="#">Germaine Teo</a></h2>
+                <h4>Project Engineer at DBS who build a server side API using Ruby and Javascript.</h4>
+                <br/>
+                <p>Project Engineer at DBS</p>
+                <p>Nanyang Polytechnic School of Information Technology, Diploma in Information Technology</p>
+                <br/>
+                <p>Singapore, Singapore</p>
+                <p>Prefer working as </p>
+              </div>
+            </div>
+          </section>
+
+        </div>
+        <!-- .row -->
       </div>
+      <!-- .container -->
     </div>
- <script>
-function myFunction(value) {
-    console.log(value);
-    var array = ["Design", "Software Engineering", "Data Science", "Sales", "Marketing", "Recruiting", "Finance", "Other"];
-if (value == "All")
-{
-    for(A=0; A<array.length; A++)
-    {
-var cols = document.getElementsByClassName(array[A]);
-for(B=0; B<cols.length; B++) {
-    cols[B].style.display = 'inline';
-}
-
-    }
-
-}
-else {
-      for(i=0; i<array.length; i++) {
-        if(array[i] != value){
-    var cols = document.getElementsByClassName(array[i]);
-    for(k=0; k<cols.length; k++) {
-    cols[k].style.display = 'none';
-}
-}else{
-        var cols = document.getElementsByClassName(value);
-            for(j=0; j<cols.length; j++) {
-        cols[j].style.display = 'inline';
-    }
-    }
-  }
-  }
-}
-</script>
+    <!-- .content -->

@@ -6,8 +6,9 @@
 	background: #F1EFE2 none repeat scroll 0% 0%;
 }
 
-.navbar-signed-in li.drop > a {
-	padding: 16px 15px;
+.navbar-signed-in li.drop > a,
+.navbar-signed-in li > a {
+	padding: 16px 15px!important;
 }
 
 .navbar-signed-in .navbar-brand {
@@ -18,6 +19,7 @@
 .navbar-signed-in .navbar-brand > span {
 	position: relative;
 	top: 0;
+	padding-bottom: 2px;
 }
 
 .navbar-brand > span {
@@ -40,6 +42,46 @@
 	left: 0;
 	width: 100%;
 	position: absolute;
+}
+
+.potential-candidate {
+}
+
+.potential-candidate div > img {
+	border: 1px solid #DEDEDE;
+	width: 138px;
+	height: 138px;
+}
+
+.potential-candidate .col-md-9 h2 {
+	font-weight: 400;
+	padding-bottom: 1rem;
+}
+
+.potential-candidate .col-md-9 h4 {
+	font-weight: 400;
+}
+ 
+.action-icons {
+ 	display:block;
+ 	text-align: center;
+ 	padding: 1rem .5rem;
+ }
+
+.action-icons i {
+	width: 100%;
+	height: 35px;
+	color: #DEDEDE;
+	font-size: 2.2rem;
+	cursor: pointer;
+}
+
+.action-icons .fa-star:hover {
+	color: #F0AD4E;
+}
+
+.action-icons .fa-times:hover {
+	color: #D9534F;
 }
 
 .box {
@@ -107,6 +149,16 @@ div.field-error {
 	padding-bottom: 1rem;
 	color: #E97174;
 	font-size: 1.2rem;
+}
+
+div.field-hint {
+	margin-left: 33%;
+	width: 66%;
+	padding-bottom: 1rem;
+	color: #A4A5AD;
+	font-size: 1rem;
+	font-weight: 600;
+	letter-spacing: .1rem;
 }
 
 div.field-label {

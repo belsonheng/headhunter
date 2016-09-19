@@ -2,10 +2,10 @@ Rails.application.routes.draw do
   resources :documents
 
   # Devise authentication navigation
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: "registrations" }, path: '', path_names: { sign_in: 'login', sign_out: 'logout', password: 'users/password' }#, edit: 'settings'}
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: "registrations" }, path: '', path_names: { sign_in: 'login', sign_out: 'logout', password: 'users/password' }, skip: :registrations #, edit: 'settings'}
 
   authenticated :user, lambda {|u| u.type == 'jobseeker' } do 
-    root to: 'jobseeker#home', as: :authenticated_jobseeker_root
+    root to: 'jobseeker#home', as: :jobseeker_root
     get 'home' => 'jobseeker#home', as: :jobseeker_home
     get 'profile' => 'jobseeker#profile', as: :jobseeker_profile
     get '/profile/personal_info' => 'jobseeker#personal_info', as: :jobseeker_personal_info
@@ -17,14 +17,20 @@ Rails.application.routes.draw do
     get '/profile/online_presence' => 'jobseeker#online_presence', as: :jobseeker_online_presence
     get '/profile/recommendation' => 'jobseeker#recommendation', as: :jobseeker_recommendation
     get '/profile/blocked_companies' => 'jobseeker#blocked_companies', as: :jobseeker_blocked_companies
-    get 'integrations'    =>  'pages#integrations'
-    get 'settings' => 'jobseeker#settings', as: :jobseeker_account_settings
+    get 'integrations'    =>  'jobseeker#integrations', as: :jobseeker_integrations
+    devise_scope :user do
+      get 'settings' => 'registrations#edit', type: 'jobseeker', as: :jobseeker_account_settings
+      put 'settings' => 'registrations#update', as: :jobseeker_account_update
+    end
   end
 
   authenticated :user, lambda {|u| u.type == 'employer' } do 
-    root to: 'employer#home', as: :authenticated_employer_root
+    root to: 'employer#home', as: :employer_root
     get 'home' => 'employer#home', as: :employer_home
-    get 'settings' => 'employer#settings', as: :employer_account_settings
+    devise_scope :user do
+      get 'settings' => 'registrations#edit', type: 'employer', as: :employer_account_settings
+      put 'settings' => 'registrations#update', as: :employer_account_update
+    end
   end
 
   root 'pages#index'
@@ -38,9 +44,10 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'signup' => 'registrations#new_jobseeker', as: :jobseeker_signup
     post 'signup' => 'registrations#create', as: :jobseeker_registration
-    get 'employer_signup' => 'registrations#new_employer'
+    get 'employer_signup' => 'registrations#new_employer', as: :employer_signup
     post 'employer_signup' => 'registrations#create', as: :employer_registration
   end
+
   # get 'information' => 'pages#information'
 
   # Onboarding pages
