@@ -33,7 +33,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         sign_in_and_redirect user
       else
         # Logic for the case when we actually need to create a new user
-          user = User.from_omniauth(auth)
+          user = Jobseeker.from_omniauth(auth)
           if user.persisted?
             flash.notice = "Signed in!"
             sign_in_and_redirect user
