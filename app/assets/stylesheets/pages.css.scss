@@ -359,30 +359,42 @@ width: 100%;
 /* End Login Form */
 
 /*flash Messages */
+.alert {
+	font-size: 1.4rem;
+	font-weight: 500;
+	border-radius: 0;
+	margin-top: -60px;
+    text-align: left;
+}
+
+.alert a.close {
+	color: #53545B;
+	font-size: 2.4rem;
+	text-shadow: none;
+	opacity: 0.5;
+	line-height: .9;
+}
+
 .alert-error {
     background-color: #f2dede;
     border-color: #eed3d7;
     color: #b94a48;
-    text-align: left;
  }
 
 .alert-alert {
-    background-color: #f2dede;
-    border-color: #eed3d7;
-    color: #b94a48;
-    text-align: left;
+    background-color: #E97174;
+    border-color: #E14245;
+    color: #FFF;
  }
 
 .alert-success {
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-    color: #468847;
-    text-align: left;
+    background-color: #55C9A9;
+    border-color: #1CB78C;
+    color: #FFF;
  }
 
 .alert-notice {
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-    color: #468847;
-    text-align: left;
+    background-color: #55C9A9;
+    border-color: #1CB78C;
+    color: #FFF;
  }

@@ -1,12 +1,12 @@
     <!-- Start Content -->
     <div id="content" style="background: url('<%= image_path('testimonials-bg3.jpg') %>');">
+	  <%= render "shared/messages" %>
       <div class="container">
 		<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, id: 'login-form', class: 'box' }) do |f| %>
 	      <div class="form-header"><h3>Reset Password</h3></div>
 		  <div class="field-container">
-		  	<%= devise_error_messages! %>
-		    <input type="email" name="user[email]" required placeholder="Email" autofocus/>
-	        <button id="submit" class="btn-system btn-large" type="submit" style="float: right; margin-bottom:20px;">Submit</button>
+		    <%= f.input_field :email, required: true, placeholder: 'Email', autofocus: true %>
+	        <button id="submit" class="btn-system btn-large" type="submit" style="float: right; margin-bottom:20px;" data-disable-with="Processing...">Submit</button>
 		  </div>
 	    <% end %>
 	  </div>

@@ -86,7 +86,7 @@
                 <li>
                   <a class="<%= 'active' if params[:controller] == 'jobseeker' && params[:action] == 'profile' %>" href="<%= jobseeker_profile_path %>">PROFILE</a>
                   <ul class="dropdown">
-                    <li><a href="/users/<%=current_user.id %>">View Profile</a></li>
+                    <li><a href="#">View Profile</a></li>
                     <li><a class="<%= 'active' if params[:controller] == 'registrations' && params[:action] == 'edit' %>" href="<%= jobseeker_personal_info_path %>">Edit Profile</a></li>
                   </ul>
                 </li>
