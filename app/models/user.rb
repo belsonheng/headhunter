@@ -7,10 +7,8 @@ class User
          :recoverable, :rememberable, :trackable, :validatable, :omniauth_providers => [:facebook, :linkedin, :google]
 
   # Link to other Models
-  has_many :identities, :dependent => :destroy
 
   before_save :capitalize_fields
-  after_create :first_identity
 
   # Common attributes
   field :email, type: String
@@ -36,10 +34,6 @@ class User
   field :current_sign_in_ip, type: String
   field :last_sign_in_ip,    type: String
 
-  #Loging in with Third-Party Websites (JobSeekers)
-  field :provider, type: String 
-  field :uid, type: String 
-
   # Profile Picture:
    
   # Confirmable
@@ -52,13 +46,6 @@ class User
   field :failed_attempts, type: Integer, default: 0 # Only if lock strategy is :failed_attempts
   field :unlock_token, type: String # Only if unlock strategy is :email or :both
   field :locked_at, type: Time
-
-
-  # Prevents duplication
-  def first_identity
-    self.identities.first_or_create!(:uid => self.uid, :provider => self.provider, :user_id => self.id)
-    Identity.where(:user_id => nil).destroy_all
-  end
 
   def admin?
     type.casecmp('admin')

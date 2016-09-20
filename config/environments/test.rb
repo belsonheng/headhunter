@@ -9,14 +9,14 @@ Rails.application.configure do
   config.action_mailer.default_url_options = {:host => "localhost:3000"}
 
   config.action_mailer.smtp_settings = {
-address: “smtp.gmail.com”,
-port: 587,
-domain: 'smtp.gmail.com',
-authentication: “plain”,
-enable_starttls_auto: true,
-user_name: 'ENV["GMAIL_USERNAME"]',
-password: 'ENV["GMAIL_PASSWORD"]'
-}
+    address: 'smtp.gmail.com',
+    port: 587,
+    domain: 'smtp.gmail.com',
+    authentication: “plain”,
+    enable_starttls_auto: true,
+    user_name: 'ENV["GMAIL_USERNAME"]',
+    password: 'ENV["GMAIL_PASSWORD"]'
+  }
 
   # Do not eager load code on boot. This avoids loading your whole application
   # just for the purpose of running a single test. If you are using a tool that

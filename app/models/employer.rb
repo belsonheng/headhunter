@@ -4,11 +4,12 @@ class Employer < User
   field :contact_name, type: String
 
   def first_name
-    contact_name.split(' ')[0].capitalize
+    name_parts = contact_name.split - ["#{contact_name.split.last}"]
+    name_parts.map(&:capitalize).join(" ")
   end
 
   def last_name
-    contact_name.split(' ')[1].capitalize
+    contact_name.split.last.capitalize
   end
 
   validates_uniqueness_of :name

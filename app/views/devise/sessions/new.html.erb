@@ -50,3 +50,8 @@
     </div>
     <!-- End Content -->
 
+<% content_for :script do %>
+  <script type="text/javascript">
+    history.replaceState ? history.replaceState(null, null, window.location.href.split('#')[0]) : window.location.hash = '';
+  </script>
+<% end %>
