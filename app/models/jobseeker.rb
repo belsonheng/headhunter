@@ -40,7 +40,7 @@ class Jobseeker < User
           password: Devise.friendly_token[0,20],
           type: 'jobseeker'
         )
-        user.skip_confirmation! if user.respond_to?(:skip_confirmation)
+        user.skip_confirmation! #if user.respond_to?(:skip_confirmation)
         user.save! validate: false
       end
     end
