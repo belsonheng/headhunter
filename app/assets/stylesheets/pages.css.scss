@@ -343,6 +343,14 @@ width: 100%;
 	border: 1px solid #bdbdbd;
 }
 
+a.btn-right {
+	float: right;
+}
+
+a.btn-right:visited {
+	text-decoration: none!important;
+}
+
 .text-p {
 	font-size: 14px;
 	text-align: center;
@@ -376,9 +384,9 @@ width: 100%;
 }
 
 .alert-error {
-    background-color: #f2dede;
-    border-color: #eed3d7;
-    color: #b94a48;
+    background-color: #E97174;
+    border-color: #E14245;
+    color: #FFF;
  }
 
 .alert-alert {

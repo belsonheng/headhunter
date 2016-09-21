@@ -245,7 +245,7 @@ Devise.setup do |config|
 
   config.omniauth_path_prefix = "/users/auth"
   config.omniauth :facebook, ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_APP_SEC"] #, callback_url: "CALLBACK_URL"
-  config.omniauth :google_oauth2 , ENV["GOOGLE_CLIENT_ID"] , ENV["GOOGLE_CLIENT_SEC"], { skip_jwt: true, name: "google" }
+  config.omniauth :google_oauth2, ENV["GOOGLE_CLIENT_ID"] , ENV["GOOGLE_CLIENT_SEC"], { skip_jwt: true, name: "google" }
   config.omniauth :linkedin, ENV["LINKED_IN_KEY"], ENV["LINKED_IN_SEC"]
 
   # ==> Warden configuration

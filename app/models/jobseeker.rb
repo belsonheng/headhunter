@@ -21,7 +21,6 @@ class Jobseeker < User
   # field :uid, type: String 
 
   def self.find_for_oauth(auth, signed_in_resource=nil)
-    puts signed_in_resource
     # Get the identity and user if they exist
     identity = Identity.find_for_oauth(auth)
     user = signed_in_resource ? signed_in_resource : identity.jobseeker
@@ -44,10 +43,9 @@ class Jobseeker < User
         user.save! validate: false
       end
     end
-    puts auth.inspect
     # Associate the identity with the user
     identity.jobseeker = user
-    identity.save
+    identity.save! validate: false
     user
   end
 
@@ -59,10 +57,11 @@ class Jobseeker < User
   end
 
   def first_name
-    name.split(' ')[0].capitalize
+    name_parts = name.split - ["#{name.split.last}"]
+    name_parts.map(&:capitalize).join(" ")
   end
 
   def last_name
-    name.split(' ')[1].capitalize
+    name.split.last.capitalize
   end
 end

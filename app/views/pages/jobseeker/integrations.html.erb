@@ -1,4 +1,5 @@
 <div id="content" style="background: url('<%= image_path('testimonials-bg3.jpg') %>');">
+  <%= render "shared/messages" %>
   <div class="container">
     <div class='box' style="max-width: 800px;">
       <div class="form-header"><h3>Social Media Integrations</h3></div>
@@ -7,11 +8,11 @@
           <img alt="Google" src="<%= image_path('google.png') %>">
         </div>
         <div class="col-md-6">Enables sign-in with Google and Google Calendar integration.</div>
-        <div class="col-md-3">
+        <div class="col-md-3" style="text-align: right;">
           <% if current_user.identities.where(provider: 'google').exists? %>
-          <a class="btn-system btn-small" data-confirm="Are you sure you want to disconnect your Google account?" data-remote="true" rel="nofollow" data-method="delete" href="<%= user_google_omniauth_authorize_path %>" style="float:right;">Disconnect</a>
+          <%= button_to 'Disconnect', user_google_omniauth_authorize_path, class: 'btn-system btn-small', method: :delete, data: {confirm: 'Are you sure you want to disconnect your Google account?'} %>
           <% else %>
-          <a class="btn-system btn-small" href="<%= user_google_omniauth_authorize_path %>" style="float:right;">Connect</a>
+          <%= button_to 'Connect', user_google_omniauth_authorize_path, class: 'btn-system btn-small', method: :post %>
           <% end %>
         </div>
       </section>
@@ -21,11 +22,11 @@
           <img alt="Facebook" src="https://d1enbull9nrjgw.cloudfront.net/assets/integrations/facebook-af2f447bb6c269dbf1ec82c1bd890aec.png">
         </div>
         <div class="col-md-6">Enables sign-in with Facebook and imports your Facebook profile photo.</div>
-        <div class="col-md-3">
+        <div class="col-md-3" style="text-align: right;">
           <% if current_user.identities.where(provider: 'facebook').exists? %>
-          <a class="btn-system btn-small" data-confirm="Are you sure you want to disconnect your Facebook account?" data-remote="true" rel="nofollow" data-method="delete" href="<%= user_facebook_omniauth_authorize_path %>" style="float:right;">Disconnect</a>
+          <%= button_to 'Disconnect', user_facebook_omniauth_authorize_path, class: 'btn-system btn-small', method: :delete, data: {confirm: 'Are you sure you want to disconnect your Facebook account?'} %>
           <% else %>
-          <a class="btn-system btn-small" href="<%= user_facebook_omniauth_authorize_path %>" style="float:right;" >Connect</a>
+          <%= button_to 'Connect', user_facebook_omniauth_authorize_path, class: 'btn-system btn-small', method: :post %>
           <% end %>
         </div>
       </section>
@@ -35,11 +36,11 @@
           <img alt="Linkedin" src="<%= image_path('linkedIn.png') %>">
         </div>
         <div class="col-md-6">Enables sign-in with LinkedIn and links your public profile.</div>
-        <div class="col-md-3">
+        <div class="col-md-3" style="text-align: right;">
           <% if current_user.identities.where(provider: 'linkedin').exists? %>
-          <a class="btn-system btn-small" data-confirm="Are you sure you want to disconnect your LinkedIn account?" data-remote="true" rel="nofollow" data-method="delete" href="<%= user_linkedin_omniauth_authorize_path %>" style="float:right;">Disconnect</a>
+          <%= button_to 'Disconnect', user_linkedin_omniauth_authorize_path, class: 'btn-system btn-small', method: :delete, data: {confirm: 'Are you sure you want to disconnect your LinkedIn account?'} %>
           <% else %>
-          <a class="btn-system btn-small" href="<%= user_linkedin_omniauth_authorize_path %>" style="float:right;">Connect</a>
+          <%= button_to 'Connect', user_linkedin_omniauth_authorize_path, class: 'btn-system btn-small', method: :post %>
           <% end %>
         </div>
       </section>

@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   resources :documents
 
   # Devise authentication navigation
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: "registrations" }, path: '', path_names: { sign_in: 'login', sign_out: 'logout', password: 'users/password' }, skip: :registrations #, edit: 'settings'}
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'registrations' }, 
+                     path: '', path_names: { sign_in: 'login', sign_out: 'logout', password: 'users/password' }, skip: :registrations #, edit: 'settings'}
 
   authenticated :user, lambda {|u| u.type == 'jobseeker' } do 
     root to: 'jobseeker#home', as: :jobseeker_root
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
     devise_scope :user do
       get 'settings' => 'registrations#edit', type: 'jobseeker', as: :jobseeker_account_settings
       put 'settings' => 'registrations#update', as: :jobseeker_account_update
+      delete '/users/auth/:provider' => 'users/omniauth_callbacks#destroy'
     end
   end
 

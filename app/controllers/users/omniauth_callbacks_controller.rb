@@ -2,15 +2,17 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   skip_before_filter :verify_authenticity_token
 
   def provider
-    auth = request.env["omniauth.auth"]
+    auth = request.env['omniauth.auth']
 
     @user = Jobseeker.find_for_oauth(auth, current_user)
 
     if @user.persisted?
-      sign_in_and_redirect @user, event: :authentication
-      # set_flash_message(:notice, :success, kind: "#{provider}".capitalize) if is_navigational_format?
+      puts auth.provider
+      set_flash_message! :notice, :success, kind: auth.provider.capitalize if is_navigational_format?
+      redirect_to request.env['omniauth.origin'] if signed_in?
+      sign_in_and_redirect @user, event: :authentication unless signed_in?
     else
-      session["devise.#{provider}_data"] = env["omniauth.auth"]
+      session["devise.#{provider}_data"] = env['omniauth.auth']
       redirect_to jobseeker_signup_path
     end
 
@@ -56,6 +58,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     #       end
     #   end
     # end
+  end
+
+  def destroy
+    success = Identity.remove_oauth(params[:provider])
+    flash[:error] = "Sorry, we could not disconnect your #{params[:provider].capitalize} account." unless success
+    redirect_to jobseeker_integrations_url
   end
 
   alias_method :facebook, :provider

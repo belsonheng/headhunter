@@ -5,11 +5,13 @@ class Identity
   
   field :uid, type: String
   field :provider, type: String
-  field :token, type: String
-  field :secret, type: String
 
   def self.find_for_oauth(auth) 
-  	find_or_create_by(uid: auth.uid, provider: auth.provider, token: auth.credentials.token, secret: auth.credentials.secret)
+  	find_or_create_by(uid: auth.uid, provider: auth.provider)
+  end
+
+  def self.remove_oauth(provider)
+    where(provider: provider).destroy
   end
 
   validates_uniqueness_of :uid, :scope => :provider
