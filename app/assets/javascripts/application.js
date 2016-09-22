@@ -32,3 +32,7 @@
 //= require_tree
 //= require Chart.bundle
 //= require chartkick
+
+// $('button:submit').click(function() {
+//   alert('hi');
+// })

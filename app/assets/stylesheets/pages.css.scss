@@ -2,6 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.social-media-integrations {
+	padding: 3rem; 
+	margin-bottom: 2rem;
+	display: flex;
+	align-items: center;
+}
+
+.social-media-integrations div:nth-child(1) {
+	text-align: center;
+}
+
+.social-media-integrations div:nth-child(3) {
+	text-align: right;
+}
+
 .navbar-signed-in {
 	background: #F1EFE2 none repeat scroll 0% 0%;
 }
@@ -9,6 +24,11 @@
 .navbar-signed-in li.drop > a,
 .navbar-signed-in li > a {
 	padding: 16px 15px!important;
+}
+
+.slicknav_menu li > a {
+	padding: 5px 10px!important;
+	margin: 2px 5px!important;
 }
 
 .navbar-signed-in .navbar-brand {
@@ -325,9 +345,8 @@ width: 100%;
 	margin-top: 5px;
 }
 
-//, .input-field input[type="text"] , .input-field input[type="number"]
-
 #login-form .field-container input[type="email"], 
+#reset-password .field-container input[type="email"],
 #login-form .field-container input[type="password"] {
 	border: 1px solid #dfdfdf;
 	border-radius: 2px;
@@ -337,7 +356,8 @@ width: 100%;
 	width: 100%;
 }
 
-#login-form .field-container input[type="email"]:focus, 
+#login-form .field-container input[type="email"]:focus,
+#reset-password .field-container input[type="email"]:focus,
 #login-form .field-container input[type="password"]:focus {
 	outline: none;
 	border: 1px solid #bdbdbd;
@@ -355,6 +375,22 @@ a.btn-right:visited {
 	font-size: 14px;
 	text-align: center;
 	margin: 10px 0;
+}
+
+.col-padding-left {
+	display:flex; 
+	flex-direction:column;
+	justify-content:center;  
+	padding-left: 100px;
+	height: 460px;
+}
+
+.col-padding-right {
+	display:flex; 
+	flex-direction:column;
+	justify-content:center;  
+	padding-right: 100px;
+	height: 460px;
 }
 
 @media (max-width: 480px) {

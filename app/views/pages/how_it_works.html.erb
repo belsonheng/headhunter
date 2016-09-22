@@ -3,8 +3,10 @@
             <div class="container">
               <div class="row">
                 <div class="col-md-12" style="text-align:center;">
-                  <h2 style="text-transform:capitalize;">We bring job offers to you </h2>
-                  <p style="padding-top:5px;">It's a marketplace where companies make you job offers.</p>
+                  <div class="big-title">
+                    <h1 style="text-transform:capitalize;">We bring job offers to you </h1>
+                    <p class="title-desc">It's a marketplace where companies make you job offers.</p>
+                  </div>
                   <p style="padding-top:30px;"><a href="<%= jobseeker_signup_path %>" class="btn-system btn-large">Get Job Offers Today</a></p>
                 </div>
               </div>
@@ -16,61 +18,68 @@
 
           <div class="container">
             <div class="row">
-              <div class="col-md-6" style="border-bottom:1px solid #eee;">
+              <div class="col-md-6 col-md-push-6 col-padding-left col-center">
+                <div class="big-title">
+                  <h2 style="font-weight:300; font-size: 3rem;">Let companies apply to you, <br/>not the other way around.</h2>
+                  <p class="title-desc" style="margin-top: 2rem;">Receive interview offers which include salary and equity information.</p>
+                  <p class="title-desc" style="margin-top: 1rem;">Companies compete for your attention. Engage only with the companies you like.</p>
+                </div>
+              </div>
+              <div class="col-md-6 col-md-pull-6 col-center" style="border-bottom:1px solid #eee;">
                 <img alt="" src="<%= image_path('requests.png') %>">
               </div>
-              <div class="col-md-6" style="height:460px; display:flex; justify-content:center; flex-direction:column; padding-left: 100px;">
-                <h2 style="font-weight:300; font-size: 3rem;">Let companies apply to you, <br/>not the other way around.</h2>
-                <p style="padding-top:20px;">Receive interview offers which include salary and equity information.</p>
-                <p style="padding-top:10px;">Companies compete for your attention. Engage only with the companies you like.</p>
-              </div>
             </div>
-          </div>
 
-          <!-- Divider -->
-          <div class="hr1 margin-60"></div>
+            <!-- Divider -->
+            <div class="hr1 margin-60"></div>
 
-          <div class="container">
             <div class="row">
-              <div class="col-md-6" style="height:460px; display:flex; justify-content:center; flex-direction:column; padding-right: 100px;">
-                <h2 style="font-weight:300; font-size: 3rem;">Showcase your experience <br/>and career goals.</h2>
-                <p style="padding-top:20px;">Create a profile to highlight your experience and desired career move.</p>
-                <p style="padding-top:10px;">All you have to do is just upload your resume!</p>
+              <div class="col-md-6 col-padding-right col-center">
+                <div class="big-title">
+                  <h2 style="font-weight:300; font-size: 3rem;">Showcase your experience <br/>and career goals.</h2>
+                  <p class="title-desc" style="margin-top: 2rem;">Create a profile to highlight your experience and desired career move.</p>
+                  <p class="title-desc" style="margin-top: 1rem;">All you have to do is just upload your resume!</p>
+                </div>
               </div>
-              <div class="col-md-6" style="border-bottom:1px solid #eee;">
+              <div class="col-md-6 col-center" style="border-bottom:1px solid #eee;">
                 <img alt="" src="<%= image_path('profile.png') %>">
               </div>
             </div>
-          </div>
 
-          <!-- Divider -->
-          <div class="hr1 margin-60"></div>
+            <!-- Divider -->
+            <div class="hr1 margin-60"></div>
 
-          <div class="container">
             <div class="row">
-              <div class="col-md-6" style="border-bottom:1px solid #eee;">
-                <img alt="" src="<%= image_path('list.png') %>">
+              <div class="col-md-6 col-md-push-6 col-padding-left col-center">
+                <div class="big-title">
+                  <h2 style="font-weight:300; font-size: 3rem;">Companies interested in you will request an interview.</h2>
+                  <p class="title-desc" style="margin-top: 2rem;">Privacy is important - your profile is not shown to former employers or any other company you list.</p>
+                  <p class="title-desc" style="margin-top: 1rem;">While on the platform, you’ll be showcased to the 2,000+ companies using Headhunter every week.</p>
+                </div>
               </div>
-              <div class="col-md-6" style="height:460px; display:flex; justify-content:center; flex-direction:column; padding-left: 100px;">
-                <h2 style="font-weight:300; font-size: 3rem;">Companies interested in you will request an interview.</h2>
-                <p style="padding-top:20px;">Privacy is important - your profile is not shown to former employers or any other company you list.</p>
-                <p style="padding-top:10px;">While on the platform, you’ll be showcased to the 2,000+ vetted companies using Headhunter every week.</p>
+              <div class="col-md-6 col-md-pull-6 col-center" style="border-bottom:1px solid #eee;">
+                <img alt="" src="<%= image_path('requests.png') %>">
               </div>
             </div>
-          </div>
 
+            <!-- Divider -->
+            <div class="hr1 margin-60"></div>            
 
-          <div class="container">
-            <div class="call-action call-action-boxed call-action-style1 no-description clearfix">
-              <div class="button-side">
-                <a class="btn-system btn-large" href="<%= jobseeker_signup_path %>">Sign up now</a>
+            <div class="row">
+              <div class="call-action call-action-boxed call-action-style1 no-description clearfix">
+                <div class="col-md-8 col-xs-12">
+                  <h2 class="primary">
+                    What are you waiting for? Find your <strong>dream</strong> job today.
+                  </h2>
+                </div>
+                <div class="col-md-3 col-xs-12 button-side">
+                  <a class="btn-system btn-large" href="<%= jobseeker_signup_path %>">Sign up now</a>
+                </div>
               </div>
-              <h2 class="primary">
-                What are you waiting for? Find your <strong>dream</strong> job today.
-              </h2>
             </div>
           </div>
 
           <!-- Divider -->
           <div class="hr1 margin-60"></div>
+
         </div>

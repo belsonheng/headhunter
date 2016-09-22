@@ -3,12 +3,12 @@
   <div class="container">
     <div class='box' style="max-width: 800px;">
       <div class="form-header"><h3>Social Media Integrations</h3></div>
-      <section style="padding: 3rem; margin-top: 10px; margin-bottom: 40px;">  
-        <div class="col-md-3" style="text-align: center;">
-          <img alt="Google" src="<%= image_path('google.png') %>">
+      <section class="social-media-integrations" style="margin-top: 10px;">  
+        <div class="col-md-3 col-sm-3 col-xs-3">
+          <img alt="Google" src="<%= image_path('google.png') %>" style="min-width: 98px; min-height: 34px;">
         </div>
-        <div class="col-md-6">Enables sign-in with Google and Google Calendar integration.</div>
-        <div class="col-md-3" style="text-align: right;">
+        <div class="col-md-6 col-sm-6 col-xs-6">Enables sign-in with Google and Google Calendar integration.</div>
+        <div class="col-md-3 col-sm-3 col-xs-3">
           <% if current_user.identities.where(provider: 'google').exists? %>
           <%= button_to 'Disconnect', user_google_omniauth_authorize_path, class: 'btn-system btn-small', method: :delete, data: {confirm: 'Are you sure you want to disconnect your Google account?'} %>
           <% else %>
@@ -17,12 +17,12 @@
         </div>
       </section>
       <hr style="margin-bottom: 10px;"/>
-      <section style="padding: 3rem; margin-bottom: 40px;">  
-        <div class="col-md-3" style="text-align: center;">
+      <section class="social-media-integrations">  
+        <div class="col-md-3 col-sm-3 col-xs-3">
           <img alt="Facebook" src="https://d1enbull9nrjgw.cloudfront.net/assets/integrations/facebook-af2f447bb6c269dbf1ec82c1bd890aec.png">
         </div>
-        <div class="col-md-6">Enables sign-in with Facebook and imports your Facebook profile photo.</div>
-        <div class="col-md-3" style="text-align: right;">
+        <div class="col-md-6 col-sm-6 col-xs-6">Enables sign-in with Facebook and imports your Facebook profile photo.</div>
+        <div class="col-md-3 col-sm-3 col-xs-3">
           <% if current_user.identities.where(provider: 'facebook').exists? %>
           <%= button_to 'Disconnect', user_facebook_omniauth_authorize_path, class: 'btn-system btn-small', method: :delete, data: {confirm: 'Are you sure you want to disconnect your Facebook account?'} %>
           <% else %>
@@ -31,12 +31,12 @@
         </div>
       </section>
       <hr style="margin-bottom: 10px;"/>
-      <section style="padding: 3rem; margin-bottom: 40px;">  
-        <div class="col-md-3" style="text-align: center;">
+      <section class="social-media-integrations">  
+        <div class="col-md-3 col-sm-3 col-xs-3">
           <img alt="Linkedin" src="<%= image_path('linkedIn.png') %>">
         </div>
-        <div class="col-md-6">Enables sign-in with LinkedIn and links your public profile.</div>
-        <div class="col-md-3" style="text-align: right;">
+        <div class="col-md-6 col-sm-6 col-xs-6">Enables sign-in with LinkedIn and links your public profile.</div>
+        <div class="col-md-3 col-sm-3 col-xs-3">
           <% if current_user.identities.where(provider: 'linkedin').exists? %>
           <%= button_to 'Disconnect', user_linkedin_omniauth_authorize_path, class: 'btn-system btn-small', method: :delete, data: {confirm: 'Are you sure you want to disconnect your LinkedIn account?'} %>
           <% else %>

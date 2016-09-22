@@ -40,6 +40,27 @@
 
 @media (max-width: 991px) {
 
+	.call-action {
+		text-align: center;
+	}
+
+	.call-action .button-side {
+		padding-top: 1rem;
+	}
+
+	#introduction {
+		margin-top: 3rem;
+	}
+
+	.col-padding-left, .col-padding-right {
+		height: auto!important;
+		padding: 2rem!important;
+	}
+
+	.col-center {
+		text-align: center;
+	}
+
 	.boxed-page, .boxed-page header {
 		width: 100%;
 	}
@@ -236,10 +257,31 @@
     }
 
 }
+
+@media only screen and (max-width: 600px) {
+
+	.social-media-integrations {
+		flex-direction: column;
+	}
+
+	.social-media-integrations div {
+		width: 100%;
+		text-align: center;
+	}
+
+	.social-media-integrations div:nth-child(2) {
+		padding: 1rem;
+	}
+}
+
 @media only screen and (max-width: 479px) { 
 
 	.form-header h3 {
 		font-size: 2.9rem!important;
+	}
+
+	#reset-password .form-header h3 {
+		font-size: 2.7rem!important;
 	}
 
 	#jobseeker-registration .form-header h3,
@@ -263,7 +305,7 @@
 		margin-top: .5rem!important;
 	}
 
-	.field-error {
+	.field-error, .field-hint {
 		margin: 0!important;
 		width: 100%!important;
 	}

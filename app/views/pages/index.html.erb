@@ -3,13 +3,18 @@
     	<img alt="" src="<%= image_path('testimonials-bg.jpg') %>" style="width: 100%;">
 
       <!-- Start Full Width Section 2 -->
-      <div class="section" style="padding-top:60px; padding-bottom:60px; border-top:1px solid #eee; border-bottom:1px solid #eee; background:#f9f9f9;">
+      <div class="section" style="padding-top: 3rem; padding-bottom: 3rem; border-top:1px solid #eee; border-bottom:1px solid #eee; background:#f9f9f9;">
         <div class="container">
 
           <div class="row">
 
+            <!-- Vimeo Iframe -->
+            <div class="col-md-6 col-md-push-6">
+              <iframe src="https://player.vimeo.com/video/63322694?title=0&amp;byline=0&amp;portrait=0" width="800" height="450"></iframe>
+            </div>
+
             <!-- Start Left Side -->
-            <div class="col-md-6">
+            <div id="introduction" class="col-md-6 col-md-pull-6">
 
               <!-- Start Big Heading -->
               <div class="big-title">
@@ -26,8 +31,8 @@
               <div class="hr1" style="margin-bottom:14px;"></div>
 
               <!-- Start Icons Lists -->
-              <div class="row">
-                <div class="col-md-6">
+              <div id="benefits" class="row">
+                <div class="col-md-6 col-sm-6">
                   <h4 class="classic-title"><span>Candidate</span></h4>
                   <ul class="icons-list">
                     <li><i class="fa fa-check-circle"></i> Free to use.</li>
@@ -36,7 +41,7 @@
                     <li><i class="fa fa-check-circle"></i> You're in demand.</li>
                   </ul>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 col-sm-6">
                   <h4 class="classic-title"><span>Employer</span></h4>
                   <ul class="icons-list">
                     <li><i class="fa fa-check-circle"></i> Transparent &amp; cost-effective process.</li>
@@ -55,12 +60,6 @@
               <a href="<%= jobseeker_signup_path %>" class="btn-system btn-small">Sign Up Now</a>
             </div>
             <!-- End Left Side -->
-
-            <!-- Vimeo Iframe -->
-            <div class="col-md-6">
-              <iframe src="https://player.vimeo.com/video/63322694?title=0&amp;byline=0&amp;portrait=0" width="800" height="450"></iframe>
-            </div>
-
           </div>
 
         </div>
@@ -77,7 +76,7 @@
         <div class="row">
 
           <!-- Start Big Heading -->
-          <div class="big-title text-center">
+          <div class="col-md-12 big-title text-center">
             <h1>The Most <span class="accent-color">Flexible</span> & <span class="accent-color">Easy</span> To Use Marketplace for Jobs</h1>
             <p class="title-desc">Find your dream job today. </p>
           </div>
@@ -235,7 +234,7 @@
       <!-- Start Jobs & Skill Section -->
       <div class="container">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-6 col-sm-6">
             <!-- Classic Heading -->
             <h4 class="classic-title"><span>Latest Jobs</span></h4>
 
@@ -251,7 +250,7 @@
                 <h3 class="post-title"><a href="#">Programmer</a></h3>
                 <div class="post-content">
                   <p> Have a degree certificate in Programming? Here's a suitable job available now! </a></p>
-                  <a class="read-more" href="#">Read More...</a></p>
+                  <p><a class="read-more" href="#">Read More...</a></p>
                 </div>
               </div>
 
@@ -263,8 +262,8 @@
                 </div>
                 <h3 class="post-title"><a href="#">Human Resource</a></h3>
                 <div class="post-content">
-                  <p> Do you like desk bound job? Handling with calls and enquiries? Here's a chance for you to apply! 
-                  <a class="read-more" href="#">Read More...</a></p>
+                  <p> Do you like desk bound job? Handling with calls and enquiries? Here's a chance for you to apply!</p>
+                  <p><a class="read-more" href="#">Read More...</a></p>
                 </div>
               </div>
 
@@ -273,7 +272,7 @@
           </div>
           <!-- .col-md-6 -->
 
-          <div class="col-md-6">
+          <div class="col-md-6 col-sm-6">
 
             <!-- Classic Heading -->
             <h4 class="classic-title"><span>Skills In Demand</span></h4>

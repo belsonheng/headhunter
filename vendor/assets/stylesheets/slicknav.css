@@ -48,6 +48,7 @@
     content: " ";
     display: table; }
   .slicknav_menu:after {
+    background-color: #fff;
     content: " ";
     display: table;
     clear: both; }

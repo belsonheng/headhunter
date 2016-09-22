@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :documents
 
   # Devise authentication navigation
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'registrations' }, 
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }, 
                      path: '', path_names: { sign_in: 'login', sign_out: 'logout', password: 'users/password' }, skip: :registrations #, edit: 'settings'}
 
   authenticated :user, lambda {|u| u.type == 'jobseeker' } do 
@@ -20,8 +20,8 @@ Rails.application.routes.draw do
     get '/profile/blocked_companies' => 'jobseeker#blocked_companies', as: :jobseeker_blocked_companies
     get 'integrations'    =>  'jobseeker#integrations', as: :jobseeker_integrations
     devise_scope :user do
-      get 'settings' => 'registrations#edit', type: 'jobseeker', as: :jobseeker_account_settings
-      put 'settings' => 'registrations#update', as: :jobseeker_account_update
+      get 'settings' => 'users/registrations#edit', type: 'jobseeker', as: :jobseeker_account_settings
+      put 'settings' => 'users/registrations#update', as: :jobseeker_account_update
       delete '/users/auth/:provider' => 'users/omniauth_callbacks#destroy'
     end
   end
@@ -30,8 +30,8 @@ Rails.application.routes.draw do
     root to: 'employer#home', as: :employer_root
     get 'home' => 'employer#home', as: :employer_home
     devise_scope :user do
-      get 'settings' => 'registrations#edit', type: 'employer', as: :employer_account_settings
-      put 'settings' => 'registrations#update', as: :employer_account_update
+      get 'settings' => 'users/registrations#edit', type: 'employer', as: :employer_account_settings
+      put 'settings' => 'users/registrations#update', as: :employer_account_update
     end
   end
 
@@ -44,10 +44,10 @@ Rails.application.routes.draw do
   get 'employers' => 'pages#employers'
 
   devise_scope :user do
-    get 'signup' => 'registrations#new_jobseeker', as: :jobseeker_signup
-    post 'signup' => 'registrations#create', as: :jobseeker_registration
-    get 'employer_signup' => 'registrations#new_employer', as: :employer_signup
-    post 'employer_signup' => 'registrations#create', as: :employer_registration
+    get 'signup' => 'users/registrations#new_jobseeker', as: :jobseeker_signup
+    post 'signup' => 'users/registrations#create', as: :jobseeker_registration
+    get 'employer_signup' => 'users/registrations#new_employer', as: :employer_signup
+    post 'employer_signup' => 'users/registrations#create', as: :employer_registration
   end
 
   # get 'information' => 'pages#information'

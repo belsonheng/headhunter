@@ -7,7 +7,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user = Jobseeker.find_for_oauth(auth, current_user)
 
     if @user.persisted?
-      puts auth.provider
       set_flash_message! :notice, :success, kind: auth.provider.capitalize if is_navigational_format?
       redirect_to request.env['omniauth.origin'] if signed_in?
       sign_in_and_redirect @user, event: :authentication unless signed_in?
