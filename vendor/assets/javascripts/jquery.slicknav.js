@@ -24,12 +24,12 @@
             removeClasses: false,
 			brand: '',
             init: function () {},
-            beforeOpen: function () {},
-            beforeClose: function () {},
-            afterOpen: function () {
+            beforeOpen: function () {
                 $('.slicknav_btn').css('background-color', '#ee3733');
                 $('.slicknav_btn .slicknav_icon-bar').css('background-color', '#ffffff');
             },
+            beforeClose: function () {},
+            afterOpen: function () {},
             afterClose: function () {
                 $('.slicknav_btn').css('background-color', 'transparent');
                 $('.slicknav_btn .slicknav_icon-bar').css('background-color', '#ee3733');

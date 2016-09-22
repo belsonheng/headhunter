@@ -202,6 +202,12 @@
 
 @media (max-width: 768px) {
 
+	.navbar-brand {
+		padding-bottom: 50px!important;
+		padding-right: 1rem!important;
+		margin-top: 5px!important
+	}
+	
 	.profile {
 		flex-flow: row wrap;
 		flex-direction: column;
@@ -276,6 +282,15 @@
 
 @media only screen and (max-width: 479px) { 
 
+	.candidate-match-results {
+		flex-direction: column!important;
+	}
+
+	.candidate-match-results > img#green-check {
+		margin: 0!important;
+		padding-bottom: 1rem;
+	}
+
 	.form-header h3 {
 		font-size: 2.9rem!important;
 	}
@@ -329,8 +344,11 @@
 		padding: .1rem;	
 	}
 
-	.navbar-brand span {
-		left: 5px;
+
+	.navbar-brand {
+		padding-bottom: 50px!important;
+		padding-right: 1rem!important;
+		margin-top: 5px!important
 	}
 
     .top-bar  {

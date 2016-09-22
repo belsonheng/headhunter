@@ -2,6 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.candidate-match-results {
+	display: flex; 
+	flex-direction: row; 
+	justify-content: center; 
+	align-items: center; 
+	text-align: center;	
+}
+
+.candidate-match-results > img#green-check {
+	vertical-align: middle; 
+	margin-right: 2rem; 
+	min-height: 80px; 
+	min-width: 75px;
+}
+
 .social-media-integrations {
 	padding: 3rem; 
 	margin-bottom: 2rem;
@@ -18,7 +33,7 @@
 }
 
 .navbar-signed-in {
-	background: #F1EFE2 none repeat scroll 0% 0%;
+	background: #EBEBEB none repeat scroll 0% 0%;
 }
 
 .navbar-signed-in li.drop > a,
@@ -43,11 +58,15 @@
 }
 
 .navbar-brand > span {
-	display: inline; 
-	width: 250px;
+	display: flex;
+	width: 200px;
 	position: absolute;
 	top: 17px;
 	padding-bottom: 22px;
+}
+
+.navbar-brand > span > h1 {
+	font-size: 3rem;
 }
 
 .candidate-profile-photo {
