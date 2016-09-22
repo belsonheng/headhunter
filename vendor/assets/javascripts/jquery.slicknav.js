@@ -27,7 +27,9 @@
             beforeOpen: function () {},
             beforeClose: function () {},
             afterOpen: function () {},
-            afterClose: function () {}
+            afterClose: function () {
+                $('.slicknav_btn').blur();
+            }
         },
         mobileMenu = 'slicknav',
         prefix = 'slicknav';
