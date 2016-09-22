@@ -111,6 +111,8 @@ GEM
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     naught (1.1.0)
+    non-stupid-digest-assets (1.0.8)
+      sprockets (>= 2.0)
     oauth (0.5.1)
     oauth2 (1.1.0)
       faraday (>= 0.8, < 0.10)
@@ -236,6 +238,7 @@ DEPENDENCIES
   letter_opener
   mongoid (~> 5.1.0)
   mongoid-paperclip
+  non-stupid-digest-assets
   omniauth
   omniauth-facebook
   omniauth-google-oauth2
