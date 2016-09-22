@@ -26,11 +26,13 @@
             init: function () {},
             beforeOpen: function () {},
             beforeClose: function () {},
-            afterOpen: function () {},
+            afterOpen: function () {
+                $('.slicknav_btn').css('background-color', '#ee3733');
+                $('.slicknav_btn .slicknav_icon-bar').css('background-color', '#ffffff');
+            },
             afterClose: function () {
-                $('.slicknav_btn').focus(function() {
-                    this.blur();
-                });
+                $('.slicknav_btn').css('background-color', 'transparent');
+                $('.slicknav_btn .slicknav_icon-bar').css('background-color', '#ee3733');
             }
         },
         mobileMenu = 'slicknav',

@@ -42,13 +42,12 @@
   }
 
   .slicknav_menu .slicknav_btn:hover .slicknav_icon-bar{
-    background: #ffffff;
+    //background: #ffffff;
   }
   .slicknav_menu:before {
     content: " ";
     display: table; }
   .slicknav_menu:after {
-    background-color: #fff;
     content: " ";
     display: table;
     clear: both; }
