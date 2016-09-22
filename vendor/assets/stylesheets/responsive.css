@@ -205,9 +205,8 @@
 	.navbar-brand {
 		padding-bottom: 50px!important;
 		padding-right: 1rem!important;
-		margin-top: 5px!important
 	}
-	
+
 	.profile {
 		flex-flow: row wrap;
 		flex-direction: column;
@@ -348,7 +347,6 @@
 	.navbar-brand {
 		padding-bottom: 50px!important;
 		padding-right: 1rem!important;
-		margin-top: 5px!important
 	}
 
     .top-bar  {
