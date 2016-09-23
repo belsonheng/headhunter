@@ -1,7 +1,7 @@
 class JobseekerController < ApplicationController
   before_filter :authenticate_user!
   def home
-  	redirect_to 'pages/jobseeker/home'
+  	render 'pages/jobseeker/home'
   end
   def profile
   	@name = current_user.name
