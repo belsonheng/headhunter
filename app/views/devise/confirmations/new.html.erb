@@ -1,14 +1,13 @@
-<h2>Resend confirmation instructions</h2>
-
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Resend confirmation instructions" %>
-  </div>
-<% end %>
+    <!-- Start Content -->
+    <div id="content" style="background: url('<%= image_path('testimonials-bg3.jpg') %>');">
+	  <%= render "shared/messages" %>
+      <div class="container">
+		<%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post, id: 'reset-password', class: 'box' }) do |f| %>
+	      <div class="form-header"><h3>Resend Confirmation Instructions</h3></div>
+		  <div class="field-container">
+		    <%= f.input_field :email, required: true, placeholder: 'Email', autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+	        <button id="submit" class="btn btn-system btn-large" type="submit" style="float: right; margin-bottom:20px;" data-disable-with="Processing...">Send</button>
+		  </div>
+	    <% end %>
+	  </div>
+	</div>
