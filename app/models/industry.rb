@@ -1,8 +1,10 @@
 class Industry
-include Mongoid::Document
+  include Mongoid::Document
 
-has_many :roles, :dependent => :destroy
-##Area of Expertise
-field :area, type: String
+  has_many :positions, :dependent => :destroy
+  
+  field :name, type: String
 
+  # Area of Expertise
+  #field :area, type: String
 end

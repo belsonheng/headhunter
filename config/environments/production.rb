@@ -10,7 +10,7 @@ Rails.application.configure do
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
 
-  config.consider_all_requests_local = false
+  config.consider_all_requests_local = true
 
   config.action_mailer.default_url_options = { :host => "http://headhuntersg.herokuapp.com/" }
 

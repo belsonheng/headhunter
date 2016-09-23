@@ -28,11 +28,9 @@
 //= require jquery.nicescroll.min
 //= require jquery.parallax
 //= require jquery.slicknav
+//= require sweetalert2
+//= require rails-sweetalert2-confirm
 //= require_self
 //= require_tree
 //= require Chart.bundle
 //= require chartkick
-
-// $('button:submit').click(function() {
-//   alert('hi');
-// })

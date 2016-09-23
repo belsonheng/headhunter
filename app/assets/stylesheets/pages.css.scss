@@ -2,6 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+button:focus {
+	outline: none!important;
+}
+
+.btn-disconnect {
+	background-color: #444!important;
+}
+
+.btn-system:focus {
+	color: #fff;
+}
+
 .candidate-match-results {
 	display: flex; 
 	flex-direction: row; 
