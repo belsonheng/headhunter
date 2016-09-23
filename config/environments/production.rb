@@ -24,7 +24,7 @@ Rails.application.configure do
     password:             ENV['SENDGRID_PASSWORD'],
     domain:               'http://headhuntersg.herokuapp.com',
     authentication:       :plain,
-    enable_starttls_auto: true  
+    enable_starttls_auto: true
   }
 
   # Full error reports are disabled and caching is turned on.
