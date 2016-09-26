@@ -9,6 +9,7 @@ class Jobseeker < User
   has_many :skills, :dependent => :destroy
   has_many :educations, :dependent => :destroy
   has_many :works, :dependent => :destroy
+  has_many :recommendations, :dependent => :destroy
   has_one :preference, :dependent => :destroy
 
   # has_one :document, :dependent => :destroy
@@ -17,7 +18,7 @@ class Jobseeker < User
   # has_one :summary, :dependent => :destroy
   # has_many :portfolio, :dependent => :destroy
   # has_many :listing, :dependent => :destroy
-  
+
   field :pitch, type: String
   field :summary, type: String
 

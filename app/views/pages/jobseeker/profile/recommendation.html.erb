@@ -6,14 +6,26 @@
      	  <div class="form-header"><h3>Recommendations</h3></div>
      	  <section style="padding: 3rem; margin: 0 auto;">
      	  	<div>
-              Recommendations add credibility to your profile, increasing your chances of receiving offers.<br/>
-              Add people you've worked with and we'll send them an email with a link to write a recommendation.
-            </div>	
+            Recommendations add credibility to your profile, increasing your chances of receiving offers.<br/>
+            Add people you've worked with and we'll send them an email with a link to write a recommendation.
+          </div>
+          
      	  </section>
-          <hr/>
-          <section style="padding: 0 3rem; padding-bottom: 3rem; margin: 0 auto;">
-            <div style="font-weight: 700; font-size: 1.3rem; letter-spacing: 1px;">Email Preview:</div>
-          </section>
+        <hr/>
+        <section style="padding: 0 3rem; padding-bottom: 3rem; margin: 0 auto;">
+          <div style="font-weight: 700; font-size: 1.3rem; letter-spacing: 1px;">Email Preview:</div>
+          <div style="border: 1px solid #DFDFDF; padding: 1rem; margin-top: 2rem;">
+            <p style="padding-bottom: 2rem;">Hi (recipient name),</p>
+            <p style="padding-bottom: 2rem;">
+              <%= current_user.name %> recently signed up on Headhunter, the marketplace for jobseekers and companies. <%= current_user.first_name %> is creating a profile on Headhunter
+              in preparation for a new career with one of the companies on our platform.
+            </p>
+            <p style="padding-bottom: 2rem;">
+              <%= current_user.first_name %> has asked you to write a recommendation that will appear on his/her profile. You don't need to create an account or provide any
+              personal information. Can you spare a few minutes to help <%= current_user.first_name %> find a dream job?
+            </p>
+          </div>
+        </section>
      	</div>
      </div>
    </div>

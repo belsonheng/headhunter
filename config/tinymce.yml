@@ -17,3 +17,4 @@ plugins:
   - codesample
   - link
   - table
+plugin_preview_height: 300
