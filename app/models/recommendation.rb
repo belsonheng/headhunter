@@ -3,7 +3,7 @@ class Recommendation
 
   belongs_to :jobseeker
 
-  field: :author_name, type: String
-  field: :author_email, type: String
-  field: :body, type: String
+  field :author_name, type: String
+  field :author_email, type: String
+  field :body, type: String
 end
