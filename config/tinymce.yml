@@ -1,0 +1,19 @@
+menubar: false
+browser_spellcheck: true
+theme_advanced_toolbar_location: top
+theme_advanced_toolbar_align: left
+fontsize_formats: "10pt 11pt 12pt 26pt 36pt"
+toolbar:
+  - undo redo | formatselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist | outdent indent | preview
+  - forecolor backcolor | codesample blockquote | link unlink | table removeformat | hr  searchreplace
+theme_advanced_buttons3_add:
+  - tablecontrols
+plugins:
+  - preview
+  - autolink
+  - textcolor
+  - hr
+  - searchreplace
+  - codesample
+  - link
+  - table

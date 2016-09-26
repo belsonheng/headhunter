@@ -1,10 +1,11 @@
 class Education
+  include Mongoid::Document
 
-include Mongoid::Document
-belongs_to :experience
+  belongs_to :jobseeker
 
-field :university, type: String
-field :course, type: String
-field :year, type: String
-
+  field :school, type: String
+  field :course, type: String
+  field :start_date, type: Date
+  field :end_date, type: Date
+  field :description, type: String
 end

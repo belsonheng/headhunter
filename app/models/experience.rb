@@ -1,14 +1,16 @@
-class Experience 
+# class Experience 
+#   include Mongoid::Document
 
-include Mongoid::Document
-belongs_to :user
+#   # belongs_to :jobseeker
 
-has_many :work
-has_many :education
+#   has_many :work
+#   has_many :education
 
-accepts_nested_attributes_for :work, :reject_if => :all_blank, :allow_destroy => true
-accepts_nested_attributes_for :education, :reject_if => :all_blank, :allow_destroy => true
+# accepts_nested_attributes_for :work, :reject_if => :all_blank, :allow_destroy => true
+# accepts_nested_attributes_for :education, :reject_if => :all_blank, :allow_destroy => true
 
-field :user_id, type: String
+# field :place, type: String
+# field :title, type: String
+# field :type, type: String
 
-end
+# end

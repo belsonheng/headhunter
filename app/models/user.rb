@@ -11,6 +11,7 @@ class User
   before_save :capitalize_fields
 
   # Common attributes
+  field :photo_url, type: String 
   field :email, type: String
   field :encrypted_password, type: String
   field :name, type: String

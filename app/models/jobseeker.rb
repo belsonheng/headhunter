@@ -5,20 +5,23 @@ class Jobseeker < User
 
   # Relationships
   has_many :identities, :dependent => :destroy
+  has_many :resumes, :dependent => :destroy
+  has_many :skills, :dependent => :destroy
+  has_many :educations, :dependent => :destroy
+  has_many :works, :dependent => :destroy
+  has_one :preference, :dependent => :destroy
+
   # has_one :document, :dependent => :destroy
   # has_one :info, :dependent => :destroy
   # has_one :history, :dependent => :destroy
-  # has_one :preferences, :dependent => :destroy
   # has_one :summary, :dependent => :destroy
-  # has_many :skill, :dependent => :destroy
   # has_many :portfolio, :dependent => :destroy
   # has_many :listing, :dependent => :destroy
+  
+  field :pitch, type: String
+  field :summary, type: String
 
   # field :careerpath, type: String
-
-  # Signing in with Third-Party Websites
-  # field :provider, type: String 
-  # field :uid, type: String 
 
   def self.find_for_oauth(auth, signed_in_resource=nil)
     # Get the identity and user if they exist

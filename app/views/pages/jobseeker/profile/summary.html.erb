@@ -1,19 +1,36 @@
+<% content_for :style do %>
+  <%= tinymce_assets %>
+<% end %>
+
 <div id="content" style="background-color: #ECF0F1;">
    <div class="container">
      <%= render 'layouts/profile_sidebar' %>
      <div class="col-md-9">
      	<div class="box" style="max-width: 100%;">
+          <%= simple_form_for(@user, as: 'user', url: jobseeker_account_update_path, html: { method: :put, id: 'jobseeker-registration', multipart: true }) do |f| %> 
      	  <div class="form-header"><h3>Summary</h3></div>
-     	  <section style="padding: 3rem; margin: 0 auto;">
-     	  	<div style="font-weight: 700; font-size: 1.3rem; letter-spacing: 1px;">What's your story? <span class="accent-color">*</span></div>
-     	  	<div>
-     	  	  This is the most important part of your profile. The summary lets you express, in your own words, what you are looking for and what
+          <div class="field-container">
+            <div style="font-weight: 700; font-size: 1.3rem; letter-spacing: 1px;">What's your story? <span class="accent-color">*</span></div>
+            <div>
+              This is the most important part of your profile. The summary lets you express, in your own words, what you are looking for and what
               you have done. You can also include links to projects and other sites you are proud of here.
- 	  	    </div> 	
-     	    <hr/>
-     	    <button id="submit" class="btn-system btn-large" type="submit" >Save</button>		
-     	  </section>
+            </div>
+          </div>
+          <hr/>
+          <div class="field-container">
+            <%= f.text_area :summary, required: true, rows: 15, class: 'tinymce' %>
+            <%= f.hidden_field :type, value: 'jobseeker' %>
+          </div>
+          <hr/>
+          <div class="form-footer field-container">
+            <button id="submit" class="btn btn-system btn-large" type="submit" data-disable-with="Saving...">Save</button>
+          </div>
+        <% end %>
      	</div>
      </div>
    </div>
 </div>
+
+<% content_for :script do %>
+  <%= tinymce :content_css => asset_path('application.css') %>
+<% end %>

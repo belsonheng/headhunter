@@ -16,6 +16,4 @@ class Identity
 
   validates_uniqueness_of :uid, :scope => :provider
   validates_presence_of :uid, :provider
-
-  # index({ uid: 1}, {drop_dups: false, background: true})
 end

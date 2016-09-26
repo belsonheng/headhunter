@@ -9,12 +9,15 @@ class JobseekerController < ApplicationController
     render 'pages/jobseeker/profile/index'
   end
   def personal_info
+    @user = current_user
   	render 'pages/jobseeker/profile/personal_info'
   end
   def pitch
+    @user = current_user
   	render 'pages/jobseeker/profile/desired_headline'
   end
   def summary
+    @user = current_user
   	render 'pages/jobseeker/profile/summary'
   end
   def role_skill

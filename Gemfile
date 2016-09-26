@@ -24,6 +24,8 @@ gem 'omniauth-facebook'
 gem 'sitemap_generator'
 # Use Simple Form for building html forms
 gem 'simple_form'
+# Use TinyMCE for WYSIWYG Richtext Editor
+gem 'tinymce-rails'
 # Use Font Awesome for icons
 gem 'font-awesome-sass'
 # Use Sweetalert for alert messages
@@ -42,6 +44,8 @@ gem 'non-stupid-digest-assets'
 gem 'uglifier', '>= 1.3.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+# Use Money Rails for money data type
+gem 'money-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.

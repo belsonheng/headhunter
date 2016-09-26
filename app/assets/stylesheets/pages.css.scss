@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-button:focus {
+button:focus, textarea:focus {
 	outline: none!important;
 }
 
@@ -247,6 +247,19 @@ div.field-input {
 	margin-top: 20px;
 }
 
+.counter {
+	color: #BABBC1;
+	float: right;
+}
+
+.mce-path {
+    opacity: 0;
+}
+
+body.mce-content-body {
+	padding: 1rem;
+}
+
 .simple_form div.user_remember_me label.checkbox {
     color: #666!important;
 	font-size: 1.3rem!important;
@@ -271,6 +284,15 @@ div.field-input {
 label.required:after {
     color: #E14245;
 	content: " *";
+}
+
+textarea {
+	width: 100%;
+	min-height: 80px;
+	resize: vertical;
+	border: 1px solid #dfdfdf;
+	border-radius: 2px;
+	padding: 0.8rem;
 }
 
 /* For Tabs (Register) */

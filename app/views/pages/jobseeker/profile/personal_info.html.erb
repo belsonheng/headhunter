@@ -3,16 +3,37 @@
      <%= render 'layouts/profile_sidebar' %>
      <div class="col-md-9">
      	<div class="box" style="max-width: 100%;">
+        <%= simple_form_for(@user, as: 'user', url: jobseeker_account_update_path, html: { method: :put, id: 'jobseeker-registration', multipart: true }) do |f| %> 
      	  <div class="form-header"><h3>Personal Info</h3></div>
-     	  <section style="padding: 3rem; margin: 0 auto;">
-     	  	<div style="font-weight: 700; font-size: 1.3rem; letter-spacing: 1px;">What is your greatest professional achievement and what are you looking for next in your career? <span class="accent-color">*</span></div>
-     	  	<div>
-     	  	  Having a compelling pitch increases your chances of receiving interview requests from employers.
- 	  	    </div> 	
-     	    <hr/>
-     	    <button id="submit" class="btn-system btn-large" type="submit" >Save</button>		
-     	  </section>
+     	  <div class="field-container">
+            <%= f.input :photo_url, label: 'Profile Photo', required: true %>
+          </div>
+          <hr/>
+          <div class="field-container">
+            <%= f.input :name, required: true %>
+            <%= f.input :location, label: 'Where You Live', required: true, input_html: { id: 'jobseeker_location' } %>
+            <%= f.input :phone, required: true %>
+            <%= f.hidden_field :type, value: 'jobseeker' %>
+          </div>
+          <hr/>
+          <div class="form-footer field-container">
+            <button id="submit" class="btn btn-system btn-large" type="submit" data-disable-with="Saving...">Save</button>
+          </div>
+        <% end %>
      	</div>
      </div>
    </div>
 </div>
+
+<% content_for :script do %>
+  <script type="text/javascript">
+    function initAutocomplete() {
+      j_autocomplete = new google.maps.places.Autocomplete(document.getElementById('jobseeker_location'));
+      j_autocomplete.addListener('place_changed', fillInAddress);
+    }
+    function fillInAddress() {
+      var place = autocomplete.getPlace();
+    }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWAoUTOh1XBroVBrgQqcOErGW1pvkhDaM&libraries=places&callback=initAutocomplete" async defer></script>
+<% end %>

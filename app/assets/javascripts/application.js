@@ -30,6 +30,7 @@
 //= require jquery.slicknav
 //= require sweetalert2
 //= require rails-sweetalert2-confirm
+//= require jquery.character.counter
 //= require_self
 //= require_tree
 //= require Chart.bundle
